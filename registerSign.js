@@ -1,29 +1,10 @@
-// Your web app's Firebase configuration
-var firebaseConfig = {
-apiKey: "AIzaSyAg3XtxHv7Qo50b3iIRUKG0xGvtOXWOkpA",
-authDomain: "buddyup-67607.firebaseapp.com",
-projectId: "buddyup-67607",
-storageBucket: "buddyup-67607.appspot.com",
-messagingSenderId: "998167329918",
-appId: "1:998167329918:web:3a32616855124af5ed6c2f"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-//Seting up firebsae
-const auth = firebase.auth()
 
-//signup function
-function signup(email, password){
-  const promise = auth.createUserWithEmailAndPassword(email, password)
-  promise.catch(e => alert(e.message))
-}
-
-
-
+//variables
 const original_password = document.querySelector('.password');
 const confirm_password = document.querySelector('.conforim');
 const email = document.querySelector('.email');
 
+//Checking for validity
 function register() {
   const forms = [
     document.querySelector('.password'),
@@ -41,7 +22,7 @@ function register() {
   //check if passwords match
   if (forms[0].value.toString() == forms[1].value.toString()){
     signup(forms[2].value, forms[0].value)
-    alert("Signed in")
+
   }
 
   else {
@@ -50,9 +31,10 @@ function register() {
     forms[1].placeholder = "Passwords don't match";
     return
   }
-
 }
 
+
+//checking if password is right
 confirm_password.addEventListener('input', letter => {
   let org_password = document.querySelector('.password').value;
   newPass = letter.target.value
