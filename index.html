@@ -17,14 +17,23 @@
 <div><strong>Buddy</strong>Up</div>
 </div>
 <div class="login">
-<form>
+<form class="signin">
 <input class="signinEmail" type="email" name="username" placeholder="example@pdsb.net">
 <input class="signinPassword"type="password" name="password" placeholder="password">
 <input onclick="signin()" type="submit" value="Login" align="center"></button><br>
-<p>Not registerd? <a href="createLogin.html"><strong>Create an account</strong></a></p>
+<p>Not registerd? <a class="create" href="#"><strong>Create an account</strong></a></p>
 </form>
+
+<form class="signup">
+<input class="email" type="email" name="username" placeholder="example@pdsb.net" required/>
+<input class="password" type="password" minlength = "8" name="password" placeholder="password" required/>
+<input class="conforim" type="password" name="password" placeholder="Conforim password" required/>
+<input onclick="register()" type="submit" value="Register" align="center"><br>
+<p>Have an account? <a class="back" href="#"><strong>Back</strong></a></p>
+</form>
+
 </div>
 </div>
-<script src="signin.js"></script>
+<script src="registerSign.js"></script>
 </body>
 </html>
