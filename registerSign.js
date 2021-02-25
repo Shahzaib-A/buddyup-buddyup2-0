@@ -21,7 +21,6 @@ function register() {
   }
   //check if passwords match
   if (forms[0].value.toString() == forms[1].value.toString()){
-    signup(forms[2].value, forms[0].value)
 
   }
 
