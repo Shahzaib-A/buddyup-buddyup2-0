@@ -1,0 +1,36 @@
+----------------------------
+-- Purpose of the project --
+----------------------------
+The purpose of the project is to make studying together easier
+Users log on to the website, and simply insert tasks in a calendar
+If users have tests or exams in the calendar BuddyUp automatically finds other people who are studying for the same tests
+It then finds the best match based on location
+user can that choose a group and meet up at that location and ace their test hopefully (;
+Other features include automatic notifications on assignments
+Tips to survive high school/university
+
+-----------------------
+-- Things to achieve --
+-----------------------
+Website
+Database
+Location calculator algorithm
+Encryption of the location
+notifications
+Ban of Users
+Make a interactive calendar that users can use to plan
+Make a sytyem that saves the data to the email of Users
+
+-----------
+-- Roles --
+-----------
+Harsh :Tip and login help and geolocation
+Rahul : Design website and help with location matching
+Shazahiab : The chill timing sytyem thing
+Hamza : Firebase
+
+---------------------
+-- Goals for today --
+---------------------
+1. get dom set up
+2.

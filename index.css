@@ -1,0 +1,120 @@
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+
+:root{
+  --background-image:url(https://wallpapershome.com/images/wallpapers/mountains-5120x2880-macos-4k-5k-sierra-sky-android-wallpaper-11473.jpg)
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.bg{
+  top: -20px;
+  left: -20px;
+  right: -40px;
+  bottom: -40px;
+  position: absolute;
+  width: auto;
+  height: auto;
+  background-image: var(--background-image);
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: 0;
+  -webkit-filter: blur(1px);
+  transform: scale(1.2);
+}
+
+.logo{
+  position: absolute;
+  z-index: 1;
+  top:calc(25%);
+  left:calc(46%);
+}
+
+.logo div{
+  font-family: 'Exo', sans-serif;
+  font-size: 3rem;
+  font-weight: 2000;
+  color: rgb(0,234,80)
+}
+
+.login{
+  position: absolute;
+  z-index: 1;
+}
+.login input{
+  display: flex;
+  flex-direction: column;
+	width: 260px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+  margin-top:20px;
+}
+
+.login {
+  position: absolute;
+  top: calc(35%);
+  left: calc(45%);
+}
+
+.login [type=submit] {
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 15px;
+  justify-content: space-around;
+
+}
+
+::placeholder{
+  color:white;
+}
+
+.login input[type=submit]:hover{
+	opacity: 0.8;
+}
+
+.login input[type=submit]:active{
+	opacity: 0.6;
+}
+
+.login input[type=email]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login input[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login input[type=submit]:focus{
+	outline: none;
+}
+
+.login p {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
