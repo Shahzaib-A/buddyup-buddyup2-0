@@ -1,3 +1,31 @@
+//Import firebase
+// Your web app's Firebase configuration
+ var firebaseConfig = {
+   apiKey: "AIzaSyAg3XtxHv7Qo50b3iIRUKG0xGvtOXWOkpA",
+   authDomain: "buddyup-67607.firebaseapp.com",
+   projectId: "buddyup-67607",
+   storageBucket: "buddyup-67607.appspot.com",
+   messagingSenderId: "998167329918",
+   appId: "1:998167329918:web:3a32616855124af5ed6c2f"
+ };
+ // Initialize Firebase
+ firebase.initializeApp(firebaseConfig);
+ const auth = firebase.auth()
+
+//sign in
+function signUp(email,password){
+  //Check if email adress registerd then password security
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error){
+    var errorCode = error.code;
+    console.log(error.message, errorCode)
+    if(errorCode == "auth/weak-password"){
+      alert("Weak password")
+    }
+    if(errorCode == "auth/email-already-in-use"){
+      alert("Email aldready in use")
+    }
+  })
+}
 
 //display sign up
 document.querySelector('.create').addEventListener('click',function(){
@@ -32,7 +60,7 @@ function register() {
   }
   //check if passwords match
   if (forms[0].value.toString() == forms[1].value.toString()){
-
+    signUp(forms[2].value, forms[0].value)
   }
 
   else {
