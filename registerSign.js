@@ -1,39 +1,38 @@
 //Import firebase
 // Your web app's Firebase configuration
- var firebaseConfig = {
-   apiKey: "AIzaSyAg3XtxHv7Qo50b3iIRUKG0xGvtOXWOkpA",
-   authDomain: "buddyup-67607.firebaseapp.com",
-   projectId: "buddyup-67607",
-   storageBucket: "buddyup-67607.appspot.com",
-   messagingSenderId: "998167329918",
-   appId: "1:998167329918:web:3a32616855124af5ed6c2f"
- };
- // Initialize Firebase
- firebase.initializeApp(firebaseConfig);
- const auth = firebase.auth()
+var firebaseConfig = {
+  apiKey: "AIzaSyAg3XtxHv7Qo50b3iIRUKG0xGvtOXWOkpA",
+  authDomain: "buddyup-67607.firebaseapp.com",
+  projectId: "buddyup-67607",
+  storageBucket: "buddyup-67607.appspot.com",
+  messagingSenderId: "998167329918",
+  appId: "1:998167329918:web:3a32616855124af5ed6c2f"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth()
 
-//sign in
+//sign in. Basic idea is fetchSignInMethodsForEmail gives a password value. If it is non-existant. We can signup else we can
+
+
 function signUp(email,password){
-  //Check if email adress registerd then password security
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error){
-    var errorCode = error.code;
-    console.log(error.message, errorCode)
-    if(errorCode == "auth/weak-password"){
-      alert("Weak password")
-    }
-    else if(errorCode == "auth/email-already-in-use"){
-      alert("Email aldready in use")
-    }
+  firebase.auth().fetchSignInMethodsForEmail(email).then((signInMethods) => {
+      if (signInMethods.indexOf(firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD) == -1) {
+        alert("Signup permited")
+      }
+      else {
+        alert("Signup not permited")
+      }
   })
 }
 
 //display sign up
-document.querySelector('.create').addEventListener('click',function(){
+document.querySelector('.create').addEventListener('click', function() {
   document.querySelector('.signin').style.display = 'none';
   document.querySelector('.signup').style.display = 'block';
 })
 //display sign in
-document.querySelector('.back').addEventListener('click',function(){
+document.querySelector('.back').addEventListener('click', function() {
   document.querySelector('.signin').style.display = 'block';
   document.querySelector('.signup').style.display = 'none';
 })
@@ -52,18 +51,16 @@ function register() {
   ]
 
   //check if valid email
-  if (isNaN(forms[2].value.split('@')[0])){
+  if (isNaN(forms[2].value.split('@')[0])) {
     forms[2].value = "";
     forms[2].placeholder = "Invalid email only @pdsb";
     forms[2].style.borderColor = "red";
     return
   }
   //check if passwords match
-  if (forms[0].value.toString() == forms[1].value.toString()){
+  if (forms[0].value.toString() == forms[1].value.toString()) {
     signUp(forms[2].value, forms[0].value)
-  }
-
-  else {
+  } else {
     forms[1].value = "";
     forms[1].style.borderColor = "red";
     forms[1].placeholder = "Passwords don't match";
@@ -77,16 +74,13 @@ confirm_password.addEventListener('input', letter => {
   let org_password = document.querySelector('.password').value;
   newPass = letter.target.value
   currentLetters = org_password.substring(0, newPass.length)
-  console.log(org_password.length, original_password.value.length)
   if (newPass == org_password) {
-    console.log("Valid")
     document.querySelector('.conforim').style.borderColor = "white";
   } else if (newPass != org_password) {
-    console.log("Invalid")
     document.querySelector('.conforim').style.borderColor = "red";
   }
 })
 
-email.addEventListener('input',letter => {
+email.addEventListener('input', letter => {
   email.style.borderColor = "white";
 })
