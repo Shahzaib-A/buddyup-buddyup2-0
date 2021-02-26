@@ -21,7 +21,7 @@ function signUp(email,password){
     if(errorCode == "auth/weak-password"){
       alert("Weak password")
     }
-    if(errorCode == "auth/email-already-in-use"){
+    else if(errorCode == "auth/email-already-in-use"){
       alert("Email aldready in use")
     }
   })
