@@ -18,12 +18,13 @@ const auth = firebase.auth()
 function signUp(email,password){
   firebase.auth().fetchSignInMethodsForEmail(email).then((sim)=>{
     if(sim.indexOf(firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD) == -1){
-      const user = firebase.auth().createUserWithEmailAndPassword(email,password).catch(function(e){
-        let errorCode = error.error
+       firebase.auth().createUserWithEmailAndPassword(email,password).catch(function(error){
+        let errorCode = error.code
+        console.log(errorCode)
         if(errorCode == "auth/weak-password"){
           alert("Password is weak")
         }else{
-          console.log("Sending user verification")
+
         }
       })
     } else{
