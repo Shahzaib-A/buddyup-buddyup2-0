@@ -18,7 +18,13 @@ const auth = firebase.auth()
 function signUp(email,password){
   firebase.auth().fetchSignInMethodsForEmail(email).then((sim)=>{
     if(sim.indexOf(firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD) == -1){
-       firebase.auth().createUserWithEmailAndPassword(email,password).catch(function(error){
+       firebase.auth().createUserWithEmailAndPassword(email,password).then(function(user){
+          firebase.auth().onAuthStateChanged(function(user){
+            console.log("St")
+            user.sendEmailVerification();
+            alert("Email was sent to : " + email "." + "please click on the link to verify your account")
+          })
+       }).catch(function(error){
         let errorCode = error.code
         console.log(errorCode)
         if(errorCode == "auth/weak-password"){
@@ -31,6 +37,15 @@ function signUp(email,password){
       document.querySelector('.email').style.borderColor = "red";
     }
   })
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user.emailVerified) {
+      console.log('Email is verified');
+    }
+  });
+}
+
+funtion signIn(email,password){
+  
 }
 
 //display sign up
