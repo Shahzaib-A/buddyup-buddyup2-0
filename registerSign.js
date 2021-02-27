@@ -23,8 +23,6 @@ function signUp(email,password){
         console.log(errorCode)
         if(errorCode == "auth/weak-password"){
           alert("Password is weak")
-        }else{
-
         }
       })
     } else{
@@ -48,14 +46,14 @@ document.querySelector('.back').addEventListener('click', function() {
 
 //variables
 const original_password = document.querySelector('.password');
-const confirm_password = document.querySelector('.conforim');
+const confirm_password = document.querySelector('.confirm');
 const email = document.querySelector('.email');
 
 //Checking for validity
 function register() {
   const forms = [
     document.querySelector('.password'),
-    document.querySelector('.conforim'),
+    document.querySelector('.confirm'),
     document.querySelector('.email')
   ]
 
@@ -85,9 +83,9 @@ confirm_password.addEventListener('input', letter => {
   newPass = letter.target.value
   currentLetters = org_password.substring(0, newPass.length)
   if (newPass == org_password) {
-    document.querySelector('.conforim').style.borderColor = "white";
+    document.querySelector('.confirm').style.borderColor = "white";
   } else if (newPass != org_password) {
-    document.querySelector('.conforim').style.borderColor = "red";
+    document.querySelector('.confirm').style.borderColor = "red";
   }
 })
 
