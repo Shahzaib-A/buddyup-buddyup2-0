@@ -24,7 +24,6 @@ function signUp(email,password){
           alert("Password is weak")
         }else{
           console.log("Sending user verification")
-          console.log(user.user.sendEmailVerification())
         }
       })
     } else{
