@@ -2,7 +2,7 @@
 
 :root{
   /* --background-image:url(https://wallpapershome.com/images/wallpapers/mountains-5120x2880-macos-4k-5k-sierra-sky-android-wallpaper-11473.jpg) */
-  --background-image: url(https://free4kwallpapers.com/uploads/originals/2020/07/22/minimal-landscape-black-and-white-wallpaper.png);
+  --background-image: url(http://crevisio.com/images/posts/218/vrZbQU/Crevisio-218-vrZbQU-o.jpg);
   --text-color: rgb(0,234,80);
   --border-color: rgba(0,234,80,0.6);
   --btn-bg-color: rgb(255,255,255);
@@ -27,7 +27,8 @@
   background-size: cover;
   background-attachment: fixed;
   z-index: 0;
-  /* -webkit-filter: blur(1px); */
+  filter: brightness(60%);
+  /* -webkit-filter: blur(0px); */
   /* transform: scale(1.2); */
 }
 
@@ -55,7 +56,7 @@
 	width: 260px;
 	height: 30px;
 	background: transparent;
-	border: 1px solid var(--border-color);
+	border: 2px solid var(--border-color);
 	border-radius: 2px;
 	color: var(--text-color);
 	font-family: 'Exo', sans-serif;
