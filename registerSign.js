@@ -23,7 +23,8 @@ function signUp(email,password){
         if(errorCode == "auth/weak-password"){
           alert("Password is weak")
         }else{
-
+          console.log("Sending user verification")
+          console.log(user.user.sendEmailVerification())
         }
       })
     } else{
