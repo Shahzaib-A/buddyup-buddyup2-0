@@ -60,6 +60,7 @@ function register() {
 
   //check if valid email
   if (isNaN(forms[2].value.split('@')[0]) || forms[2].value.split('@')[1] != "pdsb.net" ) {
+    alert("Problem detected with your email!")
     forms[2].value = "";
     forms[2].placeholder = "Invalid email only @pdsb";
     forms[2].style.borderColor = "red";
