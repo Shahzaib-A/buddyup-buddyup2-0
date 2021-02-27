@@ -39,15 +39,26 @@ function signUp(email,password){
       document.querySelector('.email').style.borderColor = "red";
     }
   })
-  firebase.auth().onAuthStateChanged(function(user) {
-    if(user.emailVerified){
-      alert("Congrats")
-    }
-  });
 }
 
-function signIn() {
-
+function sign_In(email,password) {
+  firebase.auth().signInWithEmailAndPassword(email,password).then((userCred)=>{
+    window.location = "Home.html"
+  }).catch((error)=>{
+      error = error.code
+      if(error == "auth/user-not-found"){
+        //I would like to do shake but IDK
+        document.querySelector('.signinEmail').value = ""
+        document.querySelector('.signinEmail').style.borderColor = "red";
+        document.querySelector('.signinEmail').placeholder = "Email adress not registerd";
+      }
+      if(error == "auth/wrong-password"){
+      //I would like to do shake but IDK
+      document.querySelector('.signinPassword').value = "";
+      document.querySelector('.signinPassword').style.borderColor = "red";
+      document.querySelector('.signinPassword').placeholder = "Incorrect password"
+    }
+  })
 }
 
 //display sign up
@@ -109,4 +120,30 @@ confirm_password.addEventListener('input', letter => {
 email.addEventListener('input', letter => {
   email.style.borderColor = "rgba(0,234,80,0.6)";
   email.placeholder = "example@pdsb.net"
+})
+
+//signin
+function signIn(){
+  const user = firebase.auth().currentUser
+  try{
+  if(user.emailVerified){
+    sign_In(document.querySelector('.signinEmail').value.toString(),document.querySelector('.signinPassword').value.toString());
+    }
+  else{
+    alert("Please refresh and verify your email adress!")
+    }
+  }
+  catch(e){
+    alert("Please register for an account first")
+  }
+}
+
+document.querySelector('.signinEmail').addEventListener('input', letter => {
+  document.querySelector('.signinEmail').style.borderColor = "rgba(0,234,80,0.6)";
+  document.querySelector('.signinEmail').placeholder = "Email"
+})
+
+document.querySelector('.signinPassword').addEventListener('input',letter =>{
+  document.querySelector('.signinPassword').style.borderColor = "rgba(0,234,80,0.6)";
+  document.querySelector('.signinPassword').placeholder = "password"
 })

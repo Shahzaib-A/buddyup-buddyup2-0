@@ -32,5 +32,7 @@ Hamza : Firebase
 ---------------------
 -- Goals for today --
 ---------------------
-1. get dom set up
-2.
+get reset password done
+Get jQuery shake effect if password is wrong
+Get jQuery shake effect if email is not valid
+Finish sign in
