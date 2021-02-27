@@ -16,7 +16,22 @@ const auth = firebase.auth()
 
 
 function signUp(email,password){
-
+  firebase.auth().fetchSignInMethodsForEmail(email).then((sim)=>{
+    if(sim.indexOf(firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD) == -1){
+      firebase.auth().createUserWithEmailAndPassword(email,password).catch(function(e){
+        let errorCode = error.error
+        if(errorCode == "auth/weak-password"){
+          alert("Password is weak")
+        }else{
+          console.log("No errors")
+        }
+      })
+    } else{
+      document.querySelector('.email').value = "";
+      document.querySelector('.email').placeholder = "Email is already registered";
+      document.querySelector('.email').style.borderColor = "red";
+    }
+  })
 }
 
 //display sign up
@@ -76,4 +91,5 @@ confirm_password.addEventListener('input', letter => {
 
 email.addEventListener('input', letter => {
   email.style.borderColor = "white";
+  email.placeholder = "example@pdsb.net"
 })
