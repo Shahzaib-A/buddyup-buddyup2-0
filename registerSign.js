@@ -16,14 +16,7 @@ const auth = firebase.auth()
 
 
 function signUp(email,password){
-  firebase.auth().fetchSignInMethodsForEmail(email).then((signInMethods) => {
-      if (signInMethods.indexOf(firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD) == -1) {
-        alert("Signup permited")
-      }
-      else {
-        alert("Signup not permited")
-      }
-  })
+
 }
 
 //display sign up
