@@ -83,13 +83,13 @@ confirm_password.addEventListener('input', letter => {
   newPass = letter.target.value
   currentLetters = org_password.substring(0, newPass.length)
   if (newPass == org_password) {
-    document.querySelector('.confirm').style.borderColor = "white";
+    document.querySelector('.confirm').style.borderColor = "rgba(0,234,80,0.6)";
   } else if (newPass != org_password) {
     document.querySelector('.confirm').style.borderColor = "red";
   }
 })
 
 email.addEventListener('input', letter => {
-  email.style.borderColor = "white";
+  email.style.borderColor = "rgba(0,234,80,0.6)";
   email.placeholder = "example@pdsb.net"
 })
