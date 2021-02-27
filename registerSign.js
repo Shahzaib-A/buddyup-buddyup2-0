@@ -22,7 +22,8 @@ function signUp(email,password){
           firebase.auth().onAuthStateChanged(function(user){
             console.log("St")
             user.sendEmailVerification();
-            alert("Email was sent to : " + email "." + "please click on the link to verify your account")
+            alert("Email was sent to : " + email + " to verify your account" + '\r\n' + "Please verify then log in.")
+            window.location = "index.html"
           })
        }).catch(function(error){
         let errorCode = error.code
@@ -38,14 +39,14 @@ function signUp(email,password){
     }
   })
   firebase.auth().onAuthStateChanged(function(user) {
-    if (user.emailVerified) {
-      console.log('Email is verified');
+    if(user.emailVerified){
+      alert("Congrats")
     }
   });
 }
 
-funtion signIn(email,password){
-  
+function signIn() {
+
 }
 
 //display sign up
