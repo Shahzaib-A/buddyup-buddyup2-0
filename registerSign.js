@@ -17,7 +17,7 @@ const auth = firebase.auth()
 
 function signUp(email,password){
   console.log("True")
-  firebase.auth().fetchSignInMethodsForEmail(email).then((sim)=>{
+  firebase.auth().fetchSignInMethodsForEmail(email).then((sim)=>{ //sim -> Sign In Method
     if(sim.indexOf(firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD) == -1){
        firebase.auth().createUserWithEmailAndPassword(email,password).then(function(user){
           firebase.auth().onAuthStateChanged(function(user){
