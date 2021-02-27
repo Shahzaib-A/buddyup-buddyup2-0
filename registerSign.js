@@ -43,7 +43,14 @@ function signUp(email,password){
 
 function sign_In(email,password) {
   firebase.auth().signInWithEmailAndPassword(email,password).then((userCred)=>{
-    window.location = "Home.html"
+    if(userCred.user.emailVerified){
+      window.location = "Home.html"
+    }
+    else{
+      firebase.auth().signOut().then(()=>{
+        window.location = "index.html"
+      })
+    }
   }).catch((error)=>{
       error = error.code
       if(error == "auth/user-not-found"){
@@ -125,17 +132,7 @@ email.addEventListener('input', letter => {
 //signin
 function signIn(){
   const user = firebase.auth().currentUser
-  try{
-  if(user.emailVerified){
     sign_In(document.querySelector('.signinEmail').value.toString(),document.querySelector('.signinPassword').value.toString());
-    }
-  else{
-    alert("Please refresh and verify your email adress!")
-    }
-  }
-  catch(e){
-    alert("Please register for an account first")
-  }
 }
 
 document.querySelector('.signinEmail').addEventListener('input', letter => {
