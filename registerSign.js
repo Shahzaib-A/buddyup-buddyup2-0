@@ -68,7 +68,8 @@ function register() {
   //check if passwords match
   if (forms[0].value.toString() == forms[1].value.toString()) {
     signUp(forms[2].value, forms[0].value)
-  } else {
+  }
+  else if(forms[0].value.toString() != forms[1].value.toString()) {
     forms[1].value = "";
     forms[1].style.borderColor = "red";
     forms[1].placeholder = "Passwords don't match";
