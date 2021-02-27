@@ -23,7 +23,7 @@ function signUp(email,password){
         if(errorCode == "auth/weak-password"){
           alert("Password is weak")
         }else{
-          window.location.href = 'Home.html'
+          window.location.href = 'Home.html',true;
         }
       })
     } else{
