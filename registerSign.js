@@ -47,9 +47,8 @@ function sign_In(email,password) {
       window.location = "Home.html"
     }
     else{
-      firebase.auth().signOut().then(()=>{
-        window.location = "index.html"
-      })
+      alert("Email not verified")
+      firebase.auth().signOut()
     }
   }).catch((error)=>{
       error = error.code

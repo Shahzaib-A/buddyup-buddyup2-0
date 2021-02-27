@@ -30,6 +30,7 @@ nav {
 nav .logo {
   position: relative;
   left: 110px;
+  top:0;
   float: left;
   width: 30%;
   height: 100%;
@@ -137,3 +138,7 @@ nav .links a:hover{
 }
 
 /*Nav bar ends*/
+
+/*
+
+*/
