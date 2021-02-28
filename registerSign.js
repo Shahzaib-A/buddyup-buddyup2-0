@@ -154,3 +154,11 @@ document.querySelector('.signinPassword').addEventListener('input',letter =>{
   document.querySelector('.signinPassword').style.borderColor = "rgba(0,234,80,0.6)";
   document.querySelector('.signinPassword').placeholder = "password"
 })
+
+//reset password
+function sendResetPassword(){
+  var email = prompt("Please enter your email")
+  firebase.auth().sendPasswordResetEmail(email).then(function(){
+      alert("password sent!!")
+  }).catch(e=>{alert(e)})
+}

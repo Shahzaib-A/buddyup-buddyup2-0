@@ -89,7 +89,9 @@
   justify-content: space-around;
 
 }
-
+.reset{
+  cursor:pointer;
+}
 ::placeholder{
   color:var(--text-color);;
 }
