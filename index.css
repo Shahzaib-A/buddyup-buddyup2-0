@@ -135,18 +135,8 @@ a {
 
 
 /* Shake animation*/
-/* @keyframes shake {
-  0% {
-    transform: translate(6px, 0);
-  }
-  50% {
-    transform: translate(-6px, 0);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-} */
 
+/* Credits to https://codepen.io/CFarhad */
 @-webkit-keyframes shake {
     8%, 41% {
         -webkit-transform: translateX(-10px);
