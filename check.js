@@ -11,7 +11,7 @@ firebase.initializeApp(firebaseConfig);
 
 function check(){
   var user = firebase.auth().currentUser;
-  if(user == null || !user.emailVerified){
+  if(user == null || !user.emailVerified
     window.location = "index.html"
   }
 }

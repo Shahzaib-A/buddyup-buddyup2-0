@@ -29,10 +29,16 @@ Rahul : Design website and help with location matching
 Shazahiab : The chill timing sytyem thing
 Hamza : Firebase
 
----------------------
--- Goals for today --
----------------------
-get reset password done
-Get jQuery shake effect if password is wrong
-Get jQuery shake effect if email is not valid
-Finish sign in
+-------------------------
+-- Things accomplished --
+-------------------------
+Navbar complete: Rahul
+Login complete: Rahul
+Signup complete: Rahul
+Geolocation incomplete: Rahul Harsh
+Calendar incomplete: Rahul
+Tips incomplete : Harsh
+Chill-thing incomplete: Shazaib
+Settings incomplete: hamza
+Dark theme incomplete: Harsh
+About us incomplete:Hamza,Rahul,Harsh,Shazaib

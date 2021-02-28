@@ -55,7 +55,6 @@ function sign_In(email,password) {
       window.location = "Home.html"
     }
     else{
-      //Universal notification
       alert("Email not verified")
       firebase.auth().signOut()
     }
