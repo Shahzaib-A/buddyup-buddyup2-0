@@ -8,3 +8,4 @@ document.querySelector('.back').addEventListener('click', function() {
   document.querySelector('.signin').style.display = 'block';
   document.querySelector('.signup').style.display = 'none';
 })
+  

@@ -18,8 +18,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth()
 
-//Make a universal notification sytyem
-
 function signUp(email,password){
   console.log("True")
   firebase.auth().fetchSignInMethodsForEmail(email).then((sim)=>{ //sim -> Sign In Method
@@ -35,7 +33,6 @@ function signUp(email,password){
         let errorCode = error.code
         if(errorCode == "auth/weak-password"){
           alert("Password is weak")
-          //Edit DOM
         }
       })
     } else{
