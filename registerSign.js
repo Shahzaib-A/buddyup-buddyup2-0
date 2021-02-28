@@ -1,3 +1,4 @@
+
 //Import firebase
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -53,13 +54,23 @@ function sign_In(email,password) {
   }).catch((error)=>{
       error = error.code
       if(error == "auth/user-not-found"){
-        //I would like to do shake but IDK
+         $(document).ready(function(){
+           $(".signinEmail").addClass("error");
+           setTimeout(function(){
+             $(".signinEmail").removeClass("error");
+           },500)
+         });
         document.querySelector('.signinEmail').value = ""
         document.querySelector('.signinEmail').style.borderColor = "red";
         document.querySelector('.signinEmail').placeholder = "Email adress not registerd";
       }
       if(error == "auth/wrong-password"){
-      //I would like to do shake but IDK
+        $(document).ready(function(){
+          $(".signinPassword").addClass("error");
+          setTimeout(function(){
+            $(".signinPassword").removeClass("error");
+          },500)
+        });
       document.querySelector('.signinPassword').value = "";
       document.querySelector('.signinPassword').style.borderColor = "red";
       document.querySelector('.signinPassword').placeholder = "Incorrect password"
