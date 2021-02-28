@@ -35,6 +35,12 @@ function signUp(email,password){
         }
       })
     } else{
+      $(document).ready(function(){
+        $(".email").addClass("error");
+        setTimeout(function(){
+          $(".email").removeClass("error");
+        },500)
+      });
       document.querySelector('.email').value = "";
       document.querySelector('.email').placeholder = "Email is already registered";
       document.querySelector('.email').style.borderColor = "red";
