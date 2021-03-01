@@ -52,7 +52,8 @@ function signUp(email,password){
 function sign_In(email,password) {
   firebase.auth().signInWithEmailAndPassword(email,password).then((userCred)=>{
     if(userCred.user.emailVerified){
-      window.open(location, '_self').close();
+      sign_In_mail.value = "";
+      sign_in_password.value = "";
       window.open("Home.html","_blank")
     }
     else{
