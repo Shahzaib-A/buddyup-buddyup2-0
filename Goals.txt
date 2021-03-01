@@ -26,8 +26,8 @@ Make a sytyem that saves the data to the email of Users
 -----------
 Harsh :Tip and login help and geolocation
 Rahul : Design website and help with location matching
-Shazahiab : The chill timing sytyem thing
-Hamza : Firebase
+Shazahiab : The chill system and dark mode
+Hamza : Firebase and Settings
 
 -------------------------
 -- Things accomplished --
@@ -40,5 +40,21 @@ Calendar incomplete: Rahul
 Tips incomplete : Harsh
 Chill-thing incomplete: Shazaib
 Settings incomplete: hamza
-Dark theme incomplete: Harsh
+Dark theme incomplete: Shazaib
 About us incomplete:Hamza,Rahul,Harsh,Shazaib
+
+--------------
+-- Timeline --
+--------------
+Navbar: Date: March 5th
+Login: Date: March 5th
+signup: Date: March 5th
+Geolocation: Date: March 29th
+Calendar: Date: March 16th
+Tips: March 16th
+Chill-thing: March 19th
+settings: March 18th
+Dark theme: March 31
+About us: April 1st
+Debugging and problem solving: Date:From April forth 
+Report: On going

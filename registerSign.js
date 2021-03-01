@@ -52,10 +52,18 @@ function signUp(email,password){
 function sign_In(email,password) {
   firebase.auth().signInWithEmailAndPassword(email,password).then((userCred)=>{
     if(userCred.user.emailVerified){
-      window.location = "Home.html"
+      window.open("Home.html","_blank")
     }
     else{
-      alert("Email not verified")
+      $(document).ready(function(){
+        $(".email").addClass("error");
+        setTimeout(function(){
+          $(".email").removeClass("error");
+        },500)
+      });
+      email.value = "";
+      email.placeholder = "Email not verified";
+      email.style.borderColor = "red";
       firebase.auth().signOut()
     }
   }).catch((error)=>{
