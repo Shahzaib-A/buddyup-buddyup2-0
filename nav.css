@@ -7,6 +7,9 @@
 }
 
 /* Desktop version website */
+
+
+
 body {
   margin: 0;
   padding: 0;
@@ -16,36 +19,39 @@ body {
   font-family: 'Roboto Slab', serif;
 }
 
+.icon-burger{
+  display: none;
+}
 /* Nav bar starts */
 nav {
   background-color: var(--second-color);
   box-shadow: 10px;
-
   position: fixed;
   z-index: 10;
   top: 0;
-  left: 0;
+  left: 0px;
   right:0;
   height: 75px;
 }
 
 nav .logo {
   position: relative;
-  left: 110px;
+  left: 200px;
   top:0;
   float: left;
   width: 30%;
   height: 100%;
   display: flex;
   align-items: center;
-  font-size: 30px;
+  font-size: 26px;
+  padding-right: 150px;
 }
 
 nav .links {
   float: left;
   padding: 0;
-  margin: 0;
-  width: 60%;
+  margin : 0;
+  width: 55%;
   height: 100%;
   display: flex;
   justify-content: space-around;
@@ -58,7 +64,7 @@ nav .links li {
 
 nav .links a {
   text-decoration: none;
-  font-size: 24px;
+  font-size: 18px;
   color: var(--main-color);
   transition: 0.3s;
 }
@@ -90,7 +96,11 @@ nav .links a:hover{
 
 
 /* Mobile version */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
+.icon-burger{
+  display: block;
+}
+
   nav .links {
     float: none;
     position: fixed;
@@ -99,7 +109,7 @@ nav .links a:hover{
     right: 0;
     top:75px;
     bottom: 100%;
-    width: auto;
+    width: 50%;
     height: auto;
     flex-direction: column;
     overflow: hidden;
@@ -124,7 +134,7 @@ nav .links a:hover{
   }
 
   nav :checked ~ .links{
-    bottom: 0;
+    bottom: 50%;
   }
 
   nav :checked ~ .icon-burger .line:nth-child(1) {
