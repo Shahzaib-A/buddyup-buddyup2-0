@@ -109,7 +109,7 @@ nav .links a:hover{
     right: 0;
     top:75px;
     bottom: 100%;
-    width: 50%;
+    width: auto;
     height: auto;
     flex-direction: column;
     overflow: hidden;
@@ -134,7 +134,7 @@ nav .links a:hover{
   }
 
   nav :checked ~ .links{
-    bottom: 50%;
+    bottom: 0%;
   }
 
   nav :checked ~ .icon-burger .line:nth-child(1) {
