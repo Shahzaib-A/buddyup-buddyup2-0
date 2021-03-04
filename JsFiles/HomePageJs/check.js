@@ -10,16 +10,15 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function check(){
-  firebase.auth().onAuthStateChanged(authUser => {
-       console.log(authUser)
-       if(authUser != null){
-       if(authUser.user.emailVerified){ //This will return true or false
-         console.log('email is verified')
-        }else{
-            window.location = "index.html"
-        }
-      }else{
-        window.location = "index.html"
-      }
-     })
+  var user = firebase.auth().currentUser;
+  if(user != null){
+    if (user.emailVerified) {
+      alert("Verified")
+    } else {
+      alert("Not verified")
+    }
+  }
+  else{
+    alert("Not verified")
+  }
 }

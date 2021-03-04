@@ -1,10 +1,10 @@
 //Import firebase and set up variables
 //variables//variables
-let original_password = document.querySelector('.password');
-let confirm_password = document.querySelector('.confirm');
-let email = document.querySelector('.email');
-let sign_In_mail = document.querySelector('.signinEmail')
-let sign_in_password = document.querySelector('.signinPassword')
+const original_password = document.querySelector('.password');
+const confirm_password = document.querySelector('.confirm');
+const email = document.querySelector('.email');
+const sign_In_mail = document.querySelector('.signinEmail')
+const sign_in_password = document.querySelector('.signinPassword')
 // web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyAg3XtxHv7Qo50b3iIRUKG0xGvtOXWOkpA",
@@ -36,14 +36,18 @@ function signUp(email,password){
         }
       })
     } else{
+      alert("Not verified")
       $(document).ready(function(){
         $(".email").addClass("error");
         setTimeout(function(){
           $(".email").removeClass("error");
         },500)
       });
+      // alert(email)
+
       email.value = "";
       email.placeholder = "Email is already registered";
+      // email.style.borderColor = "red";
       email.style.borderColor = "red";
     }
   })
@@ -51,22 +55,23 @@ function signUp(email,password){
 
 function sign_In(email,password) {
   firebase.auth().signInWithEmailAndPassword(email,password).then((userCred)=>{
+    alert(userCred.user.emailVerified)
     if(userCred.user.emailVerified){
       sign_In_mail.value = "";
       sign_in_password.value = "";
       window.open("Home.html","_blank")
     }
     else{
-      $(document).ready(function(){
-        $(".email").addClass("error");
-        setTimeout(function(){
-          $(".email").removeClass("error");
-        },500)
-      });
+      // $(document).ready(function(){
+      //   $(".email").addClass("error");
+      //   setTimeout(function(){
+      //     $(".email").removeClass("error");
+      //   },500)
+      // });
       email.value = "";
       email.placeholder = "Email not verified";
       email.style.borderColor = "red";
-      firebase.auth().signOut()
+      // firebase.auth().signOut()
     }
   }).catch((error)=>{
       error = error.code
