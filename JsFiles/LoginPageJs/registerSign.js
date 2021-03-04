@@ -62,16 +62,16 @@ function sign_In(email,password) {
       window.open("Home.html","_blank")
     }
     else{
-      // $(document).ready(function(){
-      //   $(".email").addClass("error");
-      //   setTimeout(function(){
-      //     $(".email").removeClass("error");
-      //   },500)
-      // });
+      $(document).ready(function(){
+        $(".email").addClass("error");
+        setTimeout(function(){
+          $(".email").removeClass("error");
+        },500)
+      });
       email.value = "";
       email.placeholder = "Email not verified";
       email.style.borderColor = "red";
-      // firebase.auth().signOut()
+      firebase.auth().signOut()
     }
   }).catch((error)=>{
       error = error.code
