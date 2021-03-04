@@ -43,7 +43,6 @@ function signUp(email,password){
           $(".email").removeClass("error");
         },500)
       });
-      // alert(email)
 
       email.value = "";
       email.placeholder = "Email is already registered";
