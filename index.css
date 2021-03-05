@@ -135,9 +135,7 @@ a {
   animation: shake .5s linear;
 }
 
-
 /* Shake animation*/
-
 /* Credits to https://codepen.io/CFarhad */
 @-webkit-keyframes shake {
     8%, 41% {

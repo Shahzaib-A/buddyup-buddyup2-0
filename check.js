@@ -1,9 +1,11 @@
 function check(){
-  firebase.auth().onAuthStateChanged(authUser => {
-     if(authUser.user.emailVerified){ //This will return true or false
-       console.log('email is verified')
-      }else{
-          console.log('email not verified')
+  setTimeout(function() {
+    if(!auth.currentUser){
+        window.location = 'index.html'
       }
-  })
+  },200);
+}
+
+window.onunload = function(){
+  firebase.auth().signOut()
 }

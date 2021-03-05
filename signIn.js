@@ -1,10 +1,12 @@
 //signIn function
 function sign_In(email,password) {
+  //set Persistence type
   firebase.auth().signInWithEmailAndPassword(email,password).then((userCred)=>{
     if(userCred.user.emailVerified){
       sign_In_mail.value = "";
       sign_in_password.value = "";
       window.open("Home.html","_blank")
+      return true
     }
     else{
       shake('input[name=signinusername]')
@@ -26,6 +28,7 @@ function sign_In(email,password) {
 
 //signin
 function signIn(){
-  const user = firebase.auth().currentUser
-  sign_In(sign_In_mail.value.toString(),sign_in_password.value.toString());
+  sign_In(sign_In_mail.value.toString(),sign_in_password.value.toString())
+  console.log(firebase.auth().currentUser)
+  alert(firebase.auth().currentUser)
 }
