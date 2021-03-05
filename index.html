@@ -19,17 +19,17 @@
 <div class="login">
 
 <form class="signin">
-<input class="signinEmail" type="email" name="username" placeholder="Email">
-<input class="signinPassword"type="password" name="password" placeholder="password">
+<input class="signinEmail" type="email" name="signinusername" placeholder="Email">
+<input class="signinPassword" type="password" name="signinpassword" placeholder="password">
 <input onclick="signIn()" type="submit" value="Login" align="center"></button><br>
 <p>Not registerd? <a class="create" href="#"><strong>Create an account</strong></a></p><br>
 <p>Forgot password? <a class="reset" onClick="sendResetPassword()"><strong>Send reset link</strong></a></p>
 </form>
 
 <form class="signup">
-<input class="email" id="x" type="email" name="username" placeholder="example@pdsb.net" required/>
+<input class="email"  type="email" name="username" placeholder="example@pdsb.net" required/>
 <input class="password" type="password"  name="password" placeholder="password" required/>
-<input class="confirm" type="password" name="password" placeholder="Confirm password" required/>
+<input class="confirm" type="password" name="confirmpassword" placeholder="Confirm password" required/>
 <input onclick="register()" type="submit" value="Register" align="center"><br>
 <p>Have an account? <a class="back" href=""><strong>Back</strong></a></p>
 </form>
@@ -45,7 +45,13 @@ $(".signin").submit(function(e){
   e.preventDefault();
 });
 </script>
-<script src="registerSign.js"></script>
+<script src="initializeFireBase.js"></script>
+<script src="GlobalVariables.js"></script>
+<script src="ModuleFunctions.js"></script>
+<script src="LoginValidation.js"></script>
 <script src="DSPLP.js"></script>
+<script src="signIn.js"></script>
+<script src="resetPassword.js"></script>
+<script src="signUp.js"></script>
 </body>
 </html>
