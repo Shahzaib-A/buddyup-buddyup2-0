@@ -34,6 +34,4 @@ function sign_In(email,password) {
 //signin
 function signIn(){
   sign_In(sign_In_mail.value.toString(),sign_in_password.value.toString())
-  console.log(firebase.auth().currentUser)
-  alert(firebase.auth().currentUser)
 }
