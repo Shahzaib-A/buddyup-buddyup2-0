@@ -1,4 +1,4 @@
-alert(isMobileDevice)
+alert(isMobileDevice())
 //signIn function
 function sign_In(email,password) {
   //set Persistence type
