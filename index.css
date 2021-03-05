@@ -34,9 +34,12 @@
 
 .logo{
   position: absolute;
+  display: flex;
   z-index: 1;
-  top:calc(25%);
-  left:calc(46%);
+  height: 50%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo div{
@@ -68,8 +71,11 @@
 
 .login {
   position: absolute;
-  top: calc(35%);
-  left: calc(45%);
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .login [type=submit] {
