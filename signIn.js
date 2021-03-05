@@ -1,3 +1,4 @@
+alert(isMobileDevice)
 //signIn function
 function sign_In(email,password) {
   //set Persistence type
@@ -6,6 +7,7 @@ function sign_In(email,password) {
       sign_In_mail.value = "";
       sign_in_password.value = "";
       window.open("Home.html","_blank")
+      window.location.assign("Home.html")
       return true
     }
     else{
