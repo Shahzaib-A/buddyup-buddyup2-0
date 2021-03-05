@@ -3,6 +3,11 @@ function check(){
     if(!auth.currentUser){
         window.location = 'index.html'
       }
+    else if(auth.currentUser){
+      if(!auth.currentUser.emailVerified){
+        window.location = 'index.html'
+      }
+    }
   },200);
 }
 
