@@ -37,7 +37,7 @@ nav {
 
 nav .logo {
   position: relative;
-  left: 70px;
+  left: 90px;
   top:0;
   float: left;
   width: 30%;
@@ -47,7 +47,10 @@ nav .logo {
   font-size: 26px;
   padding-right: 150px;
 }
-
+nav .logo a{
+  text-decoration: none;
+  color: var(--main-color);
+}
 nav .links {
   float: left;
   padding: 0;
