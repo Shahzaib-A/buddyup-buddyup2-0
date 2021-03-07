@@ -3,7 +3,7 @@ const mediaQuery = window.matchMedia('(max-width: 1295px)')
 if (mediaQuery.matches) {
 	$("#nav-toggle").on('change', function(){
 		if(this.checked){
-			$('#side-nav').show();
+			$('#side-nav').show()
 			$('#side-toggle').prop('checked', false);
 		}
 	})
@@ -17,7 +17,6 @@ if (mediaQuery.matches) {
 }
 else{
 $('#side-nav').css("transform","translateX(100%)");
-
 $("#nav-toggle").on('change', function(){
  if(this.checked){
 			$('#side-nav').removeClass("hid");

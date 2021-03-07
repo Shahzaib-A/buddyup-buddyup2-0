@@ -180,6 +180,9 @@ body{
 }
 /* Format nav bar for mobile screeens */
 @media screen and (max-width: 1295px){
+	body{
+		overflow: hidden;
+	}
 	#nav-bar .desk-nav li{
 		display: none;
 	}
@@ -228,4 +231,18 @@ body{
 .arrow .line:nth-child(2){
 	display: none
 }
+.arr {
+	position: relative;
+  border: solid white;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 3px;
+	top: 50%;
+}
+
+.right {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
 }
