@@ -1,23 +1,52 @@
+<!DOCTYPE html>
+<html>
 <head>
-<link rel="stylesheet" type='text/css' href="nav.css">
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" type="text/css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>BuddyUp</title>
+	<link href="nav.css" rel="stylesheet" type="text/css" />
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-<div id="nav-bar">
-  <nav>
-    <input id="nav-toggle" type="checkbox">
-    <div class="logo"><a href="Home.html"><strong>BuddyUp</strong></a></div>
-    <ul class="links">
-      <li><a href="#">Calander</a></li>
-      <li><a href="meet.html">Meet</a></li>
-      <li><a href="#">About</a></li
-      <li><a href="#">Chill corner</a></li>
-      <li><a href="#">Settings</a></li>
-      <div></div><!-- Shazaib dark theme toggle -->
-    </ul>
-    <label for="nav-toggle" class="icon-burger">
+
+<body>
+
+	<div id="nav-bar">
+		<nav class="desk">
+			<li class="logo"><a href=""><strong>BuddyUp</strong></a></li>
+			<ul class="desk-nav">
+				<li><a class="calendar" href="">Calendar</a></li>
+				<li><a class="meet" href="">Meet</a></li>
+				<li><a class="chill" href="">Chill zone</a></li>
+				<li><a class="about" href="">About</a></li>
+				<li><a class="settngs" href="">Settings</a></li>
+			</ul>
+
+		<input id="nav-toggle" type="checkbox">
+		<label for="nav-toggle" class="icon-burger">
       <div class="line"></div>
       <div class="line"></div>
       <div class="line"></div>
     </label>
-  </nav>
-</div>
+		</nav>
+	</div>
+
+	<div id="side-nav">
+		<nav class="side">
+		<ul class="side-bar">
+		<li><a class="calendar" href="">Calendar</a></li>
+		<li><a class="meet" href="">Meet</a></li>
+		<li><a class="chill" href="">Chill zone</a></li>
+		<li><a class="about" href="">About</a></li>
+		<li><a class="settngs" href="">Settings</a></li>
+		</ul>
+
+		<input id="side-toggle" type="checkbox">
+		<label for="side-toggle" class="arrow">
+      <div class="line"></div>
+      <div class="line"></div>
+    </label>
+		</nav>
+	</div>
+</body>
+<script src="nav.js"></script>
+</html>
