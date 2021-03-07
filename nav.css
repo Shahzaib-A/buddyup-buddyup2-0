@@ -188,10 +188,7 @@ body{
 		left: 50%;
 		justify-content: center;
 	}
-}
-
-@media screen and (max-width: 1024px){
-	#side-nav{
+		#side-nav{
 		width: 50vw;
 	}
 .side-bar li{
@@ -203,18 +200,19 @@ body{
 }
 
 .side .arrow .line {
-  width: 10px;
-  height: 3px;
-  background-color: var(--second-color);
+  width: 20px;
+  height: 200px;
+  background-color: var(--mobile-back);
   margin: 5px;
-	border-radius: 10px;
+	border-radius: 0px;
 }
 
 .arrow{
+	display: flex;
 	position: fixed;
-	float: right;
-	top: 10%;
-	right: 10%;
+	float: left;
+	top: calc(100vh-50%);
+	right: 97%;
 	transition: .2s;
 }
 
@@ -224,11 +222,10 @@ body{
 }
 
 .arrow .line:nth-child(1){
-	transform: translateY(1px) rotate(215deg);
+	transform: rotate(180deg);
 }
 
 .arrow .line:nth-child(2){
-	transform: rotate(-215deg)
+	display: none
 }
-
 }
