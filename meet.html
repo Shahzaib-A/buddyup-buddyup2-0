@@ -4,13 +4,19 @@
   <meta charset="utf-8">
   <title>BuddyUp</title>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <script>
-  $(function(){
-    $("#nav-placeholder").load("nav.html");
-  });
-  </script>
+  <link href="meet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="nav-placeholder"></div>
+<script>
+$(function(){
+  $("#nav-placeholder").load("nav.html");
+});
+</script>
+<div id="body">
+  <div class="chat">
+    <textarea class="textarea" maxlength="" placeholder="Write your message" rows="1" cols="75%"></textarea>
+  </div>
+</div>
 </body>
 </html>
