@@ -1,0 +1,15 @@
+:root{
+  --chatBox: rgb(44,47,51);
+  --textBox: rgb(153,170,181);
+
+}
+body{
+  background-color: rgb(230,230,230);
+}
+
+#body{
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 8vh;
+}

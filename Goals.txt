@@ -56,5 +56,18 @@ Chill-thing: March 19th
 settings: March 18th
 Dark theme: March 31
 About us: April 1st
-Debugging and problem solving: Date:From April forth 
+Debugging and problem solving: Date:From April forth
 Report: On going
+
+---------------------
+-- BuddyUp systyem --
+---------------------
+At beginning users will consent to a privacy form, stating that users acknowledge that their calendar data(subjects) will be used to find people who are studying same stuff
+If they do not agree then it will not try and find people who have same subjects
+
+Once user has found person, user asks the other person if they would like to be in a group
+If person says yes then, they click on add icon then they both are added in a group
+From there in the group chat page, they can discuss about questions and or find a suitable location for both of them using buddyUp button
+  BuddyUp button - What finds and suggests in theory a suitable location
+From there if they dont like it then they can either continue discussing on the channel
+Or they can all find a better location that works for all of them
