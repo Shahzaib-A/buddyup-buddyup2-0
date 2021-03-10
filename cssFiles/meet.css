@@ -25,25 +25,27 @@ aside{
 }
 aside ul{
   position: relative;
-  height: 70vh;
+  height: 75vh;
   overflow-y:scroll;
   list-style-type:none;
   left: -3vw;
-  top: -7vh;
+  top: -2vh;
   width: 101.5%;
 }
 aside .profile{
+  position: relative;
   background-color: #17181d;
-  height: 20%;
+  height: 2%;
   width: auto;
+  top: 9vh;
 }
 
 aside .add-group{
   position: relative;
-  height: 5%;
+  height: 10%;
   width: auto;
   background-color: #17181d;
-  bottom: -75%;
+  bottom: -90%;
 }
 
 #body .add-group .adduser{
