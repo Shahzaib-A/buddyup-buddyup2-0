@@ -1,67 +1,66 @@
-:root{
-  --chatBox: rgb(44,47,51);
-  --textBox: rgb(153,170,181);
-
-}
-
+/* A large portion(90%) of this code is from the source below */
+/* Here is link to original post: */
+/* https://codepen.io/robinllopis/pen/mLrRRB */
 body{
   margin: 0;
   padding: 0;
 }
 
 #body{
+  position: absolute;
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: 90vh;
+  height: 91vh;
+  top:9%;
 }
 
-aside{
-	width:25vw;
+*{
+	box-sizing:border-box;
+}
+body{
+	background-color:#fff;
+	font-family:Arial;
+}
+#container{
+	width:100vw;
 	height:100vh;
+	background:#2c2f33;
+	margin:0 auto;
+	font-size:0;
+	border-radius:5px;
+	overflow:hidden;
+}
+aside{
+	width:20vw;
+	height:91vh;
 	background-color:#3b3e49;
+	display:inline-block;
 	font-size:15px;
 	vertical-align:top;
 }
+main{
+	width:490px;
+	height:800px;
+	display:inline-block;
+	font-size:15px;
+	vertical-align:top;
+}
+
 aside ul{
-  position: relative;
-  height: 75vh;
-  overflow-y:scroll;
-  list-style-type:none;
-  left: -3vw;
-  top: -2vh;
-  width: 101.5%;
-}
-aside .profile{
-  position: relative;
-  background-color: #17181d;
-  height: 2%;
-  width: auto;
-  top: 9vh;
-}
-
-aside .add-group{
-  position: relative;
-  height: 10%;
-  width: auto;
-  background-color: #17181d;
-  bottom: -90%;
-}
-
-#body .add-group .adduser{
-  position: absolute;
-  bottom: 25%;
-  left: 10%;
-  color: blue;
-  z-index: 3;
-}
-
-aside li:hover{
-	background-color:#5e616a;
+	padding-left:0;
+	margin:0;
+	list-style-type:none;
+	overflow-y:scroll;
+	height:690px;
 }
 
 aside li{
 	padding:10px 0;
+}
+
+aside li:hover{
+	background-color:#5e616a;
 }
 
 h2,h3{
@@ -101,8 +100,64 @@ aside li h3{
 	margin-right:7px;
 }
 
+.green{
+	background-color:#58b666;
+}
+.orange{
+	background-color:#ff725d;
+}
+
+main footer{
+	height:155px;
+	padding:20px 30px 10px 20px;
+}
+
+main footer textarea{
+  position: absolute;
+  top: 95%;
+  left: 21%;
+	resize:none;
+	border:none;
+	display:block;
+	width:70%;
+	height:1em;
+	border-radius:3px;
+  border-color: gray;
+	padding:5px;
+	font-size:15px;
+	margin-bottom:13px;
+  overflow-y: hidden;
+}
+
+main footer textarea::placeholder{
+	color:#ddd;
+}
+
+main footer a{
+  position: absolute;
+  top: 94.5%;
+  left: 72%;
+	text-decoration:none;
+	text-transform:uppercase;
+	font-weight:bold;
+	color:	#7289da;
+	vertical-align:top;
+	margin-left:333px;
+	margin-top:5px;
+	display:inline-block;
+}
+
+main footer a {
+  font-size: 1.8em;
+}
+
+/*  This is only thing I am adding*/
 .offline{
 	background-color:#fff;
+}
+
+.online{
+  background-color: #00FF00
 }
 
 ::-webkit-scrollbar {
