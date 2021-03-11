@@ -1,6 +1,3 @@
-<!-- All chat elments HTML and CSS are from this poster -->
-<!-- https://codepen.io/robinllopis/pen/mLrRRB -->
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -8,50 +5,21 @@
   <meta charset="utf-8">
   <title>BuddyUp</title>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <link href="../cssFiles/meet.css" rel="stylesheet" type="text/css" />
-  <meta name="viewport" content="width=device-width" />
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://kit.fontawesome.com/f4be74f90f.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-  <div id="nav-placeholder"></div>
   <script>
-    $(function() {
-      $("#nav-placeholder").load("nav.html");
-    });
+  $(function(){
+    $("#nav-placeholder").load("nav.html");
+  });
   </script>
-  <div id="body">
-    <div id="container">
-    	<aside>
-    		<ul>
-    			<li>
-    				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt="">
-    				<div>
-    					<h2>Prénom Nom</h2>
-    					<h3>
-    						<span class="status orange"></span>
-    						offline
-    					</h3>
-    				</div>
-    			</li>
-    	</aside>
-    	<main>
-    		<footer>
-    			<textarea placeholder="Type your message"></textarea>
-    			<a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i>
-</a>
-    		</footer>
-    	</main>
-
-
-      
-    </div>
-  </div>
+</head>
+<body onload="check()">
+<div id="nav-placeholder"></div>
 </body>
-<script src="../JsFiles/initializeFireBase.js"></script>
+<script src="../JsFiles/signIn.js"></script>
 <script src="../JsFiles/check.js"></script>
-
+<script src="../JsFiles/initializeFireBase.js"></script>
+<script src="../JsFiles/GlobalVariables.js"></script>
+<script src="../JsFiles/nav.js"></script>
+<script src="../JsFiles/ModuleFunctions.js"></script>
 </html>
