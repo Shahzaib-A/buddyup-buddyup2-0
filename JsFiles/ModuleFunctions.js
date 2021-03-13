@@ -8,6 +8,7 @@ function setValue(elem,string){
 //Call shake function
 function shake(elem){
 $(document).ready(function(){
+  console.log("Hello world")
   $(elem).addClass("error");
   setTimeout(function(){
     $(elem).removeClass("error");
@@ -20,3 +21,12 @@ $(document).ready(function(){
 function isMobileDevice() {
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 };
+
+function AddUser(obj){
+  autoId = firebase.database().ref('users').push().key
+  firebase.database().ref('/Users/' + autoId.toString()).set(obj)
+}
+
+function proccesMessage(msg,sender){
+    firebase.database().ref("processing text").push({message:msg,sender:sender})
+}

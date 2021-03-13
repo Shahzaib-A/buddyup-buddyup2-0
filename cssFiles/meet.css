@@ -1,5 +1,94 @@
-#body{
-  height: 100vh;
+/* Formating body tag and body div */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#body {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 75px;
+  height: calc(100vh - 75px);
   width: 100vw;
-  background-color: green;  
+}
+
+/* Contact container */
+.chats {
+  height: 100%;
+  width: 20%;
+  background-color: rgb(230, 230, 230);
+}
+
+/* Icon container */
+.icons {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 25%;
+  background-color: rgb(200, 200, 200);
+  align-items: center;
+}
+
+.icon i {
+  justify-content: space-around;
+  font-size: 3em;
+}
+
+.icon:nth-child(1) {
+  margin-top: 30%;
+}
+
+.icon:nth-child(2) {
+  margin-top: 70%;
+}
+
+.icon:nth-child(3) {
+  position: relative;
+  top: 67%
+}
+
+.chats .fr {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  left: 7.5%;
+  text-decoration: underline;
+}
+
+/* chat container */
+.chat-cont{
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  left: 20%;
+  top: 0;
+  overflow: hidden;
+}
+
+.text-bar{
+  position: relative;
+  top: 95%;
+}
+.text{
+  width: 90%;
+  resize: none;
+}
+.text[contenteditable]:empty::before {
+  content: "Enter your message";
+  color: gray;
+}
+
+.send{
+  position: absolute;
+  top: 2%;
+  left: 95%;
+}
+
+.send i{
+  font-size: 1.7em;
+}
+
+.send:hover{
+  color: grey;
 }

@@ -27,12 +27,19 @@ function signUp(email,password){
 function register() {
   //check if valid email
   if (isNaN(email.value.split('@')[0]) || email.value.split('@')[1] != "pdsb.net" ) {
-    shake('input[name=username]')
-    setValue('input[name=username]',"Invalid email only @pdsb.net")
-    return
+    //shake('input[name=username]')
+    //setValue('input[name=username]',"Invalid email only @pdsb.net")
+    //return
   }
   //check if passwords match
   if (original_password.value.toString() == confirm_password.value.toString()) {
     signUp(email.value, original_password.value)
   }
+  try{
+    AddUser({name:(document.querySelector('.user').value).toString(),digits:("#"+(""+Math.random()).substring(2,7)).toString(),email:email.value.toString()})
+  }
+  catch(err){
+    alert(err)
+  }
+
 }

@@ -115,6 +115,11 @@
 	border: 1px solid var(--type-text-color);
 }
 
+.login input[type=text]:focus{
+	outline: none;
+	border: 1px solid var(--type-text-color);
+}
+
 .login input[type=password]:focus{
 	outline: none;
 	border: 1px solid var(--type-text-color);
