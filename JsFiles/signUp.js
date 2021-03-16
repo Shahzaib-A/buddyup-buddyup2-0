@@ -2,6 +2,7 @@
 function signUp(email,password){
   firebase.auth().fetchSignInMethodsForEmail(email).then((sim)=>{ //sim -> Sign In Method
     if(sim.indexOf(firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD) == -1){
+       AddUser({name:(document.querySelector('.user').value).toString(),digits:("#"+(""+Math.random()).substring(2,7)).toString(),email:email.value.toString()})
        firebase.auth().createUserWithEmailAndPassword(email,password).then(function(user){
           firebase.auth().onAuthStateChanged(function(user){
             user.sendEmailVerification();
@@ -35,11 +36,4 @@ function register() {
   if (original_password.value.toString() == confirm_password.value.toString()) {
     signUp(email.value, original_password.value)
   }
-  try{
-    AddUser({name:(document.querySelector('.user').value).toString(),digits:("#"+(""+Math.random()).substring(2,7)).toString(),email:email.value.toString()})
-  }
-  catch(err){
-    alert(err)
-  }
-
 }
