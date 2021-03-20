@@ -5,7 +5,7 @@ function sign_In(email,password) {
     if(userCred.user.emailVerified){
       sign_In_mail.value = "";
       sign_in_password.value = "";
-      window.open("../../buddyup-buddyup2-0/HtmlFiles/Home.html","_blank")
+      window.open("../HtmlFiles/Home.html","_blank")
     }
     else{
       shake('input[name=signinusername]')

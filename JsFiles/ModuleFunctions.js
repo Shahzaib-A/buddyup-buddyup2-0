@@ -26,7 +26,3 @@ function AddUser(obj){
   autoId = firebase.database().ref('users').push().key
   firebase.database().ref('/Users/' + autoId.toString()).set(obj)
 }
-
-function proccesMessage(msg,sender){
-    firebase.database().ref("processing text").push({message:msg,sender:sender})
-}
