@@ -11,39 +11,27 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
   <script src="https://kit.fontawesome.com/f4be74f90f.js" crossorigin="anonymous"></script>
-  <script>
-    $(function() {
-      $("#nav-placeholder").load("nav.html");
-    });
-  </script>
 </head>
 
 <body>
-  <div id="nav-placeholder"></div>
-  <!-- Body container -->
-  <div id="body">
-    <!-- Contacts -->
-    <aside class="chats">
-      <aside class="icons">
-        <div id="public" class="icon"><i class="fa fa-users" aria-hidden="true"></i></div>
-        <div id="dm" class="icon"><i class="fa fa-users" aria-hidden="true"></i></div>
-        <div id="add" class="icon"><i class="fa fa-user-plus" aria-hidden="true"></i></div>
-      </aside>
-</aside>
-    <!-- Chats container -->
-    <main class="chat-cont">
-      <footer class="text-bar">
-      	<input class="input-text" type="text" placeholder="Enter your message...">
-      <div class="send"><i class="fa fa-paper-plane" aria-hidden="true"></i></div>
-    </footer>
-    </main>
-    <!-- Pop up live chat -->
+  <div class="chat-cont">
+    <div class="side-bar">
+      <header class="navigation">
+        <h2>BuddyUp</h2>
+      </header>
+    </div>
+
+    <div class="chats">
+      <!-- Chat fourm goes here -->
+    </div>
   </div>
 </body>
+
 <script src="../JsFiles/check.js"></script>
 <script src="../JsFiles/initializeFireBase.js"></script>
 <script src="../JsFiles/nav.js"></script>
 <script src="../JsFiles/ModuleFunctions.js"></script>
 <script src="../JsFiles/meet.js"></script>
 <script src="../JsFiles/Chat.js"></script>
+
 </html>
