@@ -1,3 +1,3 @@
 $(".send").click(function(){
-  $(".enter-message").text('')
+  $(".enter-message").val('')
 })
