@@ -1,34 +1,75 @@
-/* Formating body tag and body div */
+:root{
+  --background-image: url('https://cdn.suwalls.com/wallpapers/abstract/dar-pastel-blur-29203-1920x1080.jpg')
+}
+
 body {
   margin: 0;
   padding: 0;
 }
 
-.chat-cont{
-  height: 100vh;
-  width: 100vw;
+#chat-container{
+  position: absolute;
+  top: 75px;
+  height: 100%;
+  width: 100%;
+}
+
+.people-profile{
+    width: 7%;
+    height: calc(100% - 75px);
+    background-color:#E76F51;
+    display: flex;
+}
+
+.people-profile ul{
+  overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
-  background-color: gray;
-}
-
-.side-bar{
+  flex-direction: column;
+  list-style-type: none;
   height: 100%;
-  width: 30%;
-  background-color: black;
+  width: 100%;
 }
 
-.navigation{
+.people-profile ul li{
   position: relative;
-  top: 1.5%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-top:15px;
+  right:25%;
 }
 
-.navigation h2{
-  color: rgb();
-  text-align: center;
+img{
+  border: 2px black solid;
+  border-radius: 20%;
+  width: 3vw;
+  transition: transform 0.1s linear;
 }
 
-.chats{
-  height: 100%;
-  width: 70%;
-  background-color: white;
+a:hover img{
+  transform: translateX(25px);
+}
+
+::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color:#E76F51;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar{
+	width: 6px;
+	background-color:#E76F51;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb{
+	background-color: #000000;
+  border-radius: 20px;
+}
+
+.tab-nav{
+  position: absolute;
+  top: 0%;
+  left: 7%;
 }
