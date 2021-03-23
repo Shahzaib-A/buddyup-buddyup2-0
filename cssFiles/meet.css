@@ -70,6 +70,34 @@ a:hover img{
 
 .tab-nav{
   position: absolute;
+  height: 100%;
+  width: 100%;
   top: 0%;
   left: 7%;
+}
+
+.message-bar{
+  position:absolute;
+  bottom: 11%;
+  left: 2.5%;
+  width:100%;
+  display: flex;
+  flex-direction: row;
+}
+.enter-message{
+  height: 1.5rem;
+  width: 80%;
+  border: 1px gray solid;
+  border-radius: 10px;
+}
+
+.enter-message:focus{
+  outline: none;
+}
+
+.send{
+  display: inline-block;
+  margin-left: 2%;
+  font-size: 1.5rem;
+  border-radius: 10px;
 }
