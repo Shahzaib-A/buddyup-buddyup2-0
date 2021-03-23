@@ -1,6 +1,3 @@
 $(".send").click(function(){
-  alert()
-  // let messageObject = {
-  //   sender:
-  // }
+  $(".enter-message").text('')
 })
