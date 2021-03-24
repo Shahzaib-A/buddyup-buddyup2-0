@@ -1,14 +1,18 @@
+//
+function AddUser(obj){
+  // alert(uid.toString())
+  firebase.database().ref('/Users/').set(obj)
+}
+
 function check(){
-  setTimeout(function() {
-    if(!auth.currentUser){
+  firebase.auth().onAuthStateChanged((user) => {
+      if (user && auth.currentUser.emailVerified){
+      } else {
+        // User not logged in or has just logged out.
         window.location = '../index.html'
       }
-    else if(auth.currentUser){
-      if(!auth.currentUser.emailVerified){
-        window.location = '../index.html'
-      }
-    }
-  },200);
+  });
+  console.log("Hello")
 }
 
 window.onunload = function(){

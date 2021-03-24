@@ -22,7 +22,7 @@ function isMobileDevice() {
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 };
 
-function AddUser(obj){
+function sendToServer(obj){
   autoId = firebase.database().ref('users').push().key
-  firebase.database().ref('/Users/' + autoId.toString()).set(obj)
+  firebase.database().ref('/general/' + autoId.toString()).set(obj)
 }
