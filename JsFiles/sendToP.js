@@ -4,21 +4,20 @@ return message
 }
 
 function sendToServer(obj) {
-autoId = firebase.database().ref('users').push().key
-firebase.database().ref('/general/' + autoId.toString()).set(obj)
+  autoId = firebase.database().ref('users').push().key
+  firebase.database().ref('/general/' + autoId.toString()).set(obj)
 }
 
-console.log(sendToServer) //returns function
 $(".send").click(function() {
-firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('value', function(snapshot) {
-digits = snapshot.val().digits
-let message = cleanMessage($(".enter-message").val())
+  firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('value', function(snapshot) {
+  digits = snapshot.val().digits
+  let message = cleanMessage($(".enter-message").val())
 
-let messageObject = {
-message: message,
-sender: digits
-}
-sendToServer(messageObject)
-$(".enter-message").val('')
-});
+  let messageObject = {
+  message: message,
+  sender: digits
+  }
+  sendToServer(messageObject)
+  $(".enter-message").val('')
+  });
 })
