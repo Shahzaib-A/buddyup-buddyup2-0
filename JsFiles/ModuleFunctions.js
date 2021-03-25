@@ -21,8 +21,3 @@ $(document).ready(function(){
 function isMobileDevice() {
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 };
-
-function sendToServer(obj){
-  autoId = firebase.database().ref('users').push().key
-  firebase.database().ref('/general/' + autoId.toString()).set(obj)
-}
