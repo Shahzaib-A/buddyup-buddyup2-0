@@ -36,3 +36,8 @@ original_password.addEventListener('input',letter =>{
   original_password.style.borderColor = "rgba(0,234,80,0.6)";
   original_password.placeholder = "password"
 })
+
+user.addEventListener('input',letter=>{
+  user.style.borderColor = "rgba(0,234,80,0.6)";
+  user.placeholder = "Username"
+})
