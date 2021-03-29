@@ -107,20 +107,25 @@ ul {list-style-type: none;}
   padding: 20px 20px;
 }
 
-/* .checkboxToDoList h3{
+.checkboxToDoList h3{
   background: black
 }
 .todo-list-container{
-  height: 50%
+  height: 60%;
+  width: 25%;
+  background-color:#111;
+
+
 }
 .todo-list-container placeholder{
 
 }
 .event{
 
-} */
-.todo-list-container{
-  border: 3px solid red;
+}
+ .todo-list-container{
+
+  border: 3px solid grey;
   border-radius: 5px;
 }
 .saving_and_canceling_info{
@@ -131,7 +136,8 @@ ul {list-style-type: none;}
 	position: absolute;
 	width: 100%;
 }
-.back {
+
+/* .back {
 	height: 100%;
 	transform: rotateY(180deg);
 }
@@ -210,7 +216,7 @@ ul {list-style-type: none;}
 .actions button:active {
 	background: #5889a0;
 	outline: none;
-}
+} */
 
 /* Add media queries for smaller screens */
 @media screen and (max-width:720px) {
