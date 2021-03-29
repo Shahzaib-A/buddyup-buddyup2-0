@@ -8,8 +8,10 @@ html{
 ul {list-style-type: none;}
 
 .todo-list-container{
-  position: absolute; 
+  position: absolute;
   top: 75px;
+  left: 70%;
+  color: red;
 }
 
 #container{
@@ -61,7 +63,8 @@ ul {list-style-type: none;}
 .month #right {
   position: static;
   float: right;
-  padding-top: 4px;
+  padding-top: 1px;
+
 }
 
 .weekdays {
@@ -94,12 +97,6 @@ ul {list-style-type: none;}
   color: white;
 }
 
-.days div:hover:not(.today){
-  background-color: #262626;
-  border: 0.15rem solid #777;
-  cursor: pointer;
-}
-
 .prev-date, .next-date{
   opacity:0.5;
 }
@@ -113,7 +110,15 @@ ul {list-style-type: none;}
 .checkboxToDoList h3{
   background: black
 }
+.todo-list-container{
+  height: 50%
+}
+.todo-list-container placeholder{
 
+}
+.event{
+
+}
 
 /* Add media queries for smaller screens */
 @media screen and (max-width:720px) {
