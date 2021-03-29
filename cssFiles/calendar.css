@@ -121,7 +121,15 @@ ul {list-style-type: none;}
 
 }
 .event{
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
 
+.event li{
+  padding: 20px 0;
 }
  .todo-list-container{
 
@@ -129,12 +137,20 @@ ul {list-style-type: none;}
   border-radius: 5px;
 }
 .saving_and_canceling_info{
+  position: absolute;
   bottom: 0;
-	border-top: 1px solid rgba(73, 114, 133, .6);
-	display: flex;
-	justify-content: space-between;
-	position: absolute;
-	width: 100%;
+  background-color: white;
+}
+.event-calendar-pop-up{
+  position: relative;
+  top: 5%;
+  text-align: center;
+  transition: 0.1s;
+}
+
+.todo-list-container .hid{
+  transform: translateY(-100%);
+  display:none;
 }
 
 /* .back {

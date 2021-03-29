@@ -101,23 +101,17 @@
 
     <div class="todo-list-container">
       <div class = "event-calendar-pop-up">
-        <input placeholder = "What would you like to plan" type = "text">
+        <input placeholder = "What would you like to plan" class="plan-input" type = "text">
         <div class = "event">
-          <div class = "todays date">
-            <p class = "info-date">
-              <!-- example dates -->
-            todays date: <div> March 16th, 2021</div>
-            </p>
-            <p class = "time-of-day">
-              <!-- example times -->
-              Time: <div>12:12pm</div>
-            </p>
-          </div>
+          <ul class = "todays-date">
+            <li><p class = "info-date">todays date: March 16th, 2021</p></li>
+            <li><p class = "time-of-day">Time: 12:12pm</p></li>
+          </ul>
         </div>
-      <div class = "saving_and_canceling_info">
-        <button class ="Press this to save">
-        <button class = "Press this to cancel">
-      </div>
+        <div class="buttons">
+          <button class ="save">Save</button>
+          <button class = "cancel">cancel</button>
+        </div>
     </div>
   </div>
 
