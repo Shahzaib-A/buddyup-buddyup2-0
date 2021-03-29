@@ -10,9 +10,7 @@ function sendToServer(obj){
 async function getImage(){
     await firebase.storage().ref('/Users/' + firebase.auth().currentUser.uid + '/profile.png').getDownloadURL().then(imgUrl=>{
       sessionStorage.setItem("URL",imgUrl)
-    }).catch(err=>{
-      alert(err)
-    })
+    }).catch(err=>{})
     const img = sessionStorage.getItem("URL");
     sessionStorage.removeItem("URL")
     return img

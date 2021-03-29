@@ -97,9 +97,18 @@ ul {list-style-type: none;}
   color: white;
 }
 .days li:hover{
-  background-color: red;
+  animation: border-animation 0s;
 }
 
+@keyframes boder-animation{
+  0%{
+    border-bottom: 1px white solid;
+  }
+
+  100%{
+    border-right: 1px white solid;
+  }
+}
 .prev-date, .next-date{
   opacity:0.5;
 }
