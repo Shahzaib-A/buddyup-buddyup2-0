@@ -8,9 +8,9 @@ function sendToServer(obj){
   firebase.database().ref('/general/' + autoId.toString()).set(obj)
 }
 async function getImage(){
-    await firebase.storage().ref('/Users/' + firebase.auth().currentUser.uid + '/profile.png').getDownloadURL().then(imgUrl=>{
+    await firebase.storage().ref('/Users/' + firebase.auth().currentUser.uid + '/profile').getDownloadURL().then(imgUrl=>{
       sessionStorage.setItem("URL",imgUrl)
-    }).catch(err=>{})
+    })
     const img = sessionStorage.getItem("URL");
     sessionStorage.removeItem("URL")
     return img
