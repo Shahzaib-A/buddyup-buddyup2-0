@@ -8,9 +8,16 @@ function sendToServer(obj){
   firebase.database().ref('/general/' + autoId.toString()).set(obj)
 }
 async function getImage(){
-  await firebase.storage().ref('/Users/' + firebase.auth().currentUser.uid + '/profile').getDownloadURL().then(imgUrl=>{
-    sessionStorage.setItem("URL",imgUrl)
-  })
+  try{
+    await firebase.storage().ref('/Users/' + firebase.auth().currentUser.uid + '/profile.png').getDownloadURL().then(imgUrl=>{
+      sessionStorage.setItem("URL",imgUrl)
+    })
+  }catch{
+    await firebase.storage().ref('/Users/' + firebase.auth().currentUser.uid + '/profile.jpg').getDownloadURL().then(imgUrl=>{
+      sessionStorage.setItem("URL",imgUrl)
+    })
+  }
+
   const img = sessionStorage.getItem("URL");
   sessionStorage.removeItem("URL")
   return img
