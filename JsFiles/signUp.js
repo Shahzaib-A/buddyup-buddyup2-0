@@ -15,7 +15,7 @@ function signUp(email,password){
           firebase.auth().createUserWithEmailAndPassword(email,password).then(function(user){
              firebase.auth().onAuthStateChanged(async function(user){
                user.sendEmailVerification();
-              await firebase.storage().ref('/Users/' + user.uid + `profile.${file[1]}`).put(file[0]).then(()=>{
+              await firebase.storage().ref('/Users/' + user.uid + `profile`).put(file[0]).then(()=>{
                  console.log("Uploaded")
                }).catch(err=>{
                  console.log("Awhhh not uploaded")
