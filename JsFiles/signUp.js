@@ -1,7 +1,8 @@
 let file = {}
 //SignUp function
 function chooseFile(e){
-  file = e.target.files[0]
+  file = [e.target.files[0],e.target.files[0].name.split('.')[1].toLowerCase()]
+  console.log(file)
 }
 
 function signUp(email,password){
@@ -14,7 +15,7 @@ function signUp(email,password){
           firebase.auth().createUserWithEmailAndPassword(email,password).then(function(user){
              firebase.auth().onAuthStateChanged(async function(user){
                user.sendEmailVerification();
-              await firebase.storage().ref('/Users/' + user.uid + '/profile.jpg').put(file).then(()=>{
+              await firebase.storage().ref('/Users/' + user.uid + `profile.${file[1]}`).put(file[0]).then(()=>{
                  console.log("Uploaded")
                }).catch(err=>{
                  console.log("Awhhh not uploaded")
