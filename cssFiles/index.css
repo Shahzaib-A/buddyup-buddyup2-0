@@ -39,7 +39,7 @@
   height: 50%;
   width: 100%;
   justify-content: center;
-  align-items: center;
+  top: 9%;
 }
 
 .logo div{
@@ -124,6 +124,25 @@
 	outline: none;
 	border: 1px solid var(--type-text-color);
 }
+
+.login input[type=file]:focus{
+  outline:none;
+  border: 1px solid var(--type-text-color);
+}
+
+.login input[type=file]::-webkit-file-upload-button {
+ visibility: hidden;
+}
+.login input[type=file]::before {
+ content: 'Select profile picture';
+ padding: 5px 8px;
+ outline: none;
+ cursor: pointer;
+}
+.login input[type=file]:hover::before {
+ border-color: black;
+}
+
 
 .login input[type=submit]:focus{
 	outline: none;

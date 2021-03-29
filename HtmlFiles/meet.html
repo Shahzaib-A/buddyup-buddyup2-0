@@ -10,6 +10,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
   <script src="https://kit.fontawesome.com/f4be74f90f.js" crossorigin="anonymous  "></script>
   <script>
     $(function() {
@@ -20,70 +21,24 @@
 
 <body>
   <div id="nav-placeholder"></div>
+  <!-- Code taken from https://codepen.io/743/pen/poRbQWW?editors=0110 -->
   <!-- Main off all chat container -->
   <div id="chat-container">
-    <!-- Footer for adduser and profile's -->
-    <aside class="people-profile">
-      <ul>
+    <div id="sideNavigation" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
 
-        <li>
-          <div class='_profile'>
-            <a>
-              <div class='img'><img src="https://www.w3schools.com/howto/img_avatar2.png"></div>
-            </a>
-          </div>
-        </li>
+    <nav class="topnav">
+      <a href="#" onclick="openNav()">
+        <svg width="30" height="30" id="icoOpen">
+          <path d="M0,5 30,5" stroke="#ddd" stroke-width="5" />
+          <path d="M0,14 30,14" stroke="#ddd" stroke-width="5" />
+          <path d="M0,23 30,23" stroke="#ddd" stroke-width="5" />
+         </svg>
+      </a>
+      <button class="addUser"><i class="fa fa-users" aria-hidden="true" style="font-size:1.9rem;"></i></button>
+    </nav>
 
-        <li>
-          <div class='_profile'>
-            <a>
-              <div class='img'><img src="https://www.w3schools.com/howto/img_avatar2.png"></div>
-            </a>
-          </div>
-        </li>
-
-        <li>
-          <div class='_profile'>
-            <a>
-              <div class='img'><img src="https://www.w3schools.com/howto/img_avatar2.png"></div>
-            </a>
-          </div>
-        </li>
-
-        <li>
-          <div class='_profile'>
-            <a>
-              <div class='img'><img src="https://www.w3schools.com/howto/img_avatar2.png"></div>
-            </a>
-          </div>
-        </li>
-
-        <li>
-          <div class='_profile'>
-            <a>
-              <div class='img'><img src="https://www.w3schools.com/w3images/avatar2.png"></div>
-            </a>
-          </div>
-        </li>
-
-        <li>
-          <div class='_profile'>
-            <a>
-              <div class='img'><img src="https://www.w3schools.com/howto/img_avatar.png"></div>
-            </a>
-          </div>
-        </li>
-
-        <li>
-          <div class='_profile'>
-            <a>
-              <div class='img'><img src="https://www.w3schools.com/howto/img_avatar.png"></div>
-            </a>
-          </div>
-        </li>
-
-      </ul>
-    </aside>
     <header class="tab-nav">
       <div class="message-bar">
         <input class="enter-message" type="text" placeholder="Enter your message..." />
@@ -92,17 +47,15 @@
         </div>
       </div>
 
-      <div class="msg-cont">
-        <ul class="sub-msg-container">
+      <section class="discussion">
         <!-- Js add's messages -->
-        </ul>
-      </div>
-
+      </section>
     </header>
   </div>
 </body>
 
 <script src="../JsFiles/extra-words.js"></script>
+<script src="../JsFiles/Chatnav.js"></script>
 <script src="../JsFiles/check.js"></script>
 <script src="../JsFiles/initializeFireBase.js"></script>
 <script src="../JsFiles/nav.js"></script>

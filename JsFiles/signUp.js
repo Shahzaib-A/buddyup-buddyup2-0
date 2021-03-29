@@ -1,4 +1,9 @@
+let file = {}
 //SignUp function
+function chooseFile(e){
+  file = e.target.files[0]
+}
+
 function signUp(email,password){
 
   firebase.auth().fetchSignInMethodsForEmail(email).then((sim)=>{ //sim -> Sign In Method
@@ -9,10 +14,12 @@ function signUp(email,password){
           firebase.auth().createUserWithEmailAndPassword(email,password).then(function(user){
              firebase.auth().onAuthStateChanged(function(user){
                user.sendEmailVerification();
-               digit = Math.random().toString().substring(2,7)
-               digit = digit.substr(0,1) == 0? digit = digit.replace("0",Math.floor((Math.random() * (9-1) + 1).toString())):digit = digit;
+               firebase.storage().ref('/Users/' + user.uid + '/profile.jpg').put(file).then(()=>{
+                 console.log("Uploaded")
+               }).catch(err=>{
+                 console.log("Awhhh not uploaded")
+               })
                firebase.database().ref('/Users/' + user.uid).set({
-                 digits:digit,
                  name: document.querySelector('.user').value
                })
 
