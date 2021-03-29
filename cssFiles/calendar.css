@@ -11,7 +11,7 @@ ul {list-style-type: none;}
   position: absolute;
   top: 75px;
   left: 70%;
-  color: red;
+  /* color: red; */
 }
 
 #container{
@@ -95,9 +95,15 @@ ul {list-style-type: none;}
   margin-bottom: 8px;
   font-size:20px;
   color: white;
+  transition: .1s
+
 }
-.days li:hover{
-  animation: border-animation 0s;
+
+.days li:hover,
+.days li:focus {
+  box-shadow: 0 .6em 3em -0.3em black;
+  transform: translateY(-0.25em);
+
 }
 
 @keyframes boder-animation{
@@ -125,7 +131,7 @@ ul {list-style-type: none;}
 .todo-list-container{
   height: 60%;
   width: 25%;
-  background-color:#111;
+  background-color:#666;
 
 
 }
@@ -144,7 +150,7 @@ ul {list-style-type: none;}
   padding: 20px 0;
 }
  .todo-list-container{
-
+  background-color: #222227;
   border: 3px solid grey;
   border-radius: 5px;
 }
@@ -261,3 +267,4 @@ ul {list-style-type: none;}
 }
 
 /* Harsh */
+/* https://codepen.io/perry_nt/pen/eVboze */
