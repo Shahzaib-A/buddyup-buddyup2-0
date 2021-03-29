@@ -96,6 +96,9 @@ ul {list-style-type: none;}
   font-size:20px;
   color: white;
 }
+.days li:hover{
+  background-color: red;
+}
 
 .prev-date, .next-date{
   opacity:0.5;
