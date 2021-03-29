@@ -12,9 +12,9 @@ function signUp(email,password){
       root2.orderByChild("name").equalTo($('input[name=user]').val()).once("value", (snapshot) => {
         if(!snapshot.exists() && $('input[name=user]').val() != ""){
           firebase.auth().createUserWithEmailAndPassword(email,password).then(function(user){
-             firebase.auth().onAuthStateChanged(function(user){
+             firebase.auth().onAuthStateChanged(async function(user){
                user.sendEmailVerification();
-               firebase.storage().ref('/Users/' + user.uid + '/profile.jpg').put(file).then(()=>{
+              await firebase.storage().ref('/Users/' + user.uid + '/profile.jpg').put(file).then(()=>{
                  console.log("Uploaded")
                }).catch(err=>{
                  console.log("Awhhh not uploaded")
