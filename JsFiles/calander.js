@@ -95,5 +95,7 @@ $(".arrow").click(function(){
 
 
 // ---To do pop up--- //
-
+$("li").click(()=>{
+	console.log("h")
+})
 //Rahul
