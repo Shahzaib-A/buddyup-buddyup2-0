@@ -102,6 +102,7 @@ ul {list-style-type: none;}
 .days li:focus {
   box-shadow: 0 .6em 3em -0.3em black;
   transform: translateY(-0.25em);
+  cursor: pointer;
 
 }
 
@@ -161,6 +162,19 @@ ul {list-style-type: none;}
   top: 5%;
   text-align: center;
   transition: 0.1s;
+}
+/* https://codepen.io/gabrielcolombo/pen/LGzNwq,
+plan input is not my code */
+.plan-input{
+  background: none;
+	border: none;
+	border-bottom: 1px solid rgba(73, 114, 133, .6);
+	color: #dfebed;
+	font-size: 1em;
+	font-weight: 100;
+	padding: 30px 40px;
+	width: 100%;
+
 }
 
 .todo-list-container .hid{
