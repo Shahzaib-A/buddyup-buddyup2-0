@@ -29,7 +29,6 @@ ul {list-style-type: none;}
   height:50rem;
   background-color: #222227;
   box-shadow: 10px 5px 5px #757575;
-
 }
 .color_background{
   width:50%;
@@ -129,11 +128,11 @@ ul {list-style-type: none;}
   background: black
 }
 .todo-list-container{
+  position: absolute;
   height: 60%;
   width: 25%;
   background-color:#666;
-
-
+  left: 51.9%;
 }
 .todo-list-container placeholder{
 
@@ -151,8 +150,9 @@ ul {list-style-type: none;}
 }
  .todo-list-container{
   background-color: #222227;
-  border: 3px solid grey;
+  /* border: 3px solid grey; */
   border-radius: 5px;
+
 }
 .saving_and_canceling_info{
   position: absolute;

@@ -31,7 +31,7 @@
 }
 
   .addUser{
-    margin-top: 12px;
+    /* margin-top: 12px; */
     height: auto;
     width: auto;
     float: right;
@@ -229,4 +229,33 @@ li h3{
 
 li{
   list-style-type: none;
+}
+
+.fr-request{
+  position: absolute;
+  height: 35%;
+  width: 35%;
+  left: 30%;
+  right: 50%;
+  top: 20%;
+  background-color: #121212;
+}
+
+.friend-request{
+  position: absolute;
+  background: #222222;
+  outline: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  border-radius: 50px;
+  margin-left: 1%;
+  margin-top:43%;
+  width: 30%;
+  text-align: center;
+}
+
+.friend-request::placeholder{
+  color: white;
+  font-size: 18px;
 }

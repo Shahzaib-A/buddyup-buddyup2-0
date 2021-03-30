@@ -1,5 +1,5 @@
 function cleanMessage(message){
-message = message.split(" ").map(x => badWords.indexOf(x) != -1? x = (x.split("").map(c => c = '*')).join(""): x = x).join(" ")
+message = message.toLowerCase().split(" ").map(x => badWords.indexOf(x) != -1? x = (x.split("").map(c => c = '*')).join(""): x = x).join(" ")
 return message
 }
 

@@ -93,9 +93,16 @@ $(".arrow").click(function(){
   }
 })
 
-
+		$(".todo-list-container").hide()
 // ---To do pop up--- //
-$("li").click(()=>{
-	console.log("h")
+$(".days li").click(()=>{
+		$(".todo-list-container").toggle("slow")
+		let date = $(".info-date").text().split(":")[1].split(" ")
+		// let dateClicked =
+		console.log($(this).html())
+})
+
+$(".cancel").click(()=>{
+	$(".todo-list-container").toggle("slow")
 })
 //Rahul
