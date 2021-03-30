@@ -58,12 +58,10 @@ ul {list-style-type: none;}
   float: left;
   padding-top: 4px;
 }
-
 .month #right {
   position: static;
   float: right;
   padding-top: 1px;
-
 }
 
 .weekdays {
@@ -95,6 +93,7 @@ ul {list-style-type: none;}
   font-size:20px;
   color: white;
   transition: .1s
+  cursor: pointer;
 
 }
 
@@ -102,8 +101,10 @@ ul {list-style-type: none;}
 .days li:focus {
   box-shadow: 0 .6em 3em -0.3em black;
   transform: translateY(-0.25em);
+  cursor: pointer;
 
 }
+
 
 @keyframes boder-animation{
   0%{
@@ -134,9 +135,6 @@ ul {list-style-type: none;}
   background-color:#666;
   left: 51.9%;
 }
-.todo-list-container placeholder{
-
-}
 .event{
   position: relative;
   display: flex;
@@ -165,92 +163,25 @@ ul {list-style-type: none;}
   text-align: center;
   transition: 0.1s;
 }
+/* https://codepen.io/gabrielcolombo/pen/LGzNwq,
+plan input is not my code */
+.plan-input{
+  background: none;
+	border: none;
+	border-bottom: 1px solid rgba(73, 114, 133, .6);
+	color: #dfebed;
+	font-size: 1em;
+	font-weight: 100;
+	padding: 30px 40px;
+	width: 100%;
+
+}
 
 .todo-list-container .hid{
   transform: translateY(-100%);
   display:none;
 }
 
-/* .back {
-	height: 100%;
-	transform: rotateY(180deg);
-}
-
-.back input {
-	background: none;
-	border: none;
-	border-bottom: 1px solid rgba(73, 114, 133, .6);
-	color: #dfebed;
-	font-size: 1.4em;
-	font-weight: 300;
-	padding: 30px 40px;
-	width: 100%;
-}
-
-.info {
-	color: #dfebed;
-	display: flex;
-	flex-direction: column;
-	font-weight: 600;
-	font-size: 1.2em;
-	padding: 30px 40px;
-}
-
-.info div:not(.observations) {
-	margin-bottom: 40px;
-}
-
-.info span {
-	font-weight: 300;
-}
-
-.info .date {
-	display: flex;
-	justify-content: space-between;
-}
-
-.info .date p {
-	width: 50%;
-}
-
-.info .address p {
-	width: 100%;
-}
-
-.actions {
-	bottom: 0;
-	border-top: 1px solid rgba(73, 114, 133, .6);
-	display: flex;
-	justify-content: space-between;
-	position: absolute;
-	width: 100%;
-}
-
-.actions button {
-	background: none;
-	border: 0;
-	color: #fff;
-	font-weight: 600;
-	letter-spacing: 3px;
-	margin: 0;
-	padding: 30px 0;
-	text-transform: uppercase;
-	width: 50%;
-}
-
-.actions button:first-of-type {
-	border-right: 1px solid rgba(73, 114, 133, .6);
-}
-
-.actions button:hover {
-	background: #497285;
-	cursor: pointer;
-}
-
-.actions button:active {
-	background: #5889a0;
-	outline: none;
-} */
 
 /* Add media queries for smaller screens */
 @media screen and (max-width:720px) {
