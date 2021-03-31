@@ -6,7 +6,6 @@ firebase.database().ref('Users').orderByChild("name").equalTo(userToFind).once('
   if(s.exists()){
     s.forEach((function(child) {
        if(child.key == firebase.auth().currentUser.uid){
-        shake(sendRequests)
         setValue(sendRequests,"Can't add yourself")
        }
        else{
@@ -16,23 +15,30 @@ firebase.database().ref('Users').orderByChild("name").equalTo(userToFind).once('
     }))
   }
   else{
-    shake(sendRequests)
     setValue(sendRequests,"User not found")
   }
 })
 }
-$(".fr-request").hide()
+let isHidden = true
+$('.closebtn').click(()=>{
+  // ---Animate add user box--- //
+  switch(isHidden){
+    case true:
+    $(".fr-request").animate({top: '75%'},1000,()=>{isHidden = false})
+    break
+    default:
+    $(".fr-request").animate({top: '90%'},1000,()=>{isHidden = true})
+  }
+})
 
-$('.addUser').click(()=>{
-  $(".fr-request").toggle("")
+// ---Send reuests on enter key--- //
+$(".friend-request").on("keyup",async(e)=>{
 
-  $(sendRequests).on("keyup",async(e)=>{
-    if(e.key === "Enter" || e.keyCode === 13){
-      let userToAdd = $(sendRequests).val()
-      $(sendRequests).val("")
-      await AddUser(userToAdd)
-    }
-  })
+  if(e.key === "Enter" || e.keyCode === 13){
+    let userToAdd = $(sendRequests).val()
+    $(sendRequests).val("")
+    await AddUser(userToAdd)
+  }
 })
 
 resetValue(document.querySelector(sendRequests),"Enter username")
