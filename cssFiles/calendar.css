@@ -103,7 +103,7 @@ ul {list-style-type: none;}
     border: none;
     outline: none;
     color: #fff;
-    background: #111;
+    background: #222227;
     cursor: pointer;
     position: relative;
     z-index: 0;
@@ -146,7 +146,7 @@ ul {list-style-type: none;}
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #111;
+    background: #222227;
     left: 0;
     top: 0;
     border-radius: 15px;
@@ -366,7 +366,7 @@ plan input is not my code */
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #111;
+    background: #555;
     left: 0;
     top: 0;
     border-radius: 10px;
@@ -421,7 +421,7 @@ plan input is not my code */
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #111;
+    background: #555;
     left: 0;
     top: 0;
     border-radius: 10px;
