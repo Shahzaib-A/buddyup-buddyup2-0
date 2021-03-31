@@ -1,3 +1,5 @@
+//makes sure it displays the current date, selects it
+//
 
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -16,6 +18,7 @@ var daysOfMonth = {
 	"December":[31]
 }
 
+//This is to change the date
 function changeDays(maxDays){
 	var counter = 1
 	$('.days').find('li').text('')
@@ -44,6 +47,19 @@ function isLeapYear(year){
 	}
 }
 
+//This is to auto month
+dateObj = new Date();
+let currentDate = [months[dateObj.getMonth()],dateObj.getFullYear()]
+$(".current_month").text(currentDate[0])
+$(".year").text(currentDate[1])
+
+if(isLeapYear(currentDate[1]) && currentDate[0] == "February"){
+	changeDays(daysOfMonth[currentDate[0]][1])
+}
+else{
+	changeDays(daysOfMonth[currentDate[0]][0])
+}
+
 // Onclick of any of the arrows change the month
 $(".arrow").click(function(){
 	// Variables
@@ -55,11 +71,11 @@ $(".arrow").click(function(){
     case "right":
 			// Go to next month
 			$(".current_month").text(months[(monthInArray + 1)%months.length])
-			if(!isLeapYear(currentYear)){
-				changeDays(daysOfMonth[months[(monthInArray + 1)%12]][0])
-			}
-			else if(isLeapYear(currentYear) && months[(monthInArray + 1)%12] == "February"){
+			if(isLeapYear(currentYear) && months[(monthInArray + 1)%12] == "February"){
 				changeDays(daysOfMonth[months[(monthInArray + 1)%12]][1])
+			}
+			else{
+				changeDays(daysOfMonth[months[(monthInArray + 1)%12]][0])
 			}
 			// Go to next year
 			if(monthInArray + 1 > 11){
@@ -82,11 +98,11 @@ $(".arrow").click(function(){
 				}
 			}	else{
 				$(".current_month").text(months[(monthInArray - 1)%months.length])
-				if(!isLeapYear(currentYear)){
-					changeDays(daysOfMonth[months[(monthInArray - 1)%12]][0])
-				}
-				else if(isLeapYear(currentYear) && months[(monthInArray - 1)%12] == "February"){
+				if(isLeapYear(currentYear) && months[(monthInArray - 1)%12] == "February"){
 					changeDays(daysOfMonth[months[(monthInArray - 1)%12]][1])
+				}
+				else{
+					changeDays(daysOfMonth[months[(monthInArray - 1)%12]][0])
 				}
 			}
       break;
@@ -95,11 +111,17 @@ $(".arrow").click(function(){
 
 		$(".todo-list-container").hide()
 // ---To do pop up--- //
-$(".days li").click(()=>{
+
+//Something cool that I learned, Arrow functions are aynonmus so... this will always reffer to the window. So in this case I have to use a function as a callback
+changeNow = false
+$(".days li").click(function x(){
+		changeNow = true
 		$(".todo-list-container").toggle("slow")
-		let date = $(".info-date").text().split(":")[1].split(" ")
-		// let dateClicked =
-		console.log($(this).html())
+		let dateSelected = [$(".current_month").text(),this.innerHTML,$(".year").text()]
+		if(changeNow){
+			document.querySelector(".info-date").innerHTML = $(".info-date").text().split(" ").map((v,i) => v == ""? v = v: i == 1?v.replace(v,`${dateSelected[i]},`):v.replace(v,dateSelected[i])).join(" ")
+			changeNow = false
+		}
 })
 
 $(".cancel").click(()=>{

@@ -21,6 +21,7 @@ $(".send").click(async function(){
   firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('value', function(snapshot) {
   let username = snapshot.val().name
   let message = cleanMessage($(".enter-message").val())
+  if(message != ""){
   let html = `
   <li>
   <img src=${profileImage} alt="">
@@ -37,5 +38,6 @@ $(".send").click(async function(){
   }
   sendToServer(messageObject)
   $(".enter-message").val('')
+  }
   });
 })

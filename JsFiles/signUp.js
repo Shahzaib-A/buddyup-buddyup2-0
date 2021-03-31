@@ -24,7 +24,7 @@ function signUp(email,password){
                })
 
                alert("Email was sent to : " + email + " to verify your account" + '\r\n' + "Please verify then log in.")
-               window.location = "index.html"
+               // window.location = "index.html"
              })
           }).catch(function(error){
            let errorCode = error.code
