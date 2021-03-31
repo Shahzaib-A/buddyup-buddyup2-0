@@ -151,26 +151,6 @@ ul {list-style-type: none;}
     top: 0;
     border-radius: 15px;
 }
-
-
-/* .days li:hover,
-.days li:focus {
-  box-shadow: 0 .6em 3em -0.3em black;
-  transform: translateY(-0.25em);
-  cursor: pointer;
-
-} */
-
-
-/* @keyframes boder-animation{
-  0%{
-    border-bottom: 1px white solid;
-  }
-
-  100%{
-    border-right: 1px white solid;
-  }
-} */
 .prev-date, .next-date{
   opacity:1;
 }
@@ -224,93 +204,25 @@ plan input is not my code */
 .plan-input{
   background: none;
 	border: none;
-	border: 4px solid black;
-	color: #dfebed;
-	font-size: 1em;
-	font-weight: 100;
-	padding: 30px 40px;
-	width: 100%;
-  border-radius: 24px
+	border-bottom: 1px solid white;
+	color: white;
+	font-size: 1.4em;
+  width: 57.3%;
+}
+.plan-input::placeholder{
+  color: white;
+  border-bottom: 1px solid white;
 }
 
 
-/* .info-date{
-  border: 0;
-  background: none;
-	border: none;
-	border: 4px solid rgb(0, 128, 0);
-	color: #dfebed;
-	font-size: 1em;
-	font-weight: 100;
-	padding: 30px 40px;
-	width: 100%;
-  border-radius: 24px;
-  transition: 0.5s;
-} */
+
 
 .info-date {
   background: none;
-  border: none;
-  border: 4px solid black;
+  border-bottom: 1px solid white;
   color: #dfebed;
-  font-size: 1em;
-  font-weight: 100;
-  padding: 30px 40px;
+  font-size: 1.4em;
   width: 100%;
-  border-radius: 24px
-}
-
-/* .info-date:before {
-    content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-    position: absolute;
-    top: -2px;
-    left:-2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing 20s linear infinite;
-    opacity: 0;
-    transition: opacity .3s ease-in-out;
-    border-radius: 10px;
-}
-
-.info-date:active {
-    color: #000
-}
-
-.info-date:active:after {
-    background: transparent;
-}
-
-.info-date:hover:before {
-    opacity: 1;
-}
-
-.info-date:after {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #111;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-} */
-
-.time-of-day{
-    background: none;
-  	border: none;
-  	border: 4px solid black;
-  	color: #dfebed;
-  	font-size: 1em;
-  	font-weight: 100;
-  	padding: 30px 40px;
-  	width: 100%;
-    border-radius: 24px
 }
 
 .todo-list-container .hid{
@@ -346,6 +258,7 @@ plan input is not my code */
     opacity: 0;
     transition: opacity .3s ease-in-out;
     border-radius: 10px;
+
 }
 
 .save:active {
@@ -432,7 +345,11 @@ plan input is not my code */
     100% { background-position: 0 0; }
 }
 
-
+.buttons{
+  position: absolute;
+  left: 13%;
+  top: 500px;
+}
 /* Add media queries for smaller screens */
 @media screen and (max-width:720px) {
   .weekdays li, .days li {width: 13.1%;}
