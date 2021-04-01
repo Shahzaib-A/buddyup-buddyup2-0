@@ -1,0 +1,8 @@
+.todo-list-container{
+  position: absolute;
+  top: 20%;
+  left: 53%;
+  background-color: red;
+  height: 100%;
+  width:30%;
+}
