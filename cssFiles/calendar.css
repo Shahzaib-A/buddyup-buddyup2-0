@@ -350,6 +350,8 @@ plan input is not my code */
   left: 13%;
   top: 500px;
 }
+
+
 /* Add media queries for smaller screens */
 @media screen and (max-width:720px) {
   .weekdays li, .days li {width: 13.1%;}
@@ -363,6 +365,14 @@ plan input is not my code */
 @media screen and (max-width: 290px) {
   .weekdays li, .days li {width: 12.2%;}
 }
+
+
+/* CSS for clock */
+
+
+/* .container{
+  border-color: transparent;
+} */
 
 /* Harsh */
 /* https://codepen.io/perry_nt/pen/eVboze */
