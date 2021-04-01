@@ -88,6 +88,7 @@ body {
 }
 
 .discussion {
+  position: absolute;
 	margin-top:8vh;
 	display: flex;
 	flex-direction: column;

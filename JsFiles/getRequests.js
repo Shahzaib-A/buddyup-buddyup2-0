@@ -7,7 +7,7 @@
 */
 let ignore = true
   setTimeout(async ()=>{
-  await firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on("value",snapshot=>{
+  await firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on("value",async snapshot=>{
       let uName = snapshot.val().name
       firebase.database().ref('/Requests').once("value").then(element=>{
         element.forEach(x=>{
@@ -18,7 +18,7 @@ let ignore = true
         ignore = false
       })
       if(!ignore){
-        firebase.database().ref('/Requests').limitToLast(1).on("value").then(element=>{
+        await firebase.database().ref('/Requests').limitToLast(1).on("value").then(element=>{
           element.forEach(x=>{
             if(x.val().toUser == uName){
               document.querySelector(".topnav").innerHTML += x.val().html
@@ -28,3 +28,8 @@ let ignore = true
       }
     })
   },1000)
+
+
+function test(){
+  alert("YESS")
+}

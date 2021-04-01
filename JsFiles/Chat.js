@@ -14,8 +14,8 @@ async function sendRequest(userToAdd) {
     senderImage: image,
     toUser: userToAdd,
     html: `
-    <li>
-      <img src=${image} alt="">
+    <li class="frreq">
+      <img src=${image} alt="" onclick = "test()">
     </li>
     `
   })

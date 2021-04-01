@@ -43,10 +43,13 @@
 }
 
 .logo div{
+  display: flex;
+  justify-content: center;
   font-family: 'Exo', sans-serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 2000;
   color: var(--text-color);
+  width: 31ch;
 }
 
 .login{
