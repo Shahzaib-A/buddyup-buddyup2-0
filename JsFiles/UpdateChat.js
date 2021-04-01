@@ -26,8 +26,10 @@ function writeToBrowser(htmlStructure, objToWriteTo){
 setTimeout(async () => {
   // ---Declare variables--- //
   const rootMessages = firebase.database().ref('general')
+  const rootDm = firebase.database().ref('Private/')
   var ignore = true
-
+  var ig2 = true
+// ---ALL GENRAL MESAGES--- //
   // ---update sent message and add to local storage--- //
   rootMessages.limitToLast(1).on("child_added", (snapshot) => {
     if (!ignore) {
@@ -36,11 +38,38 @@ setTimeout(async () => {
   })
 
   // ---Load all messages and store in local storage--- //
-  await rootMessages.once('value').then(snapshot => {
+  await rootMessages.once('value',snapshot => {
     let data = snapshot.val()
     for(let i in data){
         document.querySelector('.discussion').innerHTML += data[i].messageToDisp
     }
     ignore = false
   })
+
+// ---ALL PRIVATE MESSAGES--- //
+
+await rootDm.limitToLast(1).on("value", async snapshot=>{
+    if(!ig2){
+    await firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('value', async function(snapshots) {
+      let user = snapshots.val().name
+      snapshot.forEach(x => {
+        if(x.val().sendTo == user){
+          document.querySelector('.discussion').innerHTML += x.val().messageToDisp
+        }
+      })
+    })
+  }
+})
+
+await rootDm.once("value",async snapshot=>{
+await firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('value', async function(snapshots) {
+  let user = snapshots.val().name
+  snapshot.forEach(x =>{
+    if(x.val().sendTo == user){
+      document.querySelector('.discussion').innerHTML += x.val().messageToDisp
+    }
+  })
+})
+ig2 = false
+})
 }, 1000)
