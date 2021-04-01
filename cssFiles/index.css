@@ -42,16 +42,32 @@
   top: 9%;
 }
 
-.logo div{
-  display: flex;
+.logo p{
   justify-content: center;
+  text-decoration: none;
   font-family: 'Exo', sans-serif;
   font-size: 2.5rem;
-  font-weight: 2000;
   color: var(--text-color);
-  width: 31ch;
+  /* width: 24ch; */
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
+  /* animation: infinite animate-1 5s steps(40), animate-2 .5s infinite alternate; */
 }
 
+/* @keyframes animate-1{
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 50%;
+  }
+}
+
+@keyframes animate-2{
+  50%{
+    border-color: transparent;
+  }
+} */
 .login{
   position: absolute;
   z-index: 1;

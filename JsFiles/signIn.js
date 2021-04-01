@@ -5,7 +5,7 @@ function sign_In(email,password) {
     if(userCred.user.emailVerified){
       sign_In_mail.value = "";
       sign_in_password.value = "";
-      window.open("../HtmlFiles/Home.html")
+      window.open("../HtmlFiles/calendar.html")
     }
     else{
       shake('[name=signinusername]')
@@ -29,3 +29,8 @@ function sign_In(email,password) {
 function signIn(){
   sign_In(sign_In_mail.value.toString(),sign_in_password.value.toString())
 }
+
+
+//Type writer effect
+
+//---variables---//
