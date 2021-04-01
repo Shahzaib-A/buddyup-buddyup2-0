@@ -2,9 +2,15 @@
   box-sizing: border-box;
   padding: 0;
 }
+
+#body{
+  display: flex;
+}
+
 html{
   font-size: 100%;
 }
+
 ul {list-style-type: none;}
 
 #container{
@@ -21,17 +27,17 @@ ul {list-style-type: none;}
   width:50rem;
   height:50rem;
   background-color: #222227;
-  box-shadow: 10px 5px 5px #757575;
 }
+
 .color_background{
   width:50%;
   height:50%;
 }
+
 .month {
   padding: 150px 15px;
   width: 100%;
   text-align: center;
-
 }
 
 .month ul {
@@ -51,6 +57,7 @@ ul {list-style-type: none;}
   float: left;
   padding-top: 4px;
 }
+
 .month #right {
   position: static;
   float: right;
@@ -144,6 +151,7 @@ ul {list-style-type: none;}
     top: 0;
     border-radius: 15px;
 }
+
 .prev-date, .next-date{
   opacity:1;
 }
