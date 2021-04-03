@@ -109,7 +109,11 @@ $(".arrow").click(function(){
   }
 })
 
+<<<<<<< HEAD
 		// $(".todo-list-container").hide()
+=======
+// $(".todo-list-container").hide()
+>>>>>>> c67461efe3d3f6c1ae511a42ca86ffca148a4f64
 // ---To do pop up--- //
 
 //Something cool that I learned, Arrow functions are aynonmus so... this will always reffer to the window. So in this case I have to use a function as a callback
@@ -123,6 +127,7 @@ $(".days li").click(function x(){
 			changeNow = false
 		}
 })
+
 
 $(".cancel").click(()=>{
 	$(".todo-list-container").toggle("slow")

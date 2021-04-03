@@ -26,35 +26,38 @@ function isPrivate(message){
   }
   return false
 }
-$(".send").click(async function(){
-  let profileImage = await getImage()
-  firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('value', async function(snapshot) {
-  let username = snapshot.val().name
-  let message = cleanMessage($(".enter-message").val())
-  if(message != ""){
-  let html = `
-  <li>
-  <img src=${profileImage} alt="">
-    <div>
-      <h2 class="name">${username}</h2>
-        <h2 class="message">
-          ${message}
-        </h2>
-    </div>
-  </li>
-  `
-  let messageObject = {
-    messageToDisp:html
-  }
 
-  if(isPrivate(message)[0]){
-    messageObject.sendTo = isPrivate(message)[1]
-    messageObject.sender = username 
-    await sendToPrivate(messageObject)
-  }else{
-    await sendToServer(messageObject)
-  }
-  $(".enter-message").val('')
-  }
-  });
-})
+$(".enter-message").on('keyup', async function (e) {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+      let profileImage = await getImage()
+      firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('value', async function(snapshot) {
+      let username = snapshot.val().name
+      let message = cleanMessage($(".enter-message").val())
+      if(message != ""){
+      let html = `
+      <li>
+      <img src=${profileImage} alt="">
+        <div>
+          <h2 class="name">${username}</h2>
+            <h2 class="message">
+              ${message}
+            </h2>
+        </div>
+      </li>
+      `
+      let messageObject = {
+        messageToDisp:html
+      }
+
+      if(isPrivate(message)[0]){
+        messageObject.sendTo = isPrivate(message)[1]
+        messageObject.sender = username
+        await sendToPrivate(messageObject)
+      }else{
+        await sendToServer(messageObject)
+      }
+      $(".enter-message").val('')
+      }
+      });
+    }
+});

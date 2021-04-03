@@ -2,7 +2,7 @@
   position: absolute;
   top: 20%;
   left: 53%;
-  height: 70%;
+  height: 100%;
   width:25%;
 }
 
@@ -194,6 +194,7 @@ plan input is not my code */
 }
 
 .buttons{
+<<<<<<< HEAD
   /* position: absolute;
   left: 13%;
   top: 500px; */
@@ -201,6 +202,12 @@ plan input is not my code */
   margin-top: 70%;
   justify-content: center;
 
+=======
+  display: flex;
+  width:100%;
+  margin-top: 60%;
+  justify-content: center;
+>>>>>>> c67461efe3d3f6c1ae511a42ca86ffca148a4f64
 }
 
 
