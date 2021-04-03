@@ -1,4 +1,18 @@
 
+.clock{
+	display: none;
+}
+
+@media only screen and (max-width: 731px) {
+  .clock {
+    display: block;
+    width: 100%;
+    padding-bottom: 30px;
+
+  }
+}
+
+
 
 html,body {
 	padding:0;

@@ -12,7 +12,7 @@
 .todo-list-container{
   position: absolute;
   height: 70%;
-﻿}
+}
 .checkboxToDoList h3{
   background: black
 }
@@ -194,13 +194,17 @@ plan input is not my code */
 }
 
 .buttons{
-  position: absolute;
+  /* position: absolute;
   left: 13%;
-  top: 500px;
+  top: 500px; */
+  display: flex;
+  margin-top: 70%;
+  justify-content: center;
+
 }
 
 
-/* Add media queries for smaller screens */
+/ Add media queries for smaller screens /
 @media screen and (max-width:720px) {
   .weekdays li, .days li {width: 13.1%;}
 }
