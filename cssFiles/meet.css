@@ -1,3 +1,4 @@
+
 #chat-container{
   position: absolute;
   top: 75px;
@@ -5,53 +6,13 @@
   width: 100%;
 }
 
-/* Code taken from https://codepen.io/743/pen/poRbQWW?editors=0110 */
-  .addUser{
-    /* margin-top: 12px; */
-    height: auto;
-    width: auto;
-    float: right;
-    margin-right: 75px;
-    background-color: #818181;
-    outline: none;
-    text-decoration: none;
-    border-color: #818181;
-    border-radius:10px;
-  }
-
-/* Position and style the close button (top right corner) */
-.fr-request .closebtn {
-    position: absolute;
-    bottom:100%;
-    right: 45%;
-    font-size: 36px;
-    margin-left: 50px;
-    color: white;
-    text-decoration: none;
-    color: #121212;
-    width: 15%;
-    height: 100%;
-    text-align: center;
-    z-index: 0;
-    transition: .2s;
-}
-
-.fr-request .closebtn:hover{
-    transform: rotate(45deg);
-}
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-
 body {
   overflow-x: hidden;
   background-color: rgba(50,50,50);
 }
 
 /* Add a black background color to the top navigation */
-.topnav {
-    background-color: #222;
-    overflow: hidden;
-    height: 8%;
-}
+
 
 .tab-nav{
   position: absolute;
@@ -78,13 +39,6 @@ body {
 
 .enter-message:focus{
   outline: none;
-}
-
-.send{
-  display: inline-block;
-  margin-left: 2%;
-  font-size: 1.5rem;
-  border-radius: 10px;
 }
 
 .discussion {
@@ -140,31 +94,100 @@ li{
   list-style-type: none;
 }
 
-.fr-request{
-  position: absolute;
-  height: 5%;
-  width: 15%;
-  left:40%;
-  top: 90%;
-  background-color: #121212;
-  border-radius: 50px;
+.dropdown {
+  float: left;
+  overflow: hidden;
 }
 
-.friend-request{
-  position: absolute;
-  background: #222222;
-  outline: none;
+.dropdown .dropbtn {
+  font-size: 16px;
   border: none;
+  outline: none;
   color: white;
-  font-size: 18px;
-  border-radius: 50px;
-  top: 22.5%;
-  left: 12%;
-  width: 75%;
-  text-align: center;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
 }
 
-.friend-request::placeholder{
-  color: white;
-  font-size: 18px;
+.dropdown-content {
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #444;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Hover effects for indivudal subjects */

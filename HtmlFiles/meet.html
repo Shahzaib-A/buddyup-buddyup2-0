@@ -6,17 +6,19 @@
   <title>BuddyUp</title>
   <link href="../cssFiles/meet.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
-  <script src="https://kit.fontawesome.com/f4be74f90f.js" crossorigin="anonymous  "></script>
   <script>
     $(function() {
       $("#nav-placeholder").load("nav.html");
     });
   </script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
+  <script src="https://kit.fontawesome.com/f4be74f90f.js" crossorigin="anonymous  "></script>
+
 </head>
 
 <body>
@@ -24,24 +26,90 @@
   <!-- Main off all chat container -->
   <div id="chat-container">
 
-    <nav class="topnav">
-      <!-- Friend requests go here -->
-    </nav>
+    <div class="navbar">
+      <div class="dropdown">
+        <button class="dropbtn">Math
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content math">
+
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Computer Science
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content computer-science">
+
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Science
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content science">
+
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Physics
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content physics">
+
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Computer Science
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content computer-science">
+
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Biology
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content biology">
+
+        </div>
+      </div>
+
+
+      <div class="dropdown">
+        <button class="dropbtn">chemistry
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content chemistry">
+
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropbtn">Earth and space science
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content easc">
+
+        </div>
+      </div>
+
+    </div>
 
     <header class="tab-nav">
       <div class="message-bar">
         <input class="enter-message" type="text" placeholder="Enter your message..." />
-        <div class="send">
-          <i class="fas fa-paper-plane"></i>
-        </div>
       </div>
       <section class="discussion">
         <!-- Js add's messages -->
       </section>
     </header>
-    <div class="fr-request">
-      <input type="text" maxlength="15" name= "fs" class="friend-request" placeholder="Enter username"/><a href="javascript:void(0)" class="closebtn"><i class="fas fa-plus-circle"></i></a>
-    </div>
   </div>
 </body>
 

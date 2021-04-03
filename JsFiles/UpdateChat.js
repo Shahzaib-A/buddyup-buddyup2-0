@@ -53,7 +53,7 @@ await rootDm.limitToLast(1).on("value", async snapshot=>{
     await firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('value', async function(snapshots) {
       let user = snapshots.val().name
       snapshot.forEach(x => {
-        if(x.val().sendTo == user){
+        if(x.val().sendTo == user || x.val().sender == user){
           document.querySelector('.discussion').innerHTML += x.val().messageToDisp
         }
       })
@@ -65,7 +65,7 @@ await rootDm.once("value",async snapshot=>{
 await firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('value', async function(snapshots) {
   let user = snapshots.val().name
   snapshot.forEach(x =>{
-    if(x.val().sendTo == user){
+    if(x.val().sendTo == user || x.val().sender == user){
       document.querySelector('.discussion').innerHTML += x.val().messageToDisp
     }
   })
