@@ -4,6 +4,7 @@ function check(){
       } else {
         // User not logged in or has just logged out.
         window.location = '../index.html'
+        firebase.database().ref(sessionStorage.getItem('member')).remove()
       }
   });
 }

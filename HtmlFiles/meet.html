@@ -21,26 +21,18 @@
 
 </head>
 
-<body>
+<body onload="check()">
   <div id="nav-placeholder"></div>
   <!-- Main off all chat container -->
   <div id="chat-container">
 
     <div class="navbar">
+
       <div class="dropdown">
         <button class="dropbtn">Math
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content math">
-
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <button class="dropbtn">Computer Science
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content computer-science">
 
         </div>
       </div>
@@ -95,7 +87,7 @@
         <button class="dropbtn">Earth and space science
           <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-content easc">
+        <div class="dropdown-content earth">
 
         </div>
       </div>
@@ -104,7 +96,13 @@
 
     <header class="tab-nav">
       <div class="message-bar">
-        <input class="enter-message" type="text" placeholder="Enter your message..." />
+        <div class="auto-comp">
+          <!-- Js adds auto complete -->
+          <div class="item">
+
+          </div>
+        </div>
+          <input class="enter-message" type="text" placeholder="Enter your message... use !subject to get into a specific subject" />
       </div>
       <section class="discussion">
         <!-- Js add's messages -->
@@ -122,5 +120,6 @@
 <script src="../JsFiles/sendToP.js"></script>
 <script src="../JsFiles/Chat.js"></script>
 <script src="../JsFiles/UpdateChat.js"></script>
-
+<script src="../JsFiles/autocom.js"></script>
+<script src="../JsFiles/grabGroups.js"></script>
 </html>

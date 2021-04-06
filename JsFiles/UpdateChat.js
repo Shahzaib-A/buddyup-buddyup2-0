@@ -25,7 +25,7 @@ function writeToBrowser(htmlStructure, objToWriteTo){
 // ---Main program--- // (Note, is in setTimeout to make sure uid loads properly)
 setTimeout(async () => {
   // ---Declare variables--- //
-  const rootMessages = firebase.database().ref('general')
+  const rootMessages = firebase.database().ref(sessionStorage.getItem('chat'))
   const rootDm = firebase.database().ref('Private/')
   var ignore = true
   var ig2 = true
@@ -72,4 +72,5 @@ await firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('va
 })
 ig2 = false
 })
+//Clear messages
 }, 1000)

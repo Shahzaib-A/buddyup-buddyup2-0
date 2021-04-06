@@ -184,6 +184,7 @@ body {
   text-decoration: none;
   display: block;
   text-align: left;
+  border-top: 1px #666 solid
 }
 
 .dropdown-content a:hover {
@@ -191,3 +192,23 @@ body {
 }
 
 /* Hover effects for indivudal subjects */
+
+
+/* Display groups */
+.item{
+  position: absolute;
+  bottom: 100%;
+  width: 80.5%;
+  background: rgba(0,0,0,0.1);
+  border-radius: 10px
+}
+
+.item > div{
+  padding: 15px;
+  color: white;
+  border-bottom: 1px solid #666;
+}
+
+.item div:hover{
+  background: #666
+}
