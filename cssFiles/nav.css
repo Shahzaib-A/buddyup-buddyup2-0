@@ -1,87 +1,134 @@
 @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
 
-:root{
-	--main-color: black;
-	--second-color: white;
-	--hover-color: rgb(0, 255, 115);
-	--mobile-back: rgb(25,25,25);
-	--side-font: rgb(230,230,230);
+* {
+	padding: 0;
+	margin: 0;
+}
+nav #navs{
+	display: none;
+}
+body {
+	font-family: arial;
 }
 
-body{
-	margin: 0px;
-	padding: 0px;
-  overflow: hidden;
-}
-
-#nav-bar{
-	font-family: 'Roboto Slab', serif;
-}
-/* Desktop version */
-/* .desk-nav a{
-	text-decoration: none;
-} */
-
-/* .desk-nav li{
-	list-style: none;
-} */
-
-.desk{
-	position: fixed;
-	top:0px;
-	background-color: var(--main-color);
+nav {
+	height: 100px;
 	width: 100%;
-	height: 75px;
-}
-.logo{
-	float: left;
-	position: absolute;
-	display: flex;
-	left: 150px;
-	height: 100%;
-	align-items: center;
+	background: #222227;
+	border-bottom: 5px solid black;
 }
 
-.logo a{
-	text-decoration: none;
-	font-size: 1.9rem;
-	color: var(--second-color);
+label.logo {
+	color: white;
+	top-margin: 20px;
+	padding: 0 100px;
+	line-height: 80px;
+	cursor: pointer;
 }
 
-.desk-nav{
-	position: relative;
-	float:right;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	height: 50%;
-	width: 50%;
-	font-size: 1.3rem;
-	right: 220px;
+label.logo {
+  font-size: 2.5rem;
+  padding: 0 2rem;
+
+  background: linear-gradient(to left, transparent 50%, rgb(34, 139, 34) 50%) right;
+  background-size: 200%;
+
+  transition: 0.5s ease-out;
 }
 
-.desk-nav li a{
-	color: var(--second-color);
-	border-bottom: 2px var(--main-color) solid;
-	transition: .3s
+.logo:hover {
+  background-position: left;
 }
 
-.desk-nav li a:hover{
-	border-bottom-color: var(--hover-color);
-	color: var(--hover-color);
+nav ul {
+	float: right;
+	margin-right: 40px;
 }
 
-/* Tablet mode */
-@media screen and (max-width: 992px) {
-	.desk-nav{
-		display: none;
+nav li {
+	display: inline-block;
+	margin: 0px;
+	line-height: 80px;
+}
+
+nav a {
+	color: white;
+	font-size: 18px;
+	border: 4px solid transparent;
+	padding: 20px 10px;
+	border-radius: 3px;
+}
+
+a.active, a:hover {
+	border:1px solid green;
+	transition: .6s;
+	border-radius: 5px
+}
+
+nav #navs {
+	color: white;
+	font-size: 20px;
+	line-height: 80px;
+	float: right;
+	margin-right: 40px;
+	cursor: pointer;
+}
+
+@media (max-width: 1048px){
+	label.logo{
+		font-size: 35px;
+		padding-left: 60px;
 	}
-	.logo{
-		position: absolute;
-		display: flex;
-		height: 100%;
-		width: 60%;
-		justify-content: center;
+
+	nav ul{
+		margin-right: 0px;
+	}
+
+	nav a{
+		font-size: 17px;
 	}
 }
-/* Phone mode */
+
+@media (max-width: 909px){
+	nav #navs{
+		display: block;
+	}
+
+	nav ul{
+		display: grid;
+		height: 100vh;
+		background: #2f3640;
+		top: 80px;
+		left: -100%;
+		text-align: center;
+		transition: all .5s;
+		width: 0%;
+
+	}
+
+	nav li {
+		display: block;
+		margin: 50px 0;
+		line-height: 30px;
+		width: -500px;
+	}
+
+	nav a{
+		font-size: 20px;
+	}
+
+	a.active, a:hover{
+		border: none;
+		color: #3498db;
+	}
+
+	nav ul.show{
+		left: 0;
+	}
+}
+
+@media (max-width: 337px) {
+	nav ul {
+		
+	}
+}

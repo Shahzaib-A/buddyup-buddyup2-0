@@ -1,6 +1,4 @@
 .todo-list-container{
-  position: absolute;
-  top: 20%;
   left: 53%;
   height: 100%;
   width:25%;
@@ -194,33 +192,19 @@ plan input is not my code */
 }
 
 .buttons{
-<<<<<<< HEAD
-  /* position: absolute;
-  left: 13%;
-  top: 500px; */
   display: flex;
   margin-top: 70%;
   justify-content: center;
-
-=======
   display: flex;
   width:100%;
   margin-top: 60%;
   justify-content: center;
->>>>>>> c67461efe3d3f6c1ae511a42ca86ffca148a4f64
+
 }
 
 
-/ Add media queries for smaller screens /
-@media screen and (max-width:720px) {
-  .weekdays li, .days li {width: 13.1%;}
-}
-
-@media screen and (max-width: 420px) {
-  .weekdays li, .days li {width: 12.5%;}
-  .days li .active {padding: 2px;}
-}
-
-@media screen and (max-width: 290px) {
-  .weekdays li, .days li {width: 12.2%;}
-}
+/* @media (max-width: 1020px) {
+  .todo-list-container {
+    bottem: 0%;
+  }
+} */
