@@ -133,3 +133,15 @@ $(".cancel").click(()=>{
 	$(".todo-list-container").toggle("slow")
 })
 //Rahul
+
+
+// Harshs code starts here
+// code for calendar storage starts here
+
+
+let plans = document.querySelector('.plan-input');
+alert(plans)
+
+// plan for calendar.js
+
+// step one is to get the class from html to be put in storage

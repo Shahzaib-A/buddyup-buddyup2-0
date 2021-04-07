@@ -18,21 +18,19 @@ nav {
 	border-bottom: 5px solid black;
 }
 
-label.logo {
-	color: white;
+label .logo {
 	top-margin: 20px;
 	padding: 0 100px;
 	line-height: 80px;
 	cursor: pointer;
 }
 
-label.logo {
+label .logo {
   font-size: 2.5rem;
   padding: 0 2rem;
-
   background: linear-gradient(to left, transparent 50%, rgb(34, 139, 34) 50%) right;
   background-size: 200%;
-
+	border-radius: 50px;
   transition: 0.5s ease-out;
 }
 
@@ -129,6 +127,6 @@ nav #navs {
 
 @media (max-width: 337px) {
 	nav ul {
-		
+
 	}
 }
