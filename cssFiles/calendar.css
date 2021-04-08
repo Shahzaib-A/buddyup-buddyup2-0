@@ -1,195 +1,207 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
+*,:active{
+	outline: none;
+}
+*{
+	padding: 0px;
+	margin: 0px;
 }
 
-#body{
-  display: flex;
-  width: 100vw;
-  height: 100vh;
+body{
+	background-color: #EEEDE9;
+  font-size: 96.5%;
+	font-family: Helvetica, Arial, sans-serif;
 }
 
-html{
-  font-size: 100%;
+input{
+	font-family: Helvetica, Arial, sans-serif;
 }
 
-ul {list-style-type: none;}
-
-#container{
-  width: 100%;
-  height: 100vh;
-  background-color: #121212f;
-  color: white;
-  display: flex;
-  justfiy-content: center;
-  align-items: center;
+h1, h2, h3, h4, h5, p{
+	margin-bottom: 10px;
 }
 
-#calendar{
-  width:50rem;
-  height:50rem;
-  background-color: #222227;
+p{
+	line-height: 20px;
 }
 
-.color_background{
-  width:50%;
-  height:50%;
+a{
+	text-decoration: none;
+	font-size: 18px;
+}
+
+.calendar-cont{
+	position: absolute;
+	border-radius: 4px;
+	overflow: hidden;
+	width: 100%;
+	height: 86%;
+	background-color: #ffffff;
+	color: #333333;
+}
+
+.calendar-cont h1, .calendar-cont h2{
+  font-weight: 300;
+	font-size: 26px;
+	line-height: 28px;
+	text-transform: uppercase;
+	margin: 0px 0px 20px 0px;
+}
+
+.calendar-cont .col{
+	position: relative;
+	float: left;
+	height: 100%;
+}
+
+.calendar-cont .col .content{
+	padding: 50px;
+}
+
+.calendar-cont ul{
+	margin: 0px;
+}
+
+.calendar-cont ul li{
+	list-style: none;
+}
+
+.calendar-cont .leftCol{
+	width: 40%;
+	background-image: url('../images/bg.jpg');
+  background-size: cover;
+}
+
+.calendar-cont .noteList li{
+	color: black;
+	margin-bottom: 10px;
+}
+.noteList{
+
+}
+.calendar-cont .notes p,
+.calendar-cont .notes input,
+.calendar-cont .noteList li{
+	font-weight: 300;
+	font-size: 14px;
+}
+
+.calendar-cont .notes p{
+	border-bottom: solid 1px rgba(255,255,255,0.4);
+}
+
+.calendar-cont .notes input{
+	background-color: rgba(0,0,0,0);
+	color: rgb(46,17,45);
+	border: none;
+	width: 200px;
+}
+
+.calendar-cont .addNote,
+.calendar-cont .removeNote{
+	float: right;
+	color: black;
+	font-weight: bold;
+	margin-left: 20px;
+}
+
+.calendar-cont .addNote:hover,
+.calendar-cont .removeNote:hover{
+	color: #ffffff;
+}
+
+.calendar-cont .addNote{
+	font-size: 16px;
+}
+
+.calendar-cont .leftCol h1{
+	color: rgb(46,17,45);
+}
+
+.calendar-cont .rightCol{
+	width: 60%;
 }
 
 .month {
-  padding: 150px 15px;
+  padding: 70px 25px;
   width: 100%;
+  background: #fedac1;
   text-align: center;
 }
 
 .month ul {
   margin: 0;
-  padding: 0 0px;
+  padding: 0;
 }
 
 .month ul li {
   color: white;
   font-size: 40px;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
 }
 
-.month #left {
-  position: static;
-  float: left;
-  padding-top: 4px;
+.month .prev {
+	color: rgb(46,17,45);
+	position: absolute;
+  padding-top: 10px;
+}
+.prev:hover{
+	color: #999;
+	cursor: pointer;
 }
 
-.month #right {
-  position: static;
-  float: right;
-  padding-top: 1px;
+.month .next {
+	color: rgb(46,17,45);
+	position: absolute;
+  padding-top: 10px;
+	right: 10px;
+	cursor: pointer;
 }
 
-.weekdays {
-  margin: 0;
-  padding: 5px 0;
-  background-color: white;
-}
-
-.weekdays li {
-  display: inline-block;
-  width:13%;
-  color: #666;
-  text-align: center;
-  font-size: 15px;
+.next:hover{
+	color: #999;
 }
 
 .days {
-  padding: 20px 0;
-  height: 60vh;
-  background: #222227;
+  padding: 10px 0;
+  background: #fedac1;
+  margin: 0;
+	height: 100%;
 }
 
 .days li {
+	padding: 20px 0;
   list-style-type: none;
   display: inline-block;
-  width: 20%;
-  height: 11%;
+  width: 13.6%;
   text-align: center;
-  margin-bottom: 15px;
-  font-size:20px;
-  color: white;
-  transition: .1s
-  cursor: pointer;
-
-}
-.days li {
-    width: 100px;
-    margin: 0.5px;
-    height: 50px;
-    border: none;
-    outline: none;
-    color: #fff;
-    background: #222227;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
-
+  margin-bottom: 5px;
+  font-size:18px;
+  color: rgb(46,17,45);
 }
 
-.days li:before {
-    content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-    position: absolute;
-    top: -2px;
-    left:-2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing 20s linear infinite;
-    opacity: 0;
-    transition: opacity .3s ease-in-out;
-    border-radius: 15px;
+.days li .active{
+  padding:10px;
+  background: rgb(255,108,64);
+  color: white !important;
 }
 
-.days li:active {
-    color: #000
+.days li .event{
+	height: 100%;
+	width: 100%;
+  border-bottom: 2px rgb(255,108,64) solid;
 }
 
-.days li:active:after {
-    background: transparent;
+/* Add media queries for smaller screens */
+@media screen and (max-width:720px) {
+  .days li {width: 13.1%;}
 }
 
-.days li:hover:before {
-    opacity: 1;
+@media screen and (max-width: 420px) {
+  .days li {width: 12.5%;}
+  .days li .active {padding: 2px;}
 }
 
-.days li:after {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #222227;
-    left: 0;
-    top: 0;
-    border-radius: 15px;
+@media screen and (max-width: 290px) {
+  .days li {width: 12.2%;}
 }
-
-.prev-date, .next-date{
-  opacity:1;
-}
-
-
-
-
-
-/* CSS for making the website responsive */
-
-@media (max-width: 900px) {
-  .weekdays{
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  #calendar {
-    display: none;
-  }
-
-  .todo-list-container {
-    display: block;
-  }
-}
-
-/* End of CSS for responsive website */
-
-
-
-/* .container{
-  border-color: transparent;
-}
-
-/* Harsh */
-/* https://codepen.io/perry_nt/pen/eVboze */
-/* https://codepen.io/kocsten/pen/rggjXp */
-/* https://codepen.io/gabrielcolombo/pen/LGzNwq */

@@ -57,11 +57,11 @@ nav a {
 	border-radius: 3px;
 }
 
-a.active, a:hover {
+/* a .active, a:hover {
 	border:1px solid green;
 	transition: .6s;
 	border-radius: 5px
-}
+} */
 
 nav #navs {
 	color: white;
@@ -93,40 +93,31 @@ nav #navs {
 	}
 
 	nav ul{
-		display: grid;
 		height: 100vh;
 		background: #2f3640;
 		top: 80px;
-		left: -100%;
 		text-align: center;
 		transition: all .5s;
-		width: 0%;
-
+		width: 35%;
+		display: none;
 	}
 
 	nav li {
 		display: block;
-		margin: 50px 0;
 		line-height: 30px;
-		width: -500px;
+		margin: 50px 0;
 	}
 
 	nav a{
 		font-size: 20px;
 	}
 
-	a.active, a:hover{
+	a .active, a:hover{
 		border: none;
 		color: #3498db;
 	}
 
-	nav ul.show{
+	nav ul .show{
 		left: 0;
-	}
-}
-
-@media (max-width: 337px) {
-	nav ul {
-
 	}
 }
