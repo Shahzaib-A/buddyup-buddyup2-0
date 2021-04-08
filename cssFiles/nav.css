@@ -34,10 +34,6 @@ label .logo {
   transition: 0.5s ease-out;
 }
 
-.logo:hover {
-  background-position: left;
-}
-
 nav ul {
 	float: right;
 	margin-right: 40px;
@@ -93,22 +89,18 @@ nav #navs {
 	}
 
 	nav ul{
-		display: grid;
 		height: 100vh;
 		background: #2f3640;
 		top: 80px;
-		left: -100%;
 		text-align: center;
 		transition: all .5s;
-		width: 0%;
-
+		width: 25%;
 	}
 
 	nav li {
 		display: block;
-		margin: 50px 0;
+		margin: 45px 0;
 		line-height: 30px;
-		width: -500px;
 	}
 
 	nav a{
@@ -130,3 +122,24 @@ nav #navs {
 
 	}
 }
+
+@media (min-width: 1100px) {
+	.calendar {
+		margin-left: 100px;
+		margin-right: 100px;
+	}
+
+	.meet {
+		margin-left: 100px;
+		margin-right: 100px;
+	}
+
+	.about {
+		margin-left: 100px;
+		margin-right: 100px;
+	}
+
+	.Settings {
+		margin-left: 100px;
+		margin-right: 100px;
+	}
