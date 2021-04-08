@@ -53,11 +53,11 @@ nav a {
 	border-radius: 3px;
 }
 
-a.active, a:hover {
+/* a .active, a:hover {
 	border:1px solid green;
 	transition: .6s;
 	border-radius: 5px
-}
+} */
 
 nav #navs {
 	color: white;
@@ -94,28 +94,39 @@ nav #navs {
 		top: 80px;
 		text-align: center;
 		transition: all .5s;
+<<<<<<< HEAD
 		width: 25%;
+=======
+		width: 35%;
+		display: none;
+>>>>>>> 79d02a6111e2ef8403a4fa45cacaec683c159019
 	}
 
 	nav li {
 		display: block;
+<<<<<<< HEAD
 		margin: 45px 0;
 		line-height: 30px;
+=======
+		line-height: 30px;
+		margin: 50px 0;
+>>>>>>> 79d02a6111e2ef8403a4fa45cacaec683c159019
 	}
 
 	nav a{
 		font-size: 20px;
 	}
 
-	a.active, a:hover{
+	a .active, a:hover{
 		border: none;
 		color: #3498db;
 	}
 
-	nav ul.show{
+	nav ul .show{
 		left: 0;
 	}
 }
+<<<<<<< HEAD
 
 @media (max-width: 337px) {
 	nav ul {
@@ -143,3 +154,5 @@ nav #navs {
 		margin-left: 100px;
 		margin-right: 100px;
 	}
+=======
+>>>>>>> 79d02a6111e2ef8403a4fa45cacaec683c159019

@@ -117,7 +117,7 @@ async function createGroup(path, special = [false]){
   await firebase.database().ref(`${path}/Members`).child(`member${mnub}`).set(user)
   sessionStorage.setItem('chat',`${path}/messages`)
   sessionStorage.setItem('member',`${sessionStorage.getItem('chat').replace('message',"Member")}/member${mnub}`)
-  location.reload()
+  // location.reload()
 
 }
 
@@ -126,7 +126,6 @@ async function newGroup(selectedGroup){
   await firebase.database().ref("Groups").once('value',async snapshot=>{
     if(snapshot.exists()){
     if(snapshot.val()[selectedGroup] != undefined){
-    console.log(Object.keys(snapshot.val()[selectedGroup]))
     /* ---I reliaze this is not good practice, but I did this because it would otherwise make the code messy--- */
     groupFull = Object.keys(snapshot.val()[selectedGroup]).map((el,i) => el = Object.keys(snapshot.val()[selectedGroup][el].Members).length < 5?[Object.keys(snapshot.val()[selectedGroup])[i],false]:[Object.keys(snapshot.val()[selectedGroup])[i],true])
     groupEnterd = false
@@ -209,7 +208,7 @@ $(".enter-message").keypress(async function (e) {
 
         case "gr":
           isGroupValid = isValidGroup(isSpecial(message)[1])
-          if(isGroupValid && sessionStorage.getItem('chat') == "general"){
+          if(isGroupValid){
             await newGroup(isSpecial(message)[1])
           }else{
             alert("Aldready in group and or group is not valid, please try again")

@@ -6,8 +6,6 @@
   <meta name="viewport" content="width = device-width, initial-scale = 1.0">
   <title>BuddyUp</title>
   <link href="../cssFiles/calendar.css" rel="stylesheet" type="text/css" />
-  <link href="../cssFiles/clock.css" rel="stylesheet" type="text/css" />
-  <link href="../cssFiles/Todo.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script>
@@ -18,108 +16,31 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
   <script src="https://kit.fontawesome.com/f4be74f90f.js" crossorigin="anonymous  "></script>
 </head>
 
 <body>
   <div id="nav-placeholder"></div>
-  <!-- calendar code -->
-  <div id="body">
-    <!-- <div id="container"> -->
 
-      <!-- Clock HTML -->
+  <div class="calendar-cont">
 
-      <!-- Clock HTML end -->
+    <div class="col leftCol">
+      <div class="content">
+        <h1 class="date">Friday September 12th</h1>
+        <div class="notes">
+          <p>
+            <input class="note"type="text" value="" placeholder="New Note"></input>
+            <a href="#" title="Add note" class="addNote animate" style="font-size: 2rem;">+</a>
+          </p>
+          <ul class="noteList">
 
-      <!-- Clock thing -->
-      <!-- <span class="clock"></span> -->
-      <!-- Clock thing end -->
-
-
-      <!--calendar -->
-      <div id="calendar">
-        <div class="month">
-          <ul>
-            <li id="left" class="arrow left">&#10094;</li>
-            <li id="right" class="arrow right">&#10095;</li>
-            <li>
-              <div class="current_month">
-                August
-              </div>
-              <br>
-              <span class="year" style="font-size:20px">2021</span>
-            </li>
           </ul>
         </div>
-
-        <ul class="weekdays">
-          <li>Monday</li>
-          <li>Tuesday</li>
-          <li>Wedesnday</li>
-          <li>Thursday</li>
-          <li>Friday</li>
-          <li>Saturday</li>
-          <li>Sunday</li>
-        </ul>
-
-        <ul class="days">
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
-          <li>7</li>
-          <li>8</li>
-          <li>9</li>
-          <li>10</li>
-          <li>11</li>
-          <li>12</li>
-          <li>13</li>
-          <li>14</li>
-          <li>15</li>
-          <li>16</li>
-          <li>17</li>
-          <li>18</li>
-          <li>19</li>
-          <li>20</li>
-          <li>21</li>
-          <li>22</li>
-          <li>23</li>
-          <li>24</li>
-          <li>25</li>
-          <li>26</li>
-          <li>27</li>
-          <li>28</li>
-          <li>29</li>
-          <li>30</li>
-          <li>31</li>
-        </ul>
       </div>
-      <!-- calendar code end -->
+    </div>
 
-      <!-- To do container -->
-      <div class="todo-list-container">
-        <div class="event-calendar-pop-up">
-          <div class="edit-placeholder">
-            <input placeholder="What would you like to plan" class="plan-input" type="text">
-            <input placeholder="Enter date" class = "plan-date" type = "text">
-          </div>
-          <div class="event">
-            <ul class="todays-date">
-              <li>
-                <p class="info-date">March 16, 2021</p>
-              </li>
-            </ul>
-          </div>
-          <div class="buttons">
-            <button class="save">Save</button>
-            <button class="cancel">cancel</button>
-          </div>
-        </div>
-      </div>
-      <!-- To do end container -->
-
+<<<<<<< HEAD
       <div class = "slideshow">
         <div class = "wrapper">
           <div class = "slides"><h2 class = "image1">mountains</h1></div>
@@ -131,9 +52,58 @@
 
 
     <!-- </div> -->
+=======
+    <div class="col rightCol">
+      <div class="month">
+  <ul>
+    <li id="left" class="prev arrow">&#10094;</li>
+    <li id="right"class="next arrow">&#10095;</li>
+    <li class="current_month"style="	color: rgb(46,17,45);">
+      <br>
+    </li>
+    <div class="year" style="font-size:18px"></div>
+  </ul>
+</div>
+>>>>>>> 79d02a6111e2ef8403a4fa45cacaec683c159019
 
+<ul class="days">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+  <li>7</li>
+  <li>8</li>
+  <li>9</li>
+  <li><span class="active">10</span></li>
+  <li>11</li>
+  <li>12</li>
+  <li>13</li>
+  <li>14</li>
+  <li>15</li>
+  <li>16</li>
+  <li>17</li>
+  <li>18</li>
+  <li>19</li>
+  <li>20</li>
+  <li>21</li>
+  <li>22</li>
+  <li>23</li>
+  <li>24</li>
+  <li>25</li>
+  <li>26</li>
+  <li>27</li>
+  <li>28</li>
+  <li>29</li>
+  <li>30</li>
+  <li>31</li>
+</ul>
+      </div>
+    </div>
   </div>
-  <script src="../JsFiles/calander.js"></script>
+<script src="../JsFiles/calander.js"></script>
+<script src="../JsFiles/initializeFireBase.js"></script>
 </body>
 
 </html>
