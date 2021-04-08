@@ -178,6 +178,7 @@ a{
   margin-bottom: 5px;
   font-size:18px;
   color: rgb(46,17,45);
+	cursor: pointer;
 }
 
 .days li .active{
