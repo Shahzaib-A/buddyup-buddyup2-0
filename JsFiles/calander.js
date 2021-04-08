@@ -30,20 +30,30 @@ var daysOfMonth = {
 }
 dateObj = new Date();
 let currentDate = [months[dateObj.getMonth()], dateObj.getFullYear(), dateObj.getDate()]
+let allEvents = []
 
-function setActive(){
+function setActive() {
 
-  if($('.current_month').text() == currentDate[0]){
-  let span = document.createElement('span')
-  span.setAttribute('class', 'active')
-  span.innerText = document.querySelectorAll('.days li')[currentDate[2] - 1].innerText
-  document.querySelectorAll('.days li')[currentDate[2] - 1].innerText = ''
-  document.querySelectorAll('.days li')[currentDate[2] - 1].appendChild(span)
+  if ($('.current_month').text() == currentDate[0] && $('.year').text() == currentDate[1]) {
+    let span = document.createElement('span')
+    span.setAttribute('class', 'active')
+    span.innerText = document.querySelectorAll('.days li')[currentDate[2] - 1].innerText
+    document.querySelectorAll('.days li')[currentDate[2] - 1].innerText = ''
+    document.querySelectorAll('.days li')[currentDate[2] - 1].appendChild(span)
   }
 }
 
-function setEvent(date,year){
-
+function setEvent(dateArray) {
+  for (let i = 0; i < dateArray.length; i++) {
+    let day = dateArray[i][0][2].replace(/\D/g, '');
+    if (dateArray[i][0][1] == $('.current_month').text() && day != currentDate[2] && dateArray[i][1] == $('.year').text()) {
+      let span = document.createElement('span')
+      span.setAttribute('class', 'event')
+      span.innerText = document.querySelectorAll('.days li')[day - 1].innerText
+      document.querySelectorAll('.days li')[day - 1].innerText = ''
+      document.querySelectorAll('.days li')[day - 1].appendChild(span)
+    }
+  }
 }
 //This is to change the date
 function changeDays(maxDays) {
@@ -163,39 +173,49 @@ function makeNote(note) {
 }
 
 setTimeout(async () => {
-  /*   Update events  */
-  async function updateData(dateWanted){
-    let date = dateWanted.split(" ").slice(-1)[0].replace('th','').replace('nd','').replace('rd','')*1
+  /* Update events */
+  async function updateData(dateWanted) {
+    let date = dateWanted.split(" ").slice(-1)[0].replace('th', '').replace('nd', '').replace('rd', '') * 1
+    dateWanted = `${(dateWanted.split(" ").slice(0,2)).join(" ")} ${makeCardinal(date.toString())}`
     await firebase.database().ref("Users/" + firebase.auth().currentUser.uid + "/Events/").orderByChild(dateWanted).once('value', snapshot => {
-			let events_for_date = snapshot.val()
-			try{
-      makeNote(events_for_date[dateWanted][Object.keys(events_for_date[dateWanted])[0]].EventHtml)
-      setEvent(events_for_date[dateWanted][Object.keys(events_for_date[dateWanted])[0]].EventHtml, events_for_date[dateWanted][Object.keys(events_for_date[dateWanted])[0]].year)
-    }
-		catch{
-			console.log('could not find anything')
-			document.querySelector('.noteList').innerHTML = ''
-		}
-		})
+      let events_for_date = snapshot.val()
+      try {
+        Object.keys(events_for_date).forEach((item, i) => {
+          let date = item.split(" ")
+          let year = events_for_date[item][Object.keys(events_for_date[item])[0]].year
+          allEvents.push([date, year])
+        });
 
-
+        Object.keys(events_for_date[dateWanted]).forEach((item, i) => {
+          makeNote(item)
+        });
+      } catch (err) {
+          document.querySelector('.noteList').innerHTML = ''
+      }
+    })
   }
 
-	await updateData($('.date').text())
+  await updateData($('.date').text())
+  await setEvent(allEvents)
 
-	$(".days li").click(async function() {
+  $(".days li").click(async function() {
     document.querySelector('.noteList').innerHTML = ''
-	  let cd = makeCardinal(this.innerHTML)
-		let weekDay = new Date(`${$(".current_month").text()} ${this.innerHTML} ${$('.year').text()}`)
-    var options = { weekday: 'long'};
-	  document.querySelector('.date').innerHTML = `${new Intl.DateTimeFormat('en-US', options).format(weekDay)} ${$(".current_month").text()} ${cd}`
+    let cd = makeCardinal(this.innerHTML)
+    let weekDay = new Date(`${$(".current_month").text()} ${$(this).text()} ${$('.year').text()}`)
+    var options = {
+      weekday: 'long'
+    };
+    document.querySelector('.date').innerHTML = `${new Intl.DateTimeFormat('en-US', options).format(weekDay)} ${$(".current_month").text()} ${cd}`
+    await updateData($('.date').text())
+  })
 
-		await updateData($('.date').text())
-	})
+  $(".arrow").click(function() {
+    setEvent(allEvents)
+  })
 
   $(".addNote").click(async function() {
-    let noteToAdd = [$(".note").val(), $('.date').text(),$('.year').text()]
-    if (noteToAdd[0] != '') {
+    let noteToAdd = [$(".note").val(), $('.date').text(), $('.year').text()]
+    if (noteToAdd[0] != ''){
       let noteHtml = [document.createElement('li'), document.createElement('a')]
       makeNote(noteToAdd[0])
       document.querySelector('.noteList').appendChild(noteHtml[0])
@@ -204,14 +224,15 @@ setTimeout(async () => {
         EventHtml: noteToAdd[0],
         year: noteToAdd[2]
       })
-
+      allEvents.push([$('.date').text().split(" "), $('.year').text()])
+      console.log(allEvents)
+      setEvent(allEvents)
       $(".note").val('')
     }
-
   })
 
   $(document).on('click', ".removeNote", async function() {
-    let note = [this.parentNode.innerHTML.split('<')[0],$('.date').text()]
+    let note = [this.parentNode.innerHTML.split('<')[0], $('.date').text()]
     await firebase.database().ref(`Users/${firebase.auth().currentUser.uid}/Events/${note[1]}/${note[0]}`).remove()
     this.parentNode.remove()
   })

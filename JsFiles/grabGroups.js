@@ -44,6 +44,6 @@ setTimeout(async ()=>{
   })
 
   await firebase.database().ref('Groups').on("child_removed", function(snapshot){
-    alert("Modify")
+    
   });
 })

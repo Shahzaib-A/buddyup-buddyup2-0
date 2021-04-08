@@ -117,7 +117,7 @@ async function createGroup(path, special = [false]){
   await firebase.database().ref(`${path}/Members`).child(`member${mnub}`).set(user)
   sessionStorage.setItem('chat',`${path}/messages`)
   sessionStorage.setItem('member',`${sessionStorage.getItem('chat').replace('message',"Member")}/member${mnub}`)
-  // location.reload()
+  location.reload()
 
 }
 
@@ -195,7 +195,6 @@ $(".enter-message").keypress(async function (e) {
           break;
 
           case "leave":
-          console.log(sessionStorage.getItem('groupMem'))
             if(sessionStorage.getItem('groupMem') == 1){
               firebase.database().ref(sessionStorage.getItem('member').split('/').slice(0,3).join('/')).remove()
             }else{
@@ -208,7 +207,7 @@ $(".enter-message").keypress(async function (e) {
 
         case "gr":
           isGroupValid = isValidGroup(isSpecial(message)[1])
-          if(isGroupValid){
+          if(isGroupValid && sessionStorage.getItem('chat') == 'general'){
             await newGroup(isSpecial(message)[1])
           }else{
             alert("Aldready in group and or group is not valid, please try again")
