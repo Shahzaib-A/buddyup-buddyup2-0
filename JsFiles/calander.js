@@ -35,18 +35,18 @@ let allEvents = []
 function setActive() {
 
   if ($('.current_month').text() == currentDate[0] && $('.year').text() == currentDate[1]) {
-    let span = document.createElement('span')
-    span.setAttribute('class', 'active')
-    span.innerText = document.querySelectorAll('.days li')[currentDate[2] - 1].innerText
+    let div = document.createElement('span')
+    div.setAttribute('class', 'active')
+    div.innerText = document.querySelectorAll('.days li')[currentDate[2] - 1].innerText
     document.querySelectorAll('.days li')[currentDate[2] - 1].innerText = ''
-    document.querySelectorAll('.days li')[currentDate[2] - 1].appendChild(span)
+    document.querySelectorAll('.days li')[currentDate[2] - 1].appendChild(div)
   }
 }
 
 function setEvent(dateArray) {
   for (let i = 0; i < dateArray.length; i++) {
     let day = dateArray[i][0][2].replace(/\D/g, '');
-    if (dateArray[i][0][1] == $('.current_month').text() && day != currentDate[2] && dateArray[i][1] == $('.year').text()) {
+    if (dateArray[i][0][1] == $('.current_month').text() && day != currentDate[2] && dateArray[i][1] == $('.year').text()){
       let span = document.createElement('span')
       span.setAttribute('class', 'event')
       span.innerText = document.querySelectorAll('.days li')[day - 1].innerText
@@ -183,7 +183,8 @@ setTimeout(async () => {
         Object.keys(events_for_date).forEach((item, i) => {
           let date = item.split(" ")
           let year = events_for_date[item][Object.keys(events_for_date[item])[0]].year
-          allEvents.push([date, year])
+          let activites = Object.keys(events_for_date[item])
+          allEvents.push([date, year,activites])
         });
 
         Object.keys(events_for_date[dateWanted]).forEach((item, i) => {
@@ -196,11 +197,11 @@ setTimeout(async () => {
   }
 
   await updateData($('.date').text())
-  await setEvent(allEvents)
+  setEvent(allEvents)
 
   $(".days li").click(async function() {
     document.querySelector('.noteList').innerHTML = ''
-    let cd = makeCardinal(this.innerHTML)
+    let cd = makeCardinal(this.innerText)
     let weekDay = new Date(`${$(".current_month").text()} ${$(this).text()} ${$('.year').text()}`)
     var options = {
       weekday: 'long'
@@ -225,7 +226,6 @@ setTimeout(async () => {
         year: noteToAdd[2]
       })
       allEvents.push([$('.date').text().split(" "), $('.year').text()])
-      console.log(allEvents)
       setEvent(allEvents)
       $(".note").val('')
     }
@@ -235,5 +235,12 @@ setTimeout(async () => {
     let note = [this.parentNode.innerHTML.split('<')[0], $('.date').text()]
     await firebase.database().ref(`Users/${firebase.auth().currentUser.uid}/Events/${note[1]}/${note[0]}`).remove()
     this.parentNode.remove()
+    document.querySelectorAll('li .event').forEach((item, i) => {
+      if(document.querySelector('.noteList').innerText == 0){
+        document.querySelectorAll('.days li')[note[1].split(" ").slice(-1)[0].replace(/\D/g, '')*1-1].childNodes[0].remove()
+        document.querySelectorAll('.days li')[note[1].split(" ").slice(-1)[0].replace(/\D/g, '')*1-1].innerText = note[1].split(" ").slice(-1)[0].replace(/\D/g, '')
+      }
+    });
+
   })
 }, 2000)

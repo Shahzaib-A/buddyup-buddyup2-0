@@ -190,7 +190,7 @@ a{
 .days li .event{
 	height: 100%;
 	width: 100%;
-  border-bottom: 2px rgb(255,108,64) solid;
+  border-bottom: 2px #b36200 solid;
 }
 
 /* Add media queries for smaller screens */
