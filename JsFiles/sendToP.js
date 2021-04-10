@@ -108,8 +108,20 @@ function isValidGroup(selectedGroup){
   return list.indexOf(selectedGroup.toLowerCase()) != -1
 }
 
+async function check_space(path, len_wan = false){
+  await firebase.database().ref(path).once('value',snapshot=>{
+    if(Object.keys(snapshot.val()["Members"]).length < 5 && !len_wan){
+      createGroup(path)
+    }
+    else if( Object.keys(snapshot.val()["Members"]).length >= 5 && !len_wan){
+      alert('Thi group is currently full, please try again at a later time')
+    }
+    sessionStorage.setItem('numMembers',Object.keys(snapshot.val()["Members"]).length)
+  })
+}
+
 // ---Check and remove from other groups--- //
-async function createGroup(path, special = [false]){
+async function createGroup(path){
   /* ---Variables--- */
   var mnub = Math.random().toString().substring(0,7).split(".")[1]
   var found = false
@@ -118,20 +130,20 @@ async function createGroup(path, special = [false]){
   sessionStorage.setItem('chat',`${path}/messages`)
   sessionStorage.setItem('member',`${sessionStorage.getItem('chat').replace('message',"Member")}/member${mnub}`)
   location.reload()
-
 }
 
 async function newGroup(selectedGroup){
   selectedGroup = selectedGroup.toLowerCase()
   await firebase.database().ref("Groups").once('value',async snapshot=>{
+
     if(snapshot.exists()){
     if(snapshot.val()[selectedGroup] != undefined){
     /* ---I reliaze this is not good practice, but I did this because it would otherwise make the code messy--- */
-    /* Btw this is to determine what groups are full and what groups are not full */
+    /* Btw this is to determine what groups are full and what groups are not full --- Did it this way so that, groups woould fill evenly */
     groupFull = Object.keys(snapshot.val()[selectedGroup]).map((el,i) => el = Object.keys(snapshot.val()[selectedGroup][el].Members).length < 5?[Object.keys(snapshot.val()[selectedGroup])[i],false]:[Object.keys(snapshot.val()[selectedGroup])[i],true])
     groupEnterd = false
 
-    /* ---Determine what groups have spaces--- */
+    /* ---Determine what groups have spaces (What groups have been skipped(ex. grp1 grp 3 -> grp2 would be recognized as skipped))--- */
     for(var i = 0;i<groupFull.length;i++){
       if(!groupFull[i][1]){
         await createGroup(`Groups/${selectedGroup}/${groupFull[i][0]}`)
@@ -139,29 +151,30 @@ async function newGroup(selectedGroup){
         break //Stupid thing almost broke everything
       }
     }
-    /* ---Detmine if groups are missing--- */
-    if(parseInt(groupFull[groupFull.length - 1][0].split("").reverse()[0]) != groupFull.length && !groupEnterd){
+
+    /* ---Adds member to missing groups inorder to fill them up--- */
+    if(groupFull[groupFull.length - 1][0].replace(/[^0-9]/g, "")*1 != groupFull.length && !groupEnterd){
       for(var i = 0; i< parseInt(groupFull[groupFull.length - 1][0].split("").reverse()[0]);i++){
+        console.log(groupFull[i])
         if(groupFull[i] == undefined){
           await createGroup(`Groups/${selectedGroup}/group${i}`)
           break
         }
       }
     }
-    else if(parseInt(groupFull[groupFull.length - 1][0].split("").reverse()[0]) == groupFull.length && !groupEnterd){
-      await createGroup(`Groups/${selectedGroup}/group${parseInt(groupFull[groupFull.length - 1][0].split("").reverse()[0]) + 1}`)
+
+    // ---Determines that all groups are full, then makes a new one--- //
+    else if(groupFull[groupFull.length - 1][0].replace(/[^0-9]/g, "")*1 == groupFull.length && !groupEnterd){
+      await createGroup(`Groups/${selectedGroup}/group${groupFull[groupFull.length - 1][0].replace(/[^0-9]/g, "")*1+1}`)
     }
   }
   else{
     await createGroup(`Groups/${selectedGroup}/group1`)
   }
-  groupMem = Object.keys(snapshot.val()[selectedGroup]).map((el,i) => el = Object.keys(snapshot.val()[selectedGroup][el].Members).length + 1)
 }
 else{
   await createGroup(`Groups/${selectedGroup}/group1`)
-  groupMem = 1
 }
-  sessionStorage.setItem('groupMem',groupMem)
 })
 }
 
@@ -195,19 +208,20 @@ $(".enter-message").keypress(async function (e) {
           break;
 
           case "leave":
-            if(sessionStorage.getItem('groupMem') == 1){
-              firebase.database().ref(sessionStorage.getItem('member').split('/').slice(0,3).join('/')).remove()
-            }else{
-              firebase.database().ref(sessionStorage.getItem('member')).remove()
-            }
-            sessionStorage.setItem("chat","general")
-            sessionStorage.setItem('member',null)
-            location.reload()
+             await check_space(sessionStorage.getItem('chat').split("/").slice(0,3).join('/'),true)
+             if(sessionStorage.getItem('numMembers') == 1){
+               await firebase.database().ref(sessionStorage.getItem('chat').split("/").slice(0,3).join('/')).remove()
+             }
+             else{
+               await firebase.database().ref(sessionStorage.getItem('member')).remove()
+             }
+             sessionStorage.setItem('chat','general')
+             sessionStorage.setItem('member',null)
+             location.reload()
             break;
-
         case "gr":
           isGroupValid = isValidGroup(isSpecial(message)[1])
-          if(isGroupValid){
+          if(isGroupValid && sessionStorage.getItem('chat') == 'general'){
             await newGroup(isSpecial(message)[1])
           }else{
             alert("Aldready in group and or group is not valid, please try again")
