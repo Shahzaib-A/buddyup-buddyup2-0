@@ -93,7 +93,10 @@ function isSpecial(message){
   /* ---Grab first letter to determine type of message--- */
   type = message.split(" ")[0].split("")[0]
   /* ---Return type of message and value of message---  */
-  if( type == "@"){
+  if( message.split(" ")[0] == "@moderate"){
+    return ["m",message.split(" ")[1]]
+  }
+  else if( message.split(" ")[0] != "@moderate" && type == "@"){
     return ["p",message.split(" ")[0].replace("@","")]
   }
   else if(type == "!"){
@@ -201,6 +204,14 @@ $(".enter-message").keypress(async function (e) {
 
       //Determine type of message
       switch(isSpecial(message)[0]){
+        case "m":
+          reason = prompt('Reason for report :')
+          await firebase.database().ref('Report/').push({
+            Report:isSpecial(message)[1],
+            Reason:reason
+          })
+          break;
+
         case "p":
           messageObject.sendTo = isSpecial(message)[1]
           messageObject.sender = user

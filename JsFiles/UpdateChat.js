@@ -34,6 +34,8 @@ setTimeout(async () => {
   rootMessages.limitToLast(1).on("child_added", (snapshot) => {
     if (!ignore) {
       document.querySelector('.discussion').innerHTML += snapshot.val().messageToDisp
+      var objDiv = document.querySelector(".discussion");
+      objDiv.scrollTop = objDiv.scrollHeight;
     }
   })
 
@@ -42,6 +44,8 @@ setTimeout(async () => {
     let data = snapshot.val()
     for(let i in data){
         document.querySelector('.discussion').innerHTML += data[i].messageToDisp
+        var objDiv = document.querySelector(".discussion");
+        objDiv.scrollTop = objDiv.scrollHeight;
     }
     ignore = false
   })
@@ -55,6 +59,8 @@ await rootDm.limitToLast(1).on("value", async snapshot=>{
       snapshot.forEach(x => {
         if(x.val().sendTo == user || x.val().sender == user){
           document.querySelector('.discussion').innerHTML += x.val().messageToDisp
+          var objDiv = document.querySelector(".discussion");
+          objDiv.scrollTop = objDiv.scrollHeight;
         }
       })
     })
@@ -67,6 +73,8 @@ await firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('va
   snapshot.forEach(x =>{
     if(x.val().sendTo == user || x.val().sender == user){
       document.querySelector('.discussion').innerHTML += x.val().messageToDisp
+      var objDiv = document.querySelector(".discussion");
+      objDiv.scrollTop = objDiv.scrollHeight;
     }
   })
 })
