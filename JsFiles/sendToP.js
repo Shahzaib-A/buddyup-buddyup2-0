@@ -206,6 +206,7 @@ $(".enter-message").keypress(async function (e) {
       switch(isSpecial(message)[0]){
         case "m":
           reason = prompt('Reason for report :')
+          alert('Thanks for your report, out team will take a look at this user')
           await firebase.database().ref('Report/').push({
             Report:isSpecial(message)[1],
             Reason:reason
