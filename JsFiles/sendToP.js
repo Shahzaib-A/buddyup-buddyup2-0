@@ -127,6 +127,7 @@ async function newGroup(selectedGroup){
     if(snapshot.exists()){
     if(snapshot.val()[selectedGroup] != undefined){
     /* ---I reliaze this is not good practice, but I did this because it would otherwise make the code messy--- */
+    /* Btw this is to determine what groups are full and what groups are not full */
     groupFull = Object.keys(snapshot.val()[selectedGroup]).map((el,i) => el = Object.keys(snapshot.val()[selectedGroup][el].Members).length < 5?[Object.keys(snapshot.val()[selectedGroup])[i],false]:[Object.keys(snapshot.val()[selectedGroup])[i],true])
     groupEnterd = false
 
@@ -135,12 +136,11 @@ async function newGroup(selectedGroup){
       if(!groupFull[i][1]){
         await createGroup(`Groups/${selectedGroup}/${groupFull[i][0]}`)
         groupEnterd = true
+        break //Stupid thing almost broke everything
       }
     }
     /* ---Detmine if groups are missing--- */
-
     if(parseInt(groupFull[groupFull.length - 1][0].split("").reverse()[0]) != groupFull.length && !groupEnterd){
-      console.log("Adding new group")
       for(var i = 0; i< parseInt(groupFull[groupFull.length - 1][0].split("").reverse()[0]);i++){
         if(groupFull[i] == undefined){
           await createGroup(`Groups/${selectedGroup}/group${i}`)
@@ -207,7 +207,7 @@ $(".enter-message").keypress(async function (e) {
 
         case "gr":
           isGroupValid = isValidGroup(isSpecial(message)[1])
-          if(isGroupValid && sessionStorage.getItem('chat') == 'general'){
+          if(isGroupValid){
             await newGroup(isSpecial(message)[1])
           }else{
             alert("Aldready in group and or group is not valid, please try again")

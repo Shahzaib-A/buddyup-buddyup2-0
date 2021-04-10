@@ -1,2 +1,4 @@
-let x = new Date();
-console.log(x)
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+  databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
+});

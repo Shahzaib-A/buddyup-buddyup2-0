@@ -8,3 +8,11 @@ $(".dropbtn").click(function (){
   })
   $(this).parent().find(".dropdown-content").toggle("Show")
 })
+
+/* --- Add users to group on nav click--- */
+$(".dropdown-content").click(async function (){
+  if(sessionStorage.getItem('chat') == 'general'){
+    newGroup(this.className.split(" ")[1])
+    alert(sessionStorage.getItem('chat'))
+  }else{alert('You are aldready in a group, please type !Leave in the chat to leave the current group')}
+})
