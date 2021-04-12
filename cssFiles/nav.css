@@ -10,27 +10,32 @@ nav #navs{
 body {
 	font-family: arial;
 }
-
+*{
+	transition: 0.6s;
+	outline: none;
+}
+#nh:hover{
+	border-top: 5px solid rgb(0,234,80);
+}
 nav {
-	height: 100px;
+	height: 75px;
 	width: 100%;
 	background: #222227;
-	border-bottom: 5px solid black;
 }
 
-nav .logo {
-	top-margin: 20px;
+.logo {
+	font-size: 1.5rem;
+	color: white;
+	margin-top:20px;
 	padding: 0 50px;
 	line-height: 80px;
 	cursor: pointer;
+	transition: 0.6s;
 }
 
-nav .logo {
-  font-size: 2rem;
-  padding: 0 0.4rem;
-  background: linear-gradient(to left, transparent 50%, rgb(34, 139, 34) 50%) right;
-  background-size: 200%;
-  transition: 0.5s ease-out;
+ .logo:hover{
+	 color: rgb(0,234,80);
+	 font-size: 2rem;
 }
 
 nav ul {
@@ -62,7 +67,7 @@ nav #navs {
 }
 
 @media (max-width: 1048px){
-	label.logo{
+.logo{
 		font-size: 35px;
 		padding-left: 60px;
 	}
@@ -90,8 +95,7 @@ nav #navs {
 		width: 25%;
 		width: 35%;
 		display: none;
-
-	}
+}
 
 	nav li {
 		display: block;
@@ -105,19 +109,8 @@ nav #navs {
 		font-size: 20px;
 	}
 
-	a .active, a:hover{
-		border: none;
-		color: #3498db;
-	}
-
 	nav ul .show{
 		left: 0;
-	}
-}
-
-@media (max-width: 337px) {
-	nav ul {
-
 	}
 }
 

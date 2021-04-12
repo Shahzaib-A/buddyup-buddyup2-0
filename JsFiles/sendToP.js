@@ -1,55 +1,5 @@
 /*
-  ---Logic---
-  When users types !subject they automaticly get put into a group that is not full
-    And there sessionStorage automaticly gets set to the current chat they are in
-    This way even if they leave to another chat there sessionStorage gets overwritten
 
-  If all groups are full
-    New group is made and sessionStorage is set to the current path
-    Upon creation of groups, a reminder will be sent out to everyone to be respectful and not following that will result in a ban
-
-  If no group is made for the specific subject then same protocol will be followed ^^
-
-  new ban systyem act's like moderation systyem
-    So you do @report user name for reason which will be filed as a report at this person
-    From there we will have a server side script that notify our email saying that such and such person was misbehaing and we also get sender
-    This way we can reduce false ban's
-
-  ---Reason for abondaning prev thoughts---
-  1. to complex
-  2. Alot of redunent code
-    -So many for loops and awaits slowing down performace
-    -Ban systyem was flawed
-      -If people group up on one person and could ban him or her for no reason
-    -Probelems: not able to check if users have aldready joined groups
-  ---Step for exucution---
-  1.Check if the subject they want is aldready made
-    1. -> If aldready exists, then we check if there is space
-      ---There is space---
-      We set the sessionStorage item chat to be the path of that chat so that they only get that sepecific chat's and refreshing wont boot back to general
-      ---No space---
-      We will create a new group, and set sessionStorage item of chat to that path
-      we will then send a bot message stating please be respectful (maybe if time permits)
-    2. -> said subject does not exist
-      ---Should---
-      follow same protocol for no space and there is a group
-    3.If user clicks on a group that is too full, then user will be alerted
-
-  2. Sending messages
-    ---exucution---
-    Sends to the path of chat in sessionStorage
-
-  3. Delete user from member
-    When user closes window member will be deletedd from group---
-      ---Issue---
-      if there is only one user and no message was sent entirety is deletedd
-        ---Solution---
-        Save groups under superclass of groups then go through each subject and check if a group is missing
-          If a group is missing assign them to that group
-          If a group is not missing go through the list and make sure it has 5 people or more
-            If it does not simply add the user to that group$
-            Else move on to the next group
-          If all groups are full then make a new group
 */
 
 /* ---Variables--- */
@@ -88,14 +38,34 @@ async function getImage(){
     return img
   }
 
+async function upVote(user){
+  await firebase.database().ref(`upvote/user/${user}`).once('value',async snapshot=>{
+      await firebase.database().ref(`upvote/user/${user}`).set(snapshot.val()*1+1)
+  })
+}
+
+async function downVote(user){
+  await firebase.database().ref(`upvote/user/${user}`).once('value',async snapshot=>{
+      await firebase.database().ref(`upvote/user/${user}`).set(snapshot.val()*1-1)
+  })
+}
+
 /* ---Find out if the message is a special message (private, creation of group)--- */
 function isSpecial(message){
   /* ---Grab first letter to determine type of message--- */
   type = message.split(" ")[0].split("")[0]
   /* ---Return type of message and value of message---  */
-  if( message.split(" ")[0] == "@moderate"){
+  if(message.split(" ")[0] == "@moderate"){
     return ["m",message.split(" ")[1]]
   }
+  else if(message.split("^")[0] == "" && message.split("^")[2] == ""){
+    return['u',message.split("^")[1]]
+  }
+
+  else if(message.split("/")[0] == "" && message.split("/")[2] == ""){
+    return['d',message.split("/")[1]]
+  }
+
   else if( message.split(" ")[0] != "@moderate" && type == "@"){
     return ["p",message.split(" ")[0].replace("@","")]
   }
@@ -117,7 +87,7 @@ async function check_space(path, len_wan = false){
       createGroup(path)
     }
     else if( Object.keys(snapshot.val()["Members"]).length >= 5 && !len_wan){
-      alert('Thi group is currently full, please try again at a later time')
+      alert('This group is currently full, please try again at a later time')
     }
     sessionStorage.setItem('numMembers',Object.keys(snapshot.val()["Members"]).length)
   })
@@ -204,6 +174,7 @@ $(".enter-message").keypress(async function (e) {
 
       //Determine type of message
       switch(isSpecial(message)[0]){
+
         case "m":
           reason = prompt('Reason for report :')
           alert('Thanks for your report, out team will take a look at this user')
@@ -211,6 +182,14 @@ $(".enter-message").keypress(async function (e) {
             Report:isSpecial(message)[1],
             Reason:reason
           })
+          break;
+
+        case "u":
+          await upVote(isSpecial(message)[1])
+          break;
+
+        case "d":
+          await downVote(isSpecial(message)[1])
           break;
 
         case "p":
@@ -231,6 +210,7 @@ $(".enter-message").keypress(async function (e) {
              sessionStorage.setItem('member',null)
              location.reload()
             break;
+
         case "gr":
           isGroupValid = isValidGroup(isSpecial(message)[1])
           if(isGroupValid && sessionStorage.getItem('chat') == 'general'){

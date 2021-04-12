@@ -30,7 +30,7 @@ setTimeout(async () => {
   var ignore = true
   var ig2 = true
 // ---ALL GENRAL MESAGES--- //
-  // ---update sent message and add to local storage--- //
+  // ---update sent message--- //
   rootMessages.limitToLast(1).on("child_added", (snapshot) => {
     if (!ignore) {
       document.querySelector('.discussion').innerHTML += snapshot.val().messageToDisp
@@ -39,7 +39,7 @@ setTimeout(async () => {
     }
   })
 
-  // ---Load all messages and store in local storage--- //
+  // ---Load all messages--- //
   await rootMessages.once('value',snapshot => {
     let data = snapshot.val()
     for(let i in data){
@@ -80,5 +80,5 @@ await firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('va
 })
 ig2 = false
 })
-//Clear messages
+
 }, 1000)

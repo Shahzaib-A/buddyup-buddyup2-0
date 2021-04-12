@@ -1,13 +1,4 @@
 /*
-	---Tasks---
-	PRESSING FIX METHOD OF GETTING MONTHS AND DAYS!!
-
-	1. calander switching dates on arrow done
-	2.change date on to do done
-	3.automaticly set to-do to todays date done
-	4.load data to selected to-do
-
-	---Logic---
 
 */
 
@@ -241,6 +232,5 @@ setTimeout(async () => {
         document.querySelectorAll('.days li')[note[1].split(" ").slice(-1)[0].replace(/\D/g, '')*1-1].innerText = note[1].split(" ").slice(-1)[0].replace(/\D/g, '')
       }
     });
-
   })
 }, 2000)
