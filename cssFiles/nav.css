@@ -52,12 +52,6 @@ nav a {
 	border-radius: 3px;
 }
 
-/* a .active, a:hover {
-	border:1px solid green;
-	transition: .6s;
-	border-radius: 5px
-} */
-
 nav #navs {
 	color: white;
 	font-size: 20px;
