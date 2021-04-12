@@ -10,28 +10,32 @@ nav #navs{
 body {
 	font-family: arial;
 }
-
+*{
+	transition: 0.6s;
+	outline: none;
+}
+#nh:hover{
+	border-top: 5px solid rgb(0,234,80);
+}
 nav {
-	height: 100px;
+	height: 75px;
 	width: 100%;
 	background: #222227;
-	border-bottom: 5px solid black;
 }
 
-label .logo {
-	top-margin: 20px;
+.logo {
+	font-size: 1.5rem;
+	color: white;
+	margin-top:20px;
 	padding: 0 50px;
 	line-height: 80px;
 	cursor: pointer;
+	transition: 0.6s;
 }
 
-label .logo {
-  font-size: 2.5rem;
-  padding: 0 2rem;
-  background: linear-gradient(to left, transparent 50%, rgb(34, 139, 34) 50%) right;
-  background-size: 200%;
-	border-radius: 50px;
-  transition: 0.5s ease-out;
+ .logo:hover{
+	 color: rgb(0,234,80);
+	 font-size: 2rem;
 }
 
 nav ul {
@@ -53,12 +57,6 @@ nav a {
 	border-radius: 3px;
 }
 
-/* a .active, a:hover {
-	border:1px solid green;
-	transition: .6s;
-	border-radius: 5px
-} */
-
 nav #navs {
 	color: white;
 	font-size: 20px;
@@ -69,7 +67,7 @@ nav #navs {
 }
 
 @media (max-width: 1048px){
-	label.logo{
+.logo{
 		font-size: 35px;
 		padding-left: 60px;
 	}
@@ -94,43 +92,25 @@ nav #navs {
 		top: 80px;
 		text-align: center;
 		transition: all .5s;
-<<<<<<< HEAD
 		width: 25%;
-=======
 		width: 35%;
 		display: none;
->>>>>>> 79d02a6111e2ef8403a4fa45cacaec683c159019
-	}
+}
 
 	nav li {
 		display: block;
-<<<<<<< HEAD
 		margin: 45px 0;
 		line-height: 30px;
-=======
 		line-height: 30px;
 		margin: 50px 0;
->>>>>>> 79d02a6111e2ef8403a4fa45cacaec683c159019
 	}
 
 	nav a{
 		font-size: 20px;
 	}
 
-	a .active, a:hover{
-		border: none;
-		color: #3498db;
-	}
-
 	nav ul .show{
 		left: 0;
-	}
-}
-<<<<<<< HEAD
-
-@media (max-width: 337px) {
-	nav ul {
-
 	}
 }
 
@@ -154,5 +134,3 @@ nav #navs {
 		margin-left: 100px;
 		margin-right: 100px;
 	}
-=======
->>>>>>> 79d02a6111e2ef8403a4fa45cacaec683c159019

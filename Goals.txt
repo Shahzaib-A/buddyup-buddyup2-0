@@ -4,45 +4,42 @@
 The purpose of the project is to make studying together easier
 Users log on to the website, and simply insert tasks in a calendar
 If users have tests or exams in the calendar BuddyUp automatically finds other people who are studying for the same tests
-It then finds the best match based on location
+It then finds the best match based on location (Get done)
 user can that choose a group and meet up at that location and ace their test hopefully (;
-Other features include automatic notifications on assignments
-Tips to survive high school/university
-
+Other features include automatic reminders of what matters are most urgent (Get done)
+Also recommends current user members that are really good at a subject that they struggle with and have a upcoming event (Get done)
 -----------------------
 -- Things to achieve --
 -----------------------
 Website
 Database
-Location calculator algorithm
-Encryption of the location
-notifications
-Ban of Users
 Make a interactive calendar that users can use to plan
-Make a sytyem that saves the data to the email of Users
-
+Chat
+Geolocation
+settings
+Chill zone
+about us
 -----------
 -- Roles --
 -----------
-Harsh :Tip and login help and geolocation
-Rahul : Design website and help with location matching
+Harsh :about us, login help - some css, and nav bar, calendar html css, commenting my js
+Rahul : location matching, chat js html css, calendar js , database, some minimal css and html help, log in page html css and js
 Shazahiab : The chill system and dark mode
 Hamza : Firebase and Settings
 
 -------------------------
 -- Things accomplished --
 -------------------------
-Navbar complete: Rahul
+Navbar complete: Harsh
 Login complete: Rahul
 Signup complete: Rahul
-Geolocation incomplete: Rahul Harsh
-Calendar incomplete: Rahul
-Tips incomplete : Harsh
+Geolocation incomplete: Rahul
+Calendar complete: Rahul
 Chill-thing incomplete: Shazaib
 Settings incomplete: hamza
-Dark theme incomplete: Shazaib
+Dark theme incomplete: Hamza
 About us incomplete:Hamza,Rahul,Harsh,Shazaib
-
+Chat complete: Rahul
 --------------
 -- Timeline --
 --------------

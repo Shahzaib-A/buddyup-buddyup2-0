@@ -24,13 +24,20 @@
   <div id="nav-placeholder"></div>
 
   <div class="calendar-cont">
+    <div class="navbar">
+      <div class="dropdown">
+        <button class="dropbtn"><i class="fas fa-bell"></i></button>
+        <div class="dropdown-content Notifications">
 
+        </div>
+      </div>
+    </div>
     <div class="col leftCol">
       <div class="content">
         <h1 class="date"></h1>
         <div class="notes">
           <p>
-            <input class="note"type="text" value="" placeholder="New Note"></input>
+            <input class="note" type="text" value="" placeholder="New Note"></input>
             <a href="#" title="Add note" class="addNote animate" style="font-size: 2rem;">+</a>
           </p>
           <ul class="noteList">
@@ -40,69 +47,60 @@
       </div>
     </div>
 
-
-      <!-- <div class = "slideshow">
-        <div class = "wrapper">
-          <div class = "slides"><h2 class = "image1">mountains</h1></div>
-          <div class = "slides"><h1 class = "image2">lakes</h1></div>
-          <div class = "slides"><h1 class = "image3">skies</h1></div>
-          <div class = "slides"><h1 class = "image4">more mountains</h1></div>
-        </div>
-      </div> -->
-
-
     <!-- </div> -->
 
     <div class="col rightCol">
       <div class="month">
-  <ul>
-    <li id="left" class="prev arrow">&#10094;</li>
-    <li id="right"class="next arrow">&#10095;</li>
-    <li class="current_month"style="	color: rgb(46,17,45);">
-      <br>
-    </li>
-    <div class="year" style="font-size:18px"></div>
-  </ul>
-</div>
-
-<ul class="days">
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
-  <li>4</li>
-  <li>5</li>
-  <li>6</li>
-  <li>7</li>
-  <li>8</li>
-  <li>9</li>
-  <li>10</li>
-  <li>11</li>
-  <li>12</li>
-  <li>13</li>
-  <li>14</li>
-  <li>15</li>
-  <li>16</li>
-  <li>17</li>
-  <li>18</li>
-  <li>19</li>
-  <li>20</li>
-  <li>21</li>
-  <li>22</li>
-  <li>23</li>
-  <li>24</li>
-  <li>25</li>
-  <li>26</li>
-  <li>27</li>
-  <li>28</li>
-  <li>29</li>
-  <li>30</li>
-  <li>31</li>
-</ul>
+        <ul>
+          <li id="left" class="prev arrow">&#10094;</li>
+          <li id="right" class="next arrow">&#10095;</li>
+          <li class="current_month" style="	color: rgb(46,17,45);">
+            <br>
+          </li>
+          <div class="year" style="font-size:18px"></div>
+        </ul>
       </div>
+
+      <ul class="days">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+        <li>17</li>
+        <li>18</li>
+        <li>19</li>
+        <li>20</li>
+        <li>21</li>
+        <li>22</li>
+        <li>23</li>
+        <li>24</li>
+        <li>25</li>
+        <li>26</li>
+        <li>27</li>
+        <li>28</li>
+        <li>29</li>
+        <li>30</li>
+        <li>31</li>
+      </ul>
     </div>
   </div>
-<script src="../JsFiles/initializeFireBase.js"></script>
-<script src="../JsFiles/calander.js"></script>
+  </div>
+
+  <script src="../JsFiles/initializeFireBase.js"></script>
+  <script src="../JsFiles/calander.js"></script>
+  <script src="../JsFiles/suggestions.js"></script>
 </body>
 
 </html>
