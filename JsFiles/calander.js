@@ -2,6 +2,8 @@
 
 */
 
+/* ---Sets current tab user is in--- */
+sessionStorage.setItem('cTab',"Calendar")
 /* ---calander--- */
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturaday"]
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
