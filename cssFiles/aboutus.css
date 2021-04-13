@@ -1,71 +1,65 @@
-.group {
-  /* change around the sizes */
-  margin: 75px 0;
-}
-h1 {
-  text-align: center;
-  color: black;
-  letter-spacing: 2px;
-  padding-bottom: 10px;
-  margin-left: 800px;
-  margin-right: 800px;
-  border-style: solid;
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
 }
 
-
-.group {
-  width: 150px;
-  height: 50px;
-  border: 1px solid #333;
-  font-family: 'Cinzel', serif;
-  font-size: 20px;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 0;
-  transition: 1s;
-}
-
-.group::before, .group::after {
+.display {
   position: absolute;
-  background: #eee;
-  z-index: -1;
-  transition: 1s;
-  content: '';
+  right:0;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  color: #fff;
+  z-index: 2;
+  overflow: hidden;
 }
 
-.group::before {
-  height: 50px;
-  width: 130px;
+.display video {
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  overflow: hidden;
 }
 
-.group::after {
-  width: 150px;
-  height: 30px;
+.Our-mission {
+  position: relative;
+  z-index: 100;
+  margin-bottom: 70px;
 }
 
-.noselect {
-  -webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+.border {
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
 }
 
-.group:hover::before {
-  width: 0px;
-  background: #fff;
+.Our-mission h1{
+  font-weight: 500;
+  font-size: 3.5em;
+  line-height: 1em;
+  margin-bottom: 10px;
 }
 
-.group:hover::after {
-  height: 0px;
-  background: #fff;
+.Our-mission p {
+  margin-top: 10px;
+  font-size: 20px;
 }
 
-.group:hover {
-  background: #fff;
+.Our-mission a {
+  display: inline-block;
+  font-size: 20px;
+  padding: 10px 29px;
+  background-color: white;
+  margin-top: 20px;
 }
