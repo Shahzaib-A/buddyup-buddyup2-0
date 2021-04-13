@@ -1,7 +1,7 @@
 /*
 
 */
-
+sessionStorage.setItem('cTab',"meet")
 /* ---Variables--- */
 var user;
 /* ---Getting user name */
@@ -195,6 +195,7 @@ $(".enter-message").keypress(async function (e) {
         case "p":
           messageObject.sendTo = isSpecial(message)[1]
           messageObject.sender = user
+          messageObject.checked = false
           await sendToServer(messageObject,'Private/')
           break;
 
@@ -221,6 +222,9 @@ $(".enter-message").keypress(async function (e) {
           break
 
         default:
+          if(sessionStorage.getItem('chat') != 'general'){
+            messageObject.readby = user
+          }
           await sendToServer(messageObject)
           break
       }

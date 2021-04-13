@@ -48,7 +48,6 @@ a{
 
 .calendar-cont .col{
 	position: relative;
-	top: 4vh;
 	float: left;
 	height: 100%;
 }
@@ -269,4 +268,89 @@ a{
 
 .dropdown-content a:hover {
   background-color: #ddd;
+}
+
+
+/* Notification */
+.notification-panel{
+	position: absolute;
+	background-color: #333;
+	z-index: 99;
+	height: 90%;
+	max-width: 25%;
+	min-width: 25%;
+	float: right;
+	right: 0%;
+	top: 5%;
+	transition: 0.2s;
+	transform: translateX(100%);
+}
+
+.notification-panel .close{
+	position: absolute;
+	top: 1px;
+  left: -41px;
+	font-size: 1.5rem;
+	padding: 5px 10px;
+	border-radius: 10%;
+	background: rgba(0,234,80,0.9);
+	color: white;
+}
+
+.notification-panel .close:hover{
+	color:#666;
+}
+
+.notification-panel .close .count{
+	display: none;
+	position: absolute;
+	left: 16.25px;
+	top: 25%;
+	color: #111;
+	font-size: 0.9rem;
+}
+
+.notif_list{
+	display: flex;
+	flex-direction: column;
+	color: white;
+}
+
+.notification{
+  display: flex;
+  background-color: #666;
+	border-radius:20px;
+}
+
+.notification:first-child {
+	margin-top: 10px;
+}
+
+.notification:not(:first-child){
+margin-top: 16px;
+}
+
+.cont{
+  padding: 10px;
+}
+
+.title{
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.description{
+  color:rgba(255,255,255,0.9);
+}
+.cls{
+  font-size: 1.5rem;
+  margin-left: auto;
+  padding: 0 10px;
+  border: 0;
+  background-color: #666;
+  cursor: pointer;
+}
+.cls:hover {
+  background-color: #999;
 }
