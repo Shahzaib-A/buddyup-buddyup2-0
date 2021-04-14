@@ -3,7 +3,7 @@
 */
 
 /* ---Sets current tab user is in--- */
-sessionStorage.setItem('cTab',"Calendar")
+sessionStorage.setItem('cTab', "Calendar")
 /* ---calander--- */
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturaday"]
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -24,6 +24,7 @@ var daysOfMonth = {
 dateObj = new Date();
 let currentDate = [months[dateObj.getMonth()], dateObj.getFullYear(), dateObj.getDate()]
 let allEvents = []
+let updatedOldNotif = false
 
 function setActive() {
 
@@ -36,10 +37,61 @@ function setActive() {
   }
 }
 
+function getMonthFromString(mon) {
+  var d = Date.parse(mon + "1, 2012");
+  if (!isNaN(d)) {
+    return new Date(d).getMonth() + 1;
+  }
+  return -1;
+}
+
+function diffrence(d1) {
+  // https://www.delftstack.com/howto/javascript/javascript-subtract-dates/
+  const cDate = Date.UTC(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate())
+  const evDate = Date.UTC(d1.getFullYear(), d1.getMonth(), d1.getDate())
+  const day = 1000 * 60 * 60 * 24;
+  return (evDate - cDate) / day
+}
+
+async function suggestions(eventObject) {
+  for (let key = 0; key < eventObject.length; key++) {
+    var date = new Date(`${eventObject[key][1]}-${getMonthFromString(eventObject[key][0][1])}-${eventObject[key][0][2].replace(/\D/g, '')}`)
+    time_between_dates = diffrence(date)
+    if (time_between_dates <= 5) {
+      if (!updatedOldNotif) {
+        try{
+        eventObject[key][2].forEach((item, i) => {
+          addNotification(`You have ${item} on ${eventObject[key][0].join(" ")}`, 'Date nearing!')
+        });
+      }catch{}
+        updatedOldNotif = true
+      } else {
+        try {
+          console.log(eventObject[key])
+        } catch {
+
+        }
+        // addNotification(`You have ${} on ${eventObject[key][0].join(" ")}`,'Date nearing!')
+        break
+      }
+    }
+    //suggestions for todays date
+  }
+  //Close button function
+  $('.cls').unbind().click(async function(event) {
+    var notification = event.currentTarget.parentNode
+    notification.classList.add('animate-out')
+    setTimeout(() => {
+      notification.remove();
+    }, 500)
+  })
+}
+
 function setEvent(dateArray) {
+  suggestions(dateArray)
   for (let i = 0; i < dateArray.length; i++) {
     let day = dateArray[i][0][2].replace(/\D/g, '');
-    if (dateArray[i][0][1] == $('.current_month').text() && day != currentDate[2] && dateArray[i][1] == $('.year').text()){
+    if (dateArray[i][0][1] == $('.current_month').text() && day != currentDate[2] && dateArray[i][1] == $('.year').text()) {
       let span = document.createElement('span')
       span.setAttribute('class', 'event')
       span.innerText = document.querySelectorAll('.days li')[day - 1].innerText
@@ -177,14 +229,14 @@ setTimeout(async () => {
           let date = item.split(" ")
           let year = events_for_date[item][Object.keys(events_for_date[item])[0]].year
           let activites = Object.keys(events_for_date[item])
-          allEvents.push([date, year,activites])
+          allEvents.push([date, year, activites])
         });
 
         Object.keys(events_for_date[dateWanted]).forEach((item, i) => {
           makeNote(item)
         });
       } catch (err) {
-          document.querySelector('.noteList').innerHTML = ''
+        document.querySelector('.noteList').innerHTML = ''
       }
     })
   }
@@ -209,14 +261,15 @@ setTimeout(async () => {
 
   $(".addNote").click(async function() {
     let noteToAdd = [$(".note").val(), $('.date').text(), $('.year').text()]
-    if (noteToAdd[0] != ''){
+    if (noteToAdd[0] != '') {
       let noteHtml = [document.createElement('li'), document.createElement('a')]
       makeNote(noteToAdd[0])
       document.querySelector('.noteList').appendChild(noteHtml[0])
       await firebase.database().ref("Users/" + firebase.auth().currentUser.uid + "/Events/" + noteToAdd[1]).child(noteToAdd[0]).set({
         Date: noteToAdd[1],
         EventHtml: noteToAdd[0],
-        year: noteToAdd[2]
+        year: noteToAdd[2],
+        read: false
       })
       allEvents.push([$('.date').text().split(" "), $('.year').text()])
       setEvent(allEvents)
@@ -229,9 +282,9 @@ setTimeout(async () => {
     await firebase.database().ref(`Users/${firebase.auth().currentUser.uid}/Events/${note[1]}/${note[0]}`).remove()
     this.parentNode.remove()
     document.querySelectorAll('li .event').forEach((item, i) => {
-      if(document.querySelector('.noteList').innerText == 0){
-        document.querySelectorAll('.days li')[note[1].split(" ").slice(-1)[0].replace(/\D/g, '')*1-1].childNodes[0].remove()
-        document.querySelectorAll('.days li')[note[1].split(" ").slice(-1)[0].replace(/\D/g, '')*1-1].innerText = note[1].split(" ").slice(-1)[0].replace(/\D/g, '')
+      if (document.querySelector('.noteList').innerText == 0) {
+        document.querySelectorAll('.days li')[note[1].split(" ").slice(-1)[0].replace(/\D/g, '') * 1 - 1].childNodes[0].remove()
+        document.querySelectorAll('.days li')[note[1].split(" ").slice(-1)[0].replace(/\D/g, '') * 1 - 1].innerText = note[1].split(" ").slice(-1)[0].replace(/\D/g, '')
       }
     });
   })

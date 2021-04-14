@@ -34,7 +34,7 @@ $('.close').click(function(){
 
 /* ---Add notification--- */
 
-function addNotification(message, title){
+function addNotification(message, title,id){
   const notification = document.createElement("div")
   notification.classList.add('notification')
   notification.innerHTML = `
@@ -43,19 +43,11 @@ function addNotification(message, title){
       <p class="description">${message}</p>
   </div>
   <button class="cls" aria-label="Dismiss notification"><i class="fas fa-times"></i></button>
+  <div class='id' style='display: none;'>${id}</div>
   `
   const closeButton = document.querySelector('.cls')
 
   document.querySelector('.notif_list').prepend(notification)
-}
-
-addNotification('d','ds')
-
-$('.cls').click(()=>{
-  alert('yeaa')
-})
-function removeNotification(){
-
 }
 
 setTimeout(async () => {
@@ -74,24 +66,49 @@ setTimeout(async () => {
   // ---General messages/Group messages--- //
   // ---update sent message--- //
   rootMessages.limitToLast(1).on("child_added", async (snapshot) => {
+
     if (ignoreNew) {
       if (sessionStorage.getItem('cTab') == 'meet') {
         if (sessionStorage.getItem('chat') != 'general') {
           if (snapshot.val().readby.split(" ").indexOf(user) == -1) {
-            console.log('Notification t1')
+            let message = `${snapshot.val().messageToDisp.split(`<h2 class="message">`)[1].split('</h2>')[0]}`
+            message = message.replace(/\s+/g,' ').split(" ").join(" ")
+            let senderName = `${sessionStorage.getItem('chat').split('/')[1]} ${sessionStorage.getItem('chat').split('/')[2].split("group").join("Group ")}`
+            addNotification(message, senderName,snapshot.key)
+            //https://drupal.stackexchange.com/questions/266977/why-does-js-click-function-run-multiple-times (drupal behav.)
+            $('.cls').unbind().click(async function(event){
+              var notification = event.currentTarget.parentNode
+              notification.classList.add('animate-out')
+              setTimeout(()=>{
+                notification.remove();
+              },500)
+              await firebase.database().ref(`${sessionStorage.getItem('chat')}/${notification.querySelector('.id').innerText}/readby`).set(`${snapshot.val().readby} ${user}`)
+            })
           }
         }
       }
       getOld = false
     }
+
   })
 
-  // ---Load all messages--- //
   await rootMessages.on('child_added', async snapshot => {
     if (getOld) {
       if (sessionStorage.getItem('chat') != 'general') {
-        if (snapshot.val().readby.split(" ").indexOf(user) == -1) {
-          console.log('notification t2')
+        if (snapshot.val().readby.split(" ").indexOf(user) == -1){
+          let message = `${snapshot.val().messageToDisp.split(`<h2 class="message">`)[1].split('</h2>')[0]}`
+          message = message.replace(/\s+/g,' ').split(" ").join(" ")
+          let senderName = `${sessionStorage.getItem('chat').split('/')[1]} ${sessionStorage.getItem('chat').split('/')[2].split("group").join("Group ")}`
+          addNotification(message, senderName,snapshot.key)
+          //https://drupal.stackexchange.com/questions/266977/why-does-js-click-function-run-multiple-times (drupal behav.)
+          $('.cls').unbind().click(async function(event){
+            var notification = event.currentTarget.parentNode
+            notification.classList.add('animate-out')
+            setTimeout(()=>{
+              notification.remove();
+            },500)
+            await firebase.database().ref(`${sessionStorage.getItem('chat')}/${notification.querySelector('.id').innerText}/readby`).set(`${snapshot.val().readby} ${user}`)
+          })
         }
       }
       ignoreNew = false
@@ -104,7 +121,19 @@ setTimeout(async () => {
     if (fetchLatest) {
       if (snapshot.val().sendTo == user || snapshot.val().sender == user) {
         if (snapshot.val().sendTo == user && !snapshot.val().checked) {
-
+          let senderName = `Message from ${snapshot.val().messageToDisp.split(`<h2 class="name">`)[1].split('</h2>')[0]}`
+          let message = `${snapshot.val().messageToDisp.split(`<h2 class="message">`)[1].split('</h2>')[0]}`
+          message = message.split(" ").join(" ").replace(/\s+/g,' ').split(" ").slice(2,message.split(" ").join(" ").replace(/\s+/g,' ').split(" ").length - 1).join(" ")
+          addNotification(message, senderName,snapshot.key)
+          //https://drupal.stackexchange.com/questions/266977/why-does-js-click-function-run-multiple-times (drupal behav.)
+          $('.cls').unbind().click(async function(event){
+            var notification = event.currentTarget.parentNode
+            notification.classList.add('animate-out')
+            setTimeout(()=>{
+              notification.remove();
+            },500)
+            await firebase.database().ref(`Private/${notification.querySelector('.id').innerText}/checked`).set(true)
+          })
         }
       }
       fetchold = false
@@ -112,23 +141,22 @@ setTimeout(async () => {
   })
 
   await rootDm.on("child_added", async snapshot => {
-    if (fetchold) {
+    if (fetchold){
       if (snapshot.val().sendTo == user || snapshot.val().sender == user) {
-        if (snapshot.val().sendTo == user && !snapshot.val().checked) {
-          let image = snapshot.val().messageToDisp.split('<img')[1].split(`alt="">`)[0]
-          let senderName = snapshot.val().messageToDisp.split(`<h2 class="name">`)[1].split('</h2>')[0]
-          let html = `
-          <li>
-          <img src=${image} alt="">
-            <div>
-              <h2 class="name">${senderName}</h2>
-                <h2 class="message">
-                  Private messaged you
-                </h2>
-            </div>
-          </li>
-          `
-
+        if (snapshot.val().sendTo == user && !snapshot.val().checked){
+          let senderName = `Message from ${snapshot.val().messageToDisp.split(`<h2 class="name">`)[1].split('</h2>')[0]}`
+          let message = `${snapshot.val().messageToDisp.split(`<h2 class="message">`)[1].split('</h2>')[0]}`
+          message = message.split(" ").join(" ").replace(/\s+/g,' ').split(" ").slice(2,message.split(" ").join(" ").replace(/\s+/g,' ').split(" ").length - 1).join(" ")
+          addNotification(message, senderName,snapshot.key)
+          //https://drupal.stackexchange.com/questions/266977/why-does-js-click-function-run-multiple-times (drupal behav.)
+          $('.cls').unbind().click(async function(event){
+            var notification = event.currentTarget.parentNode
+            notification.classList.add('animate-out')
+            setTimeout(()=>{
+              notification.remove();
+            },500)
+            await firebase.database().ref(`Private/${notification.querySelector('.id').innerText}/checked`).set(true)
+          })
         }
       }
       fetchLatest = true

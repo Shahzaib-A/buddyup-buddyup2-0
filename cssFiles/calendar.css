@@ -92,7 +92,12 @@ a{
 	background-color: rgba(0,0,0,0);
 	color: rgb(46,17,45);
 	border: none;
-	width: 200px;
+	width: 100%;
+}
+
+.addNote{
+	padding: 25px;
+	margin-top: -45px;
 }
 
 .calendar-cont .addNote,
@@ -276,12 +281,11 @@ a{
 	position: absolute;
 	background-color: #333;
 	z-index: 99;
-	height: 90%;
+	height: 100%;
 	max-width: 25%;
 	min-width: 25%;
 	float: right;
 	right: 0%;
-	top: 5%;
 	transition: 0.2s;
 	transform: translateX(100%);
 }
@@ -310,7 +314,12 @@ a{
 	font-size: 0.9rem;
 }
 
+.notification-panel .notif_list{
+		overflow: hidden;
+}
+
 .notif_list{
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	color: white;
@@ -320,6 +329,7 @@ a{
   display: flex;
   background-color: #666;
 	border-radius:20px;
+	transition: .5s;
 }
 
 .notification:first-child {
@@ -353,4 +363,19 @@ margin-top: 16px;
 }
 .cls:hover {
   background-color: #999;
+}
+
+.asd{
+	overflow-y: hidden;
+}
+
+.animate-out{
+	animation: fade-out .5s;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+    transform: translateX(350px);
+  }
 }
