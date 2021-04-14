@@ -8,7 +8,7 @@
   position: absolute;
   right:0;
   width: 100%;
-  min-height: 100vh;
+  min-height: 90vh;
   padding: 100px;
   display: flex;
   justify-content: space-between;
@@ -32,7 +32,6 @@
 
 .Our-mission {
   position: relative;
-  z-index: 100;
   margin-bottom: 70px;
 }
 
