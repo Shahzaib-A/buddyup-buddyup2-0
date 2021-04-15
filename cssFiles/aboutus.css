@@ -143,23 +143,3 @@
   right: 1px;
 }
 /* link for box animation: https://codepen.io/knexx/pen/YzNVGQB */
-
-.contacts {
-  position: absolute;
-  bottem: 20px;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.contacts li {
-  list-style: none;
-}
-
-.contacts li a {
-  display: inline-block;
-  filter: invert(1);
-  transform: scale(5);
-  margin-right: 20px;
-}
