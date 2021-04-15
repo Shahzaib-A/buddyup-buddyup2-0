@@ -91,8 +91,10 @@ async function suggestions(eventObject) {
         break
       }
     }
+
     setTimeout(() => {
       notification.remove();
+      location.reload()
     }, 500)
   })
 }
