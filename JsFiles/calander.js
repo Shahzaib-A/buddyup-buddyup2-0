@@ -24,7 +24,7 @@ var daysOfMonth = {
 dateObj = new Date();
 let currentDate = [months[dateObj.getMonth()], dateObj.getFullYear(), dateObj.getDate()]
 let allEvents = []
-let updatedOldNotif = false
+let updatednew = false
 
 function setActive() {
 
@@ -54,33 +54,43 @@ function diffrence(d1) {
 }
 
 async function suggestions(eventObject) {
-  for (let key = 0; key < eventObject.length; key++) {
-    var date = new Date(`${eventObject[key][1]}-${getMonthFromString(eventObject[key][0][1])}-${eventObject[key][0][2].replace(/\D/g, '')}`)
-    time_between_dates = diffrence(date)
-    if (time_between_dates <= 5) {
-      if (!updatedOldNotif) {
-        try{
-        eventObject[key][2].forEach((item, i) => {
-          addNotification(`You have ${item} on ${eventObject[key][0].join(" ")}`, 'Date nearing!')
-        });
-      }catch{}
-        updatedOldNotif = true
-      } else {
-        try {
-          console.log(eventObject[key])
-        } catch {
+   if(updatednew){
+     evnt = eventObject.slice(-1)[0]
+     const date = new Date(`${evnt[1]}-${getMonthFromString(evnt[0][1])}-${evnt[0][2].replace(/\D/g, '')}`)
+     var time_between_dates = diffrence(date)
+     if(time_between_dates <= 5){
+        addNotification(`Event: ${evnt[2]} on ${evnt[0].join(" ")}`,'Date nearing!')
+     }
+    }else{
+      eventObject.forEach((item, i) => {
+        const date = new Date(`${item[1]}-${getMonthFromString(item[0][1])}-${item[0][2].replace(/\D/g, '')}`)
+        var time_between_dates = diffrence(date)
+        if(time_between_dates <= 5){
+          item[2].forEach((evn, i) => {
+            addNotification(`Event: ${evn} on ${item[0].join(" ")}`,'Date nearing!',evn)
+          });
 
         }
-        // addNotification(`You have ${} on ${eventObject[key][0].join(" ")}`,'Date nearing!')
-        break
-      }
+      })
+      updatednew = true
     }
-    //suggestions for todays date
-  }
   //Close button function
   $('.cls').unbind().click(async function(event) {
     var notification = event.currentTarget.parentNode
+    let descrip = event.currentTarget.parentNode.firstElementChild.childNodes[3].innerText.replace('Event: ','')
+    let date = descrip.split(" ").slice(-3).join(" ")
+    note = descrip.replace(`on ${date}`,'').trim()
+
+    await firebase.database().ref("Users/" + firebase.auth().currentUser.uid + "/Events/" + date + "/" + note).remove()
+
     notification.classList.add('animate-out')
+    var notL = document.querySelectorAll('.noteList li')
+    for(let i = 0; i<notL.length; i++){
+      if(notL[i].innerHTML.split("<a")[0] == note){
+        notL[i].remove()
+        break
+      }
+    }
     setTimeout(() => {
       notification.remove();
     }, 500)
@@ -88,7 +98,6 @@ async function suggestions(eventObject) {
 }
 
 function setEvent(dateArray) {
-  suggestions(dateArray)
   for (let i = 0; i < dateArray.length; i++) {
     let day = dateArray[i][0][2].replace(/\D/g, '');
     if (dateArray[i][0][1] == $('.current_month').text() && day != currentDate[2] && dateArray[i][1] == $('.year').text()) {
@@ -99,6 +108,7 @@ function setEvent(dateArray) {
       document.querySelectorAll('.days li')[day - 1].appendChild(span)
     }
   }
+  suggestions(dateArray)
 }
 //This is to change the date
 function changeDays(maxDays) {
@@ -261,17 +271,17 @@ setTimeout(async () => {
 
   $(".addNote").click(async function() {
     let noteToAdd = [$(".note").val(), $('.date').text(), $('.year').text()]
-    if (noteToAdd[0] != '') {
+    if (noteToAdd[0] != ''){
       let noteHtml = [document.createElement('li'), document.createElement('a')]
       makeNote(noteToAdd[0])
       document.querySelector('.noteList').appendChild(noteHtml[0])
-      await firebase.database().ref("Users/" + firebase.auth().currentUser.uid + "/Events/" + noteToAdd[1]).child(noteToAdd[0]).set({
+      await firebase.database().ref("Users/" + firebase.auth().currentUser.uid + "/Events/" + `${noteToAdd[1]}`).child(noteToAdd[0]).set({
         Date: noteToAdd[1],
         EventHtml: noteToAdd[0],
         year: noteToAdd[2],
         read: false
       })
-      allEvents.push([$('.date').text().split(" "), $('.year').text()])
+      allEvents.push([$('.date').text().split(" "), $('.year').text(),noteToAdd[0]])
       setEvent(allEvents)
       $(".note").val('')
     }
@@ -281,6 +291,16 @@ setTimeout(async () => {
     let note = [this.parentNode.innerHTML.split('<')[0], $('.date').text()]
     await firebase.database().ref(`Users/${firebase.auth().currentUser.uid}/Events/${note[1]}/${note[0]}`).remove()
     this.parentNode.remove()
+    var notifList = document.querySelectorAll('.description')
+    for(let i = 0;i<notifList.length;i++){
+      if(notifList[i].innerText.replace("Event: ","").includes(note[0])){
+        notifList[i].parentNode.parentNode.classList.add('animate-out')
+        setTimeout(()=>{
+          notifList[i].parentNode.parentNode.remove()
+        },500)
+        break;
+      }
+    }
     document.querySelectorAll('li .event').forEach((item, i) => {
       if (document.querySelector('.noteList').innerText == 0) {
         document.querySelectorAll('.days li')[note[1].split(" ").slice(-1)[0].replace(/\D/g, '') * 1 - 1].childNodes[0].remove()
