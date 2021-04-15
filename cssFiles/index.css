@@ -1,163 +1,145 @@
-@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
-
-:root{
-  /* --background-image:url(https://wallpapershome.com/images/wallpapers/mountains-5120x2880-macos-4k-5k-sierra-sky-android-wallpaper-11473.jpg) */
-  --background-image: url(http://crevisio.com/images/posts/218/vrZbQU/Crevisio-218-vrZbQU-o.jpg);
-  --text-color: rgb(0,234,80);
-  --border-color: rgba(0,234,80,0.6);
-  --btn-bg-color: rgb(255,255,255);
-  --btn-border-color:rgb(255,255,255);
-  --type-text-color: rgba(0,234,80,0.9);
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
 }
 
-* {
+.display {
+  position: absolute;
+  right:0;
+  width: 100%;
+  min-height: 92vh;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  color: #fff;
+  z-index: 2;
   overflow: hidden;
 }
 
-.bg{
-  top: -20px;
-  left: -20px;
-  right: -40px;
-  bottom: -40px;
+.display video {
   position: absolute;
-  width: auto;
-  height: auto;
-  background-image: var(--background-image);
-  background-size: cover;
-  background-attachment: fixed;
-  z-index: -1;
-  filter: brightness(60%);
-  /* -webkit-filter: blur(0px); */
-  /* transform: scale(1.2); */
-}
-
-.name{
-  position: absolute;
-  display: flex;
-  z-index: 1;
-  height: 50%;
+  top: 0;
+  left:0;
   width: 100%;
-  justify-content: center;
-  top: 9%;
-}
-
-.name p{
-  justify-content: center;
-  text-decoration: none;
-  font-family: 'Exo', sans-serif;
-  font-size: 2.5rem;
-  color: var(--text-color);
-}
-
-.login{
-  position: absolute;
-  z-index: 1;
-}
-
-.login input{
-  display: flex;
-  flex-direction: column;
-	width: 260px;
-	height: 30px;
-	background: transparent;
-	border: 3.9px solid var(--border-color);
-	border-radius: 10px;
-	color: var(--text-color);
-	font-family: 'Exo', sans-serif;
-	font-size: 18px;
-	font-weight: 600;
-	padding: 4px;
-  margin-top:20px;
-}
-
-.login {
-  position: absolute;
-  display: flex;
   height: 100%;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
+  object-fit: cover;
+  opacity: 0.8;
+  overflow: hidden;
 }
 
-.login [type=submit] {
-  display: flex;
-  flex-direction: column;
-  width: 275px;
-	height: 39.5px;
-	background: var(--btn-bg-color);
-	border: 1px solid var(--btn-border-color);
-	cursor: pointer;
-	border-radius: 2px;
-	font-family: 'Exo', sans-serif;
-	font-size: 10px;
-	font-weight: 100px ;
-	padding: 6px;
-	margin-top: 15px;
-  justify-content: space-around;
-  border-radius: 10px;
+.Our-mission {
+  position: relative;
+  margin-bottom: 70px;
 }
 
-.reset{
-  cursor:pointer;
-}
-::placeholder{
-  color: var(--text-color);
-}
-
-.login input[type=submit]:hover{
-	opacity: 0.75;
+.border {
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
 }
 
-.login input[type=submit]:active{
-	opacity: 0.6;
+.Our-mission h1{
+  font-weight: 500;
+  font-size: 3.5em;
+  line-height: 1em;
+  margin-bottom: 10px;
 }
 
-.login input[type=email]:focus{
-	outline: none;
-	border: 1px solid var(--type-text-color);
+.Our-mission p {
+  margin-top: 10px;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
-.login input[type=text]:focus{
-	outline: none;
-	border: 1px solid var(--type-text-color);
-}
+/* .Our-mission a {
+  display: inline-block;
+  font-size: 20px;
+  padding: 10px 29px;
+  background-color: white;
+  margin-top: 20px;
+  color: red;
+} */
 
-.login input[type=password]:focus{
-	outline: none;
-	border: 1px solid var(--type-text-color);
-}
+/* css for button */
 
-.login input[type=file]:focus{
-  outline:none;
-  border: 1px solid var(--type-text-color);
-}
-
-.login input[type=file]::-webkit-file-upload-button {
- visibility: hidden;
-}
-.login input[type=file]::before {
- content: 'Select profile picture';
- padding: 5px 8px;
- outline: none;
- cursor: pointer;
-}
-.login input[type=file]:hover::before {
- border-color: black;
-}
-
-
-.login input[type=submit]:focus{
-	outline: none;
-}
-
-.login p {
-  color: var(--text-color);
-}
-
-a {
+.Our-mission a {
+  background: rgba(0, 181, 204, 1);
   text-decoration: none;
+  padding: 12px 25px;
+  color: #212123;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  position: relative;
+  top: 0;
+  left: 0;
+  box-shadow: -6px 6px 0px rgba(0, 181, 204, 1);
+  transition: 0.15s;
 }
 
-.signup{
-  display: none;
+.Our-mission a:hover {
+  top: 3px;
+  left: -3px;
+  box-shadow: -3px 3px 0 #4b4737;
 }
+
+.Our-mission a::after {
+  transition: 0.15s;
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  background-color: #4b4737;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+.Our-mission a::before {
+  transition: 0.15s;
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background-color: #4b4737;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+.Our-mission a:hover::after {
+  top: 1px;
+  left: -2px;
+  width: 4px;
+  height: 4px;
+}
+
+.Our-mission a:hover::before {
+  bottom: -2px;
+  right: 1px;
+  width: 4px;
+  height: 4px;
+}
+
+.Our-mission a:active {
+  top: 6px;
+  left: -6px;
+  box-shadow: none;
+}
+
+.Our-mission a:active::after {
+  top: 1px;
+  left: 1px;
+}
+
+.Our-mission a:active::before {
+  bottom: 1px;
+  right: 1px;
+}
+/* link for box animation: https://codepen.io/knexx/pen/YzNVGQB */
