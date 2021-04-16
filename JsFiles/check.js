@@ -8,7 +8,7 @@ window.onload = async function(){
   setTimeout(()=>{
     firebase.auth().onAuthStateChanged(async (user) => {
         if (user && auth.currentUser.emailVerified){
-          // await firebase.database().ref(`Users/${firebase.auth().currentUser.uid}/online`).set('true')
+          await firebase.database().ref(`Users/${firebase.auth().currentUser.uid}/online`).set('true')
         }else{
           // User not logged in or has just logged out.
           window.location = '../index.html'
@@ -23,7 +23,7 @@ async function logout(){
 }
 $(document).bind("mouseleave", function(e) {
     if (e.pageY - $(window).scrollTop() <= 1) {
-      // firebase.database().ref(`Users/${firebase.auth().currentUser.uid}/online`).set('false')
-      // firebase.auth().signOut()
+      firebase.database().ref(`Users/${firebase.auth().currentUser.uid}/online`).set('false')
+      firebase.auth().signOut()
     }
 });
