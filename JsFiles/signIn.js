@@ -5,7 +5,8 @@ function sign_In(email,password) {
     if(userCred.user.emailVerified){
       sign_In_mail.value = "";
       sign_in_password.value = "";
-      window.open("../HtmlFiles/calendar.html")
+      firebase.database().ref(`Users/${firebase.auth().currentUser.uid}/online`).set('true')
+      window.location = "../HtmlFiles/calendar.html"
     }
     else{
       shake('[name=signinusername]')

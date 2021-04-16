@@ -1,4 +1,11 @@
 /*
+ ---Name: Rahul---
+  Date complete:
+  Sources:
+
+  ---General Purpose---
+
+  ---Logic---
 
 */
 
@@ -25,15 +32,35 @@ dateObj = new Date();
 let currentDate = [months[dateObj.getMonth()], dateObj.getFullYear(), dateObj.getDate()]
 let allEvents = []
 let updatednew = false
-
+var images = [
+  "december january february",
+  ["../images/winterPics/w1.jpg","../images/winterPics/w2.jpg","../images/winterPics/w3.jpg",[["white"],["white"],["white"]]],
+  "march april may",
+  ["../images/springPics/s1.jpg","../images/springPics/s2.jpeg","../images/springPics/s3.png",[[],[],[]]],
+  "june july august",
+  ["../images/summerPics/sm1.jpg","../images/summerPics/sm2.jpg","../images/summerPics/sm3.jpg",[[],[],[]]],
+  "september october november",
+  ["../images/fallPics/f1.jpg","../images/fallPics/f2.jpg","../images/fallPics/f3.jpeg",[[],[],[]]]
+]
+var subject = ["physics", "math", "computer-science", "science", "earth", "biology","chemistry","earth and space science"]
 function setActive() {
 
-  if ($('.current_month').text() == currentDate[0] && $('.year').text() == currentDate[1]) {
+  if($('.current_month').text() == currentDate[0] && $('.year').text() == currentDate[1]) {
     let div = document.createElement('span')
     div.setAttribute('class', 'active')
     div.innerText = document.querySelectorAll('.days li')[currentDate[2] - 1].innerText
     document.querySelectorAll('.days li')[currentDate[2] - 1].innerText = ''
     document.querySelectorAll('.days li')[currentDate[2] - 1].appendChild(div)
+  }
+}
+
+function randomPic(month){
+  for(let i = 0; i<images.length;i+=2){
+    if(images[i].includes(month.toLowerCase())){
+      document.querySelector('.calendar-cont .leftCol').style.backgroundImage = `url(${images[i + 1][Math.floor(Math.random()*3)]})`
+      document.querySelector('.calendar-cont .leftCol').style.backgroundSize = "cover"
+      break
+    }
   }
 }
 
@@ -53,34 +80,86 @@ function diffrence(d1) {
   return (evDate - cDate) / day
 }
 
-async function suggestions(eventObject) {
-   if(updatednew){
-     evnt = eventObject.slice(-1)[0]
-     const date = new Date(`${evnt[1]}-${getMonthFromString(evnt[0][1])}-${evnt[0][2].replace(/\D/g, '')}`)
-     var time_between_dates = diffrence(date)
-     if(time_between_dates <= 5){
-        addNotification(`Event: ${evnt[2]} on ${evnt[0].join(" ")}`,'Date nearing!')
-     }
-    }else{
-      eventObject.forEach((item, i) => {
-        const date = new Date(`${item[1]}-${getMonthFromString(item[0][1])}-${item[0][2].replace(/\D/g, '')}`)
-        var time_between_dates = diffrence(date)
-        if(time_between_dates <= 5){
-          item[2].forEach((evn, i) => {
-            addNotification(`Event: ${evn} on ${item[0].join(" ")}`,'Date nearing!',evn)
-          });
+function remove_event_notification(date){
+  var days = document.querySelectorAll('.days li')
+  var notif_panel = [...document.querySelector('.notif_list').children].map(x => x = x.childNodes[1].childNodes[3].innerText.split(" ").slice(-3).join(" "));
+  if(notif_panel.indexOf(date) == -1 && days[date.split(" ").slice(-1)[0].replace(/\D/g, '') * 1 - 1].childNodes[0].className != 'active'){
+    days[date.split(" ").slice(-1)[0].replace(/\D/g, '') * 1 - 1].childNodes[0].remove()
+    days[date.split(" ").slice(-1)[0].replace(/\D/g, '') * 1 - 1].innerText = date.split(" ").slice(-1)[0].replace(/\D/g, '')
+  }
+  //Transform notif_panel to its inner dates, then see if the providede date exists, if it does not remove the event underline
+}
+async function findPeople(subject){
+  await firebase.database().ref(`upvote/${subject}`).once('value',async snapshot=>{
+    // console.log(snapshot.exists(), subject)
+    if(snapshot.exists()){
+      let rep = Object.values(snapshot.val()).sort().reverse()
+      let names = Object.keys(snapshot.val()).reverse()
 
+      await firebase.database().ref('Users').once('value',users=>{
+        userObjs = Object.values(users.val())
+        for(let i = 0; i<names.length;i++){
+        for(let user = 0; user<userObjs.length;user++){
+          if(userObjs[user].name == names[i]){
+            if(userObjs[user].online == 'false'){
+              names.splice(i,1)
+            }
+          }
         }
+      }
       })
-      updatednew = true
+      addNotification(`Would you like to ask ${names.join(" ")} for help in ${subject}`,"Suggestion!")
     }
+  })
+}
+async function suggestions(eventObject) {
+  try{
+    if(updatednew){
+      evnt = eventObject.slice(-1)[0]
+      const date = new Date(`${evnt[1]}-${getMonthFromString(evnt[0][1])}-${evnt[0][2].replace(/\D/g, '')}`)
+      var time_between_dates = diffrence(date)
+
+      if(time_between_dates <= 5 && time_between_dates >= -5){
+         addNotification(`Event: ${evnt[2]} on ${evnt[0].join(" ")}`,'Date nearing!')
+         console.log('Hello')
+         // Check if any subjects match
+         if(subject.join(" ").includes(evnt[2].split('-')[0])){
+           // console.log(evnt)
+         }
+      }
+     }
+     else{
+       var events = []
+       eventObject.forEach(async (item, i) => {
+         const date = new Date(`${item[1]}-${getMonthFromString(item[0][1])}-${item[0][2].replace(/\D/g, '')}`)
+         var time_between_dates = diffrence(date)
+
+         if(time_between_dates <= 5 && time_between_dates >= -5){
+           item[2].forEach(async (evn, i) => {
+             //Check if any subjects match
+             addNotification(`Event: ${evn} on ${item[0].join(" ")}`,'Date nearing!',evn)
+             if(subject.join(" ").includes((evn.split('-')[0]).toLowerCase())){
+               if(events.indexOf((evn.split('-')[0]).toLowerCase()) == -1){
+               events.push((evn.split('-')[0]).toLowerCase())
+             }
+             }
+           });
+
+         }
+       })
+       for(let i = 0; i<events.length;i++){
+         findPeople(events[i])
+       }
+       // await findPeople()
+       updatednew = true
+     }
+  }catch{}
   //Close button function
   $('.cls').unbind().click(async function(event) {
     var notification = event.currentTarget.parentNode
     let descrip = event.currentTarget.parentNode.firstElementChild.childNodes[3].innerText.replace('Event: ','')
     let date = descrip.split(" ").slice(-3).join(" ")
     note = descrip.replace(`on ${date}`,'').trim()
-
     await firebase.database().ref("Users/" + firebase.auth().currentUser.uid + "/Events/" + date + "/" + note).remove()
 
     notification.classList.add('animate-out')
@@ -92,10 +171,14 @@ async function suggestions(eventObject) {
       }
     }
 
+
+    /* ---Remove from event--- */
+  //
+
     setTimeout(() => {
       notification.remove();
-      location.reload()
-    }, 500)
+      remove_event_notification(date)
+    }, 250)
   })
 }
 
@@ -110,7 +193,6 @@ function setEvent(dateArray) {
       document.querySelectorAll('.days li')[day - 1].appendChild(span)
     }
   }
-  suggestions(dateArray)
 }
 //This is to change the date
 function changeDays(maxDays) {
@@ -195,10 +277,11 @@ $(".arrow").click(function() {
   }
 })
 /* ---calendar ends  */
+randomPic($('.current_month').text())
 
 /* --- Change to do --- */
 
-function makeCardinal(dateNum) {
+function makeCardinal(dateNum){
   let additions = {
     '1': 'st',
     '2': 'nd',
@@ -231,9 +314,10 @@ function makeNote(note) {
 
 setTimeout(async () => {
   /* Update events */
-  async function updateData(dateWanted) {
-    let date = dateWanted.split(" ").slice(-1)[0].replace('th', '').replace('nd', '').replace('rd', '') * 1
+  async function updateData(dateWanted){
+    let date = dateWanted.split(" ").slice(-1)[0].replace('th', '').replace('nd', '').replace('rd', '').replace('st','') * 1
     dateWanted = `${(dateWanted.split(" ").slice(0,2)).join(" ")} ${makeCardinal(date.toString())}`
+
     await firebase.database().ref("Users/" + firebase.auth().currentUser.uid + "/Events/").orderByChild(dateWanted).once('value', snapshot => {
       let events_for_date = snapshot.val()
       try {
@@ -242,6 +326,7 @@ setTimeout(async () => {
           let year = events_for_date[item][Object.keys(events_for_date[item])[0]].year
           let activites = Object.keys(events_for_date[item])
           allEvents.push([date, year, activites])
+
         });
 
         Object.keys(events_for_date[dateWanted]).forEach((item, i) => {
@@ -255,6 +340,7 @@ setTimeout(async () => {
 
   await updateData($('.date').text())
   setEvent(allEvents)
+  suggestions(allEvents)
 
   $(".days li").click(async function() {
     document.querySelector('.noteList').innerHTML = ''
@@ -269,6 +355,7 @@ setTimeout(async () => {
 
   $(".arrow").click(function() {
     setEvent(allEvents)
+    randomPic($('.current_month').text())
   })
 
   $(".addNote").click(async function() {
@@ -287,6 +374,7 @@ setTimeout(async () => {
       setEvent(allEvents)
       $(".note").val('')
     }
+    suggestions(allEvents)
   })
 
   $(document).on('click', ".removeNote", async function() {

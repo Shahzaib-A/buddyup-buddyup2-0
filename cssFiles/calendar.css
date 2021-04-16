@@ -23,7 +23,9 @@ h1, h2, h3, h4, h5, p{
 p{
 	line-height: 20px;
 }
+note:placeholder{
 
+}
 a{
 	text-decoration: none;
 	font-size: 18px;
@@ -33,7 +35,7 @@ a{
 	position: absolute;
 	overflow: hidden;
 	width: 100%;
-	height: 90%;
+	height: 91%;
 	background-color: #ffffff;
 	color: #333333;
 }
@@ -66,22 +68,25 @@ a{
 
 .calendar-cont .leftCol{
 	width: 40%;
-	background-image: url('../images/bg.jpg');
-  background-size: cover;
+	height: 100%;
+}
+
+.calendar-cont .noteList{
+	/* background-color: rgba(255,255,255,0.5); */
+	height: 100%;
+	width: 100%;
 }
 
 .calendar-cont .noteList li{
 	color: black;
 	margin-bottom: 10px;
 }
-.noteList{
 
-}
 .calendar-cont .notes p,
 .calendar-cont .notes input,
 .calendar-cont .noteList li{
 	font-weight: 300;
-	font-size: 14px;
+	font-size: 18px;
 }
 
 .calendar-cont .notes p{
@@ -96,8 +101,8 @@ a{
 }
 
 .addNote{
-	padding: 25px;
-	margin-top: -45px;
+	margin-right: -15px;
+	margin-top: -20px;
 }
 
 .calendar-cont .addNote,
@@ -106,6 +111,10 @@ a{
 	color: black;
 	font-weight: bold;
 	margin-left: 20px;
+}
+
+.calendar-cont .removeNote{
+	font-size: 1.5rem;
 }
 
 .calendar-cont .addNote:hover{
@@ -275,6 +284,10 @@ a{
   background-color: #ddd;
 }
 
+::placeholder{
+  color: white;
+	font-weight: bold;
+}
 
 /* Notification */
 .notification-panel{
