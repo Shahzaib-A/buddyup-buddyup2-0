@@ -34,9 +34,10 @@ $('.close').click(function(){
 
 /* ---Add notification--- */
 
-function addNotification(message, title,id){
+function addNotification(message, title,id,special=false){
   const notification = document.createElement("div")
   notification.classList.add('notification')
+  if(!special){
   notification.innerHTML = `
   <div class="cont">
       <h4 class="title">${title}</h4>
@@ -45,6 +46,21 @@ function addNotification(message, title,id){
   <button class="cls" aria-label="Dismiss notification"><i class="fas fa-times"></i></button>
   <div class='id' style='display: none;'>${id}</div>
   `
+}else{
+
+  notification.innerHTML = `
+  <div class="cont">
+      <h4 class="title">${title}</h4>
+      <p class="description">${message}</p>
+  </div>
+  <div class="buttons">
+  <button id = 'check' class="cls" aria-label="Dismiss notification"><i class="fas fa-check"></i></button>
+  <button id = 'close' class="cls" aria-label="Dismiss notification"><i class="fas fa-times"></i></button>
+  </div>
+
+  <div class='id' style='display: none;'>${id}</div>
+  `
+}
   const closeButton = document.querySelector('.cls')
 
   document.querySelector('.notif_list').prepend(notification)

@@ -8,10 +8,53 @@
   ---Logic---
 
 */
-
 /* ---Sets current tab user is in--- */
 sessionStorage.setItem('cTab', "Calendar")
 /* ---calander--- */
+
+/* Functons and variables for sending private message*/
+var user;
+/* ---Getting user name */
+setTimeout(()=>{
+  firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('value', async function(snapshot) {
+    user = snapshot.val().name
+  })
+},2000)
+
+async function sendMessage(user, subject,sendTo){
+  let html = `
+  <li>
+  <img src=${'../images/footerPics/buddyUp.jpg'} alt="">
+    <div>
+      <h2 class="name">BuddyUp</h2>
+        <h2 class="message">
+          ${user} asked for you to help in ${subject}
+        </h2>
+    </div>
+  </li>
+  `
+  let messageObject = {
+    messageToDisp:html,
+    sendTo:sendTo,
+    sender:user,
+    checked:false
+  }
+
+  /* ---Sets a random key so that data does not get overwritten--- */
+  autoId = firebase.database().ref('users').push().key
+  /* ---Actully updates the server---  */
+  await firebase.database().ref('Private/' + autoId.toString()).set(messageObject)
+  console.log('should send?')
+}
+/* ---end--- */
+
+
+var user;
+setTimeout(()=>{
+  firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('value', async function(snapshot) {
+    user = snapshot.val().name
+  })
+},2000)
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturaday"]
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var daysOfMonth = {
@@ -89,6 +132,7 @@ function remove_event_notification(date){
   }
   //Transform notif_panel to its inner dates, then see if the providede date exists, if it does not remove the event underline
 }
+
 async function findPeople(subject){
   await firebase.database().ref(`upvote/${subject}`).once('value',async snapshot=>{
     // console.log(snapshot.exists(), subject)
@@ -108,7 +152,26 @@ async function findPeople(subject){
         }
       }
       })
-      addNotification(`Would you like to ask ${names.join(" ")} for help in ${subject}`,"Suggestion!")
+      addNotification(`Would you like to ask ${names.join(" ")} for help in ${subject}`,"Suggestion!",'',special=true)
+      $('.cls').unbind().click(async function(event) {
+        switch(this.id) {
+          case 'check':
+          /* ---Getting user name */
+            for(let i = 0; i<names.length;i++){
+              await sendMessage(user, subject,names[i])
+            }
+            console.log('Sending')
+            break;
+          default:
+            null
+        }(this.id)
+        var notification = event.currentTarget.parentNode.parentNode
+        notification.classList.add('animate-out')
+        setTimeout(() => {
+          notification.remove();
+        }, 500)
+      })
+
     }
   })
 }

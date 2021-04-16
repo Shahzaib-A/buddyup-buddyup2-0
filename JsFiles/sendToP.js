@@ -26,7 +26,6 @@ function sendToServer(obj, path = sessionStorage.getItem('chat')){
   firebase.database().ref(`${path}/` + autoId.toString()).set(obj)
 }
 
-/* ---Probably going to put this with the firebase username collection to keep it simple and for persormace--- */
 async function getImage(){
     /* ---Grabs image url from firebase storage--- */
     await firebase.storage().ref('/Users/' + firebase.auth().currentUser.uid + '/profile').getDownloadURL().then(imgUrl=>{
