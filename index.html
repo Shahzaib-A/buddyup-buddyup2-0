@@ -1,63 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <title>Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <link rel="stylesheet" type='text/css' href="cssFiles/index.css">
-  </script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
-</head>
-<body>
-<div class="bg"></div>
-<div class="cont">
-<div class="name">
-  <p class="slogans">BuddyUp</p>
-</div>
-<div class="login">
+  <head>
+    <meta charset="utf-8">
+    <title>About us</title>
+    <link href="cssFiles/index.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+      $(function() {
+        $("#nav-placeholder").load("HtmlFiles/nav.html");
+      });
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+  </head>
+  <body>
 
-<form class="signin">
-<input class="signinEmail" type="email" name="signinusername" placeholder="Email">
-<input class="signinPassword" type="password" name="signinpassword" placeholder="password">
-<input onclick="signIn()" type="submit" value="Login" align="center"></button><br>
-<p>Not registerd? <a class="create" href="#"><strong>Create an account</strong></a></p><br>
-<p>Forgot password? <a class="reset" onClick="sendResetPassword()"><strong>Send reset link</strong></a></p>
-</form>
-
-<form class="signup">
-<input class="user" type="text"  name="user" placeholder="Username" required/>
-<input class="email"  type="email" name="username" placeholder="example@pdsb.net" required/>
-<input class="password" type="password"  name="password" placeholder="password" required/>
-<input class="confirm" type="password" name="confirmpassword" placeholder="Confirm password" required/>
-<input class="profile-pic" type="file" onchange="chooseFile(event)" accept="image/x-png,image/jpeg" / required/>
-<input onclick="register()" type="submit" value="Register" align="center"><br>
-<p>Have an account? <a class="back" href=""><strong>Back</strong></a></p>
-</form>
-
-</div>
-</div>
-<script>
-$(".signup").submit(function(e){
-  e.preventDefault();
-});
-
-$(".signin").submit(function(e){
-  e.preventDefault();
-});
-</script>
-<script src="JsFiles/signUp.js"></script>
-<script src="JsFiles/resetPassword.js"></script>
-<script src="JsFiles/DSPLP.js"></script>
-<script src="JsFiles/signIn.js"></script>
-<script src="JsFiles/check.js"></script>
-<script src="JsFiles/initializeFireBase.js"></script>
-<script src="JsFiles/variables.js"></script>
-<script src="JsFiles/nav.js"></script>
-<script src="JsFiles/ModuleFunctions.js"></script>
-<script src="JsFiles/LoginValidation.js"></script>
-</body>
+    <div id="nav-placeholder"></div>
+    <section class = "display">
+      <video src = "../videos/Pexels Videos 2344549.mp4" muted loop autoplay></video>
+      <!-- https://vimeo.com/441003525 -->
+      <div class = "border"></div>
+      <div class = "Our-mission">
+        <h1>Our Mission</h1>
+        <h2>"Provide a space where students of all ages can engage and learn from each other"</h2>
+        <p>&emsp;-BuddyUp team</p>
+        <a href = "#"> Login</a>
+      </div>
+    </section>
+    <script src="JsFiles/index.js"></script>
+  </body>
 </html>
