@@ -39,14 +39,14 @@ async function getImage(){
   }
 
 async function upVote(user){
-  await firebase.database().ref(`upvote/user/${user}`).once('value',async snapshot=>{
-      await firebase.database().ref(`upvote/user/${user}`).set(snapshot.val()*1+1)
+  await firebase.database().ref(`upvote/${sessionStorage.getItem('chat').split('/')[1]}/${user}`).once('value',async snapshot=>{
+      await firebase.database().ref(`upvote/${sessionStorage.getItem('chat').split('/')[1]}/${user}`).set(snapshot.val()*1+1)
   })
 }
 
 async function downVote(user){
-  await firebase.database().ref(`upvote/user/${user}`).once('value',async snapshot=>{
-      await firebase.database().ref(`upvote/user/${user}`).set(snapshot.val()*1-1)
+  await firebase.database().ref(`upvote/${sessionStorage.getItem('chat').split('/')[1]}/${user}`).once('value',async snapshot=>{
+      await firebase.database().ref(`upvote/${sessionStorage.getItem('chat').split('/')[1]}/${user}`).set(snapshot.val()*1-1)
   })
 }
 
@@ -77,7 +77,7 @@ function isSpecial(message){
 
 /* ---Determine if group is valid--- */
 function isValidGroup(selectedGroup){
-  list = ["physics", "math", "computer-science", "science", "earth", "biology"]
+  list = ["physics", "math", "computer-science", "science", "earth", "biology","chemistry","earth and space science"]
   return list.indexOf(selectedGroup.toLowerCase()) != -1
 }
 
@@ -185,11 +185,19 @@ $(".enter-message").keypress(async function (e) {
           break;
 
         case "u":
+        if(sessionStorage.getItem('chat') != 'general'){
           await upVote(isSpecial(message)[1])
+        }else{
+          alert(`You can't up/down vote in general chat`)
+        }
           break;
 
         case "d":
+        if(sessionStorage.getItem('chat') != 'general'){
           await downVote(isSpecial(message)[1])
+        }else{
+          alert(`You can't up/down vote in general chat`)
+        }
           break;
 
         case "p":
