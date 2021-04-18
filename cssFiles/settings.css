@@ -157,7 +157,7 @@ body {
   display: flex;
   align-items: center;
   border-radius: 20px;
-  margin-top:67vh;
+  margin-top:72vh;
   margin-left: 100vh;
 }
 
@@ -175,7 +175,7 @@ body {
 #title-for-darkmode {
   position: absolute;
   color: white;
-  margin-top: 63vh;
+  margin-top: 66vh;
   margin-left: 91.6787vh;
 
 }
