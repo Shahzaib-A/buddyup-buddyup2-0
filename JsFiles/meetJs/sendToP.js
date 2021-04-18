@@ -3,39 +3,14 @@
 */
 sessionStorage.setItem('cTab',"meet")
 /* ---Variables--- */
-var user;
-/* ---Getting user name */
-setTimeout(()=>{
-  firebase.database().ref('Users/' + firebase.auth().currentUser.uid).on('value', async function(snapshot) {
-    user = snapshot.val().name
-  })
-},2000)
-
+var user = sessionStorage.getItem('username')
+let profileImage = sessionStorage.getItem('URL')
 /* ---Badword filter--- */
 function cleanMessage(message){
 /* ---Splits and uses map to go through the word and if a word is mathced it splits that word by chars and uses a sub map and replaces it with *'s */
 message = message.split(" ").map(x => badWords.indexOf(x) != -1? x = (x.split("").map(c => c = '*')).join(""): x = x).join(" ")
 return message
 }
-
-/* ---Sends to s certain part of the server--- */
-function sendToServer(obj, path = sessionStorage.getItem('chat')){
-  /* ---Sets a random key so that data does not get overwritten--- */
-  autoId = firebase.database().ref('users').push().key
-  /* ---Actully updates the server---  */
-  firebase.database().ref(`${path}/` + autoId.toString()).set(obj)
-}
-
-async function getImage(){
-    /* ---Grabs image url from firebase storage--- */
-    await firebase.storage().ref('/Users/' + firebase.auth().currentUser.uid + '/profile').getDownloadURL().then(imgUrl=>{
-      /* ---Using sessionStorage probably a bad thing should just input into variable---*/
-      sessionStorage.setItem("URL",imgUrl)
-    })
-    const img = sessionStorage.getItem("URL");
-    sessionStorage.removeItem("URL")
-    return img
-  }
 
 async function upVote(user){
   await firebase.database().ref(`upvote/${sessionStorage.getItem('chat').split('/')[1]}/${user}`).once('value',async snapshot=>{
@@ -127,7 +102,6 @@ async function newGroup(selectedGroup){
     /* ---Adds member to missing groups inorder to fill them up--- */
     if(groupFull[groupFull.length - 1][0].replace(/[^0-9]/g, "")*1 != groupFull.length && !groupEnterd){
       for(var i = 0; i< parseInt(groupFull[groupFull.length - 1][0].split("").reverse()[0]);i++){
-        console.log(groupFull[i])
         if(groupFull[i] == undefined){
           await createGroup(`Groups/${selectedGroup}/group${i}`)
           break
@@ -153,7 +127,6 @@ else{
 
 $(".enter-message").keypress(async function (e) {
     if (e.key === 'Enter' || e.keyCode === 13) {
-      let profileImage = await getImage()
       let message = cleanMessage($(".enter-message").val())
       if(message != ""){
       let html = `
