@@ -23,7 +23,7 @@ async function logout(){
 }
 $(document).bind("mouseleave", function(e) {
     if (e.pageY - $(window).scrollTop() <= 1) {
-      firebase.database().ref(`Users/${firebase.auth().currentUser.uid}/online`).set('false')
-      firebase.auth().signOut()
+      // firebase.database().ref(`Users/${firebase.auth().currentUser.uid}/online`).set('false')
+      // firebase.auth().signOut()
     }
 });
