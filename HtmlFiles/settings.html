@@ -1,0 +1,67 @@
+<!--
+Code: Settings.HTML was made by Harsh Trivedi;
+ -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>BuddyUp</title>
+    <link href="../cssFiles/settings.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+      $(function() {
+        $("#nav-placeholder").load("nav.html");
+      });
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
+  </head>
+  <body>
+    <main>
+      <div id="nav-placeholder"></div>
+      <div class = "video">
+          <video src = "../videos/180607_B_012.mp4" muted loop autoplay></video>
+      </div>
+    <div class = "main-container">
+
+      <form>
+        <div class = "user-input">
+          <label> What is your user ID?</label>
+          <input type="text" name="userId" id="userId"><br>
+        </div>
+
+        <div class = "name-input">
+          <label> What is your name?</label>
+          <input type="text" name="" id="name"><br>
+        </div>
+
+        <div class = "lastname-input">
+          <label> What is your last name?</label>
+          <input type="text" name="" id="lastname"><br>
+        </div>
+
+      <div class = "buttons">
+        <Button class="btn1">Sign Out</button>
+        <button class="btn2">Update</button>
+        <button class="btn3">Remove</button>
+      </div>
+      </form>
+
+      <div id="nav-placeholder"></div>
+    </main>
+        <div id = "title-for-darkmode">
+          <h3>Click to activate darkmode</h3>
+        </div>
+
+        <div id = 'toggleContainer'>
+            <i class = 'fas fa-moon'></i>
+            <i class = 'fas fa-sun'></i>
+            <div id = 'toggleBall'></div>
+        </div>
+
+      <script src="../JsFiles/initializeFireBase.js"></script>
+  </body>
+</html>

@@ -1,13 +1,1 @@
- .slide-container{ 
-   /* these values weill chage depending on what image is being used */
-   width: 800px;
-   height:500px;
- }
- .image-storage{
-  /* these values weill chage depending on what image is being used  */
-  width:3400000000000000px;
-  height:500px;
-  postion: relative;
-  transition: left 3s;
-  webkit-transition:left 2s;
-}
+

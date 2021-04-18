@@ -14,14 +14,14 @@ sources: https://codepen.io/knexx/pen/YzNVGQB
   position: absolute;
   right:0;
   width: 100%;
-  min-height: 92vh;
+  min-height: 98vh;
   padding: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #111;
   color: #fff;
-  z-index: 2;
+  z-index: 7;
   overflow: hidden;
 }
 
