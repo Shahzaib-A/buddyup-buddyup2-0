@@ -157,8 +157,8 @@ body {
   display: flex;
   align-items: center;
   border-radius: 20px;
-  margin-top: 690px;
-  margin-left:1040px;
+  margin-top:67vh;
+  margin-left: 100vh;
 }
 
 #toggleBall{
