@@ -1,4 +1,8 @@
+/*
 
+
+
+*/
 document.querySelector(".enter-message").addEventListener("input", function() {
 if(sessionStorage.getItem('chat') != "general"){
   list = ["!Leave"]
@@ -20,6 +24,7 @@ if(sessionStorage.getItem('chat') != "general"){
     element.setAttribute('class','list-item')
     container.appendChild(element)
   })
+
   if(searching.length == 0){
     container.innerHTML = ''
   }
