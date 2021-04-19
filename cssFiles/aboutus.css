@@ -30,7 +30,7 @@ sources: https://codepen.io/knexx/pen/YzNVGQB
   top: 0;
   left:0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   object-fit: cover;
   opacity: 0.8;
   overflow: hidden;
