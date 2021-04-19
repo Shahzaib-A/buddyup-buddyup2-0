@@ -13,11 +13,11 @@ sources used: https://www.w3schools.com/css/css_navbar.asp
 body {
   overflow-x: hidden;
   overflow-y: hidden;
-  background-image: url("../images/meet-background/milky-way-2695569__480.jpg");
+  background-color: #222227;
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  
+
 }
 
 /* Add a black background color to the top navigation */
