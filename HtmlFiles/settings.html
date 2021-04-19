@@ -28,20 +28,14 @@ Code: Settings.HTML was made by Harsh Trivedi;
 
     <div class = "main-container">
 
-      <form>
-        <div class = "user-input">
-          <label> What is your user ID?</label>
-          <input type="text" name="userId" id="userId"><br>
-        </div>
-
+      <form id='setngs'>
         <div class = "name-input">
-          <label> What is your name?</label>
+          <label>New username</label>
           <input type="text" name="" id="name"><br>
         </div>
 
       <div class = "buttons">
         <button class="btn1">Logout</button>
-        <button class="btn2">Delete Account</button>
       </div>
       </form>
 
@@ -62,14 +56,10 @@ Code: Settings.HTML was made by Harsh Trivedi;
         </div>
 
 <script>
-  $("#name").submit(function(e){
+  $("#setngs").submit(function(e){
       e.preventDefault();
   });
-
-  $(".signin").submit(function(e){
-      e.preventDefault();
-    });
-        </script>
+</script>
       <script src="../JsFiles/initializeFireBase.js"></script>
       <script src="../JsFiles/ModuleFunctions.js"></script>
       <script src="../JsFiles/settings/settings.js"></script>

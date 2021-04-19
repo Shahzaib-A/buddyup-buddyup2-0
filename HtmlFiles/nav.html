@@ -24,5 +24,25 @@ Code: This code was made by Harsh Trivedi
             </ul>
         </nav>
     </div>
-</body>
+
+    <script>
+      var btns = document.querySelectorAll('#nh')
+      var logo = document.querySelector('.logo')
+      var nav = document.querySelector('nav')
+      if(sessionStorage.getItem('nav-color') == 'Invert'){
+        btns.forEach((item, i) => {
+          item.style.color = 'white'
+        });
+        logo.style.color = 'white'
+        nav.style.backgroundColor = '#222227'
+        console.log('invert')
+      } else{
+        console.log('defualt')
+        btns.forEach((item, i) => {
+          item.style.color = 'black'
+        });
+        logo.style.color = 'black'
+        nav.style.backgroundColor = 'white'
+      }
+    </script>
 </html>
