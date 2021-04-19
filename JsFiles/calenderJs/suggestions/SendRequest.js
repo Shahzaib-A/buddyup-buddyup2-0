@@ -22,37 +22,41 @@ async function sendMessage(user, subject, sendTo) {
   await sendToServer(messageObject, 'Private')
 }
 
-
+//Finds people based on status and makes sure it is not current user
 async function findPeople(subject) {
   await firebase.database().ref(`upvote/${subject}`).once('value', async snapshot => {
-    // console.log(snapshot.exists(), subject)
     if (snapshot.exists()){
+      //Sorts from greatest to least in terms of points
       let rep = Object.values(snapshot.val()).sort().reverse()
+      //Reverses names as we reversed points, both are related
       let names = Object.keys(snapshot.val()).reverse()
+      let validNames = []
 
       await firebase.database().ref('Users').once('value', users => {
         userObjs = Object.values(users.val())
         for (let i = 0; i < names.length; i++){
           for (let user = 0; user < userObjs.length; user++) {
-            if (userObjs[user].name == names[i]) {
+            if (userObjs[user].name == names[i]){
               if (userObjs[user].online == 'false' && userObjs[user].name != active_user) {
-                names.splice(i, 1)
+                validNames.push(userObjs[user].name)
               }
             }
           }
         }
       })
 
-
-     addNotification(`Would you like to ask ${names.join(" ")} for help in ${subject}`, "Suggestion!", '', true)
+    if(validNames.length > 0){
+      addNotification(`Would you like to ask ${validNames.join(" ")} for help in ${subject}`, "Suggestion!", '', true)
+    }
 
       $('.cls').unbind().click(async function(event) {
         switch (this.id) {
           case 'check':
-            /* ---Getting user name */
-            for (let i = 0; i < names.length; i++) {
+            //Sending requests to all user's who are valid
+            for (let i = 0; i < validNames.length; i++) {
               await sendMessage(active_user, subject, names[i])
             }
+            //Delete notifcation
             notifcation = event.currentTarget.parentNode.parentNode
             notifcation.classList.add('animate-out')
             setTimeout(()=>{
@@ -61,7 +65,7 @@ async function findPeople(subject) {
 
             break;
           case 'close':
-            //Put in module fuctions
+            //Close notifcation
             notifcation = event.currentTarget.parentNode.parentNode
             notifcation.classList.add('animate-out')
             setTimeout(()=>{

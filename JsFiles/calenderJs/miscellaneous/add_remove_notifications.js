@@ -49,12 +49,14 @@ async function addNotification(message, title,id,special,type){
       //remove from notification list
       for(var i = 0; i<notificatonList.length;i++){
         if(notificatonList[i].innerHTML != ''){
+          //Extract note from innerHTML and if it is equal to the actual event then delete the note list(To-do section)
           if(notificatonList[i].innerHTML.split("<")[0] == evnt){
             notificatonList[i].remove()
           }
         }
       }
 
+      //Add notificaiton closing animations
       notification.classList.add('animate-out')
       setTimeout(()=>{
         notification.remove()
@@ -64,19 +66,25 @@ async function addNotification(message, title,id,special,type){
       removeFromAllEvents(evnt, date)
     }
 
+    //These are determining type of notification
     else if(notification.querySelector('.type').innerText == 'p_chat'){
+      //Set readby true on notification close
       await firebase.database().ref(notification.querySelector('.id').innerText).set(true)
       notification.classList.add('animate-out')
+      //Animate notifcation out
       setTimeout(()=>{
         notification.remove()
       },500)
     }
 
+    //Same thing as private chat
     else if(notification.querySelector('.type').innerText == 'gr_chat'){
       //Update firebase to inform, user has acknowledged the message
       await firebase.database().ref(notification.querySelector('.id').innerText).once('value',snapshot=>{
+        //Adds user name to readby to show that they have read the message
         firebase.database().ref(notification.querySelector('.id').innerText).set(`${snapshot.val()} ${active_user}`)
       })
+      //Remomve notifcation
       notification.classList.add('animate-out')
       setTimeout(()=>{
         notification.remove()

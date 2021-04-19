@@ -21,15 +21,6 @@ let allEvents = []
 let updatednew = false
 /*
 
-  ---Order---
-  Date
-  place holder
-  input-color
-  add note
-  delete note
-  note color
- */
-
 //Planned on changing color for each month, but it did not work )=
 var images = [
   "december january february",

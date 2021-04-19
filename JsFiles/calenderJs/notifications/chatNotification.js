@@ -1,23 +1,16 @@
-/* All-Check
-  ---Purpose---
-  This Purpose of this script is to, suggest users who are strong in their subject subs for geo
-  ---How it sugggestions work---
-  Checks subject that is in current calendar first one
-  Orders them by who is active
-*/
 /*
-  ---Notifications---
-  Deadlines that were not completed
-  Chat Notifications (Dm's)
-  Nearing deadlines
-  Subject Notifications
-  Help Notifications (People who are good in a subject that you need help with)
+
+  ---Purpose---
+  To add chat notification to notification tab
+  ---How it sugggestions work---
+  If the user is not on the meet tab and they get a private message or group messages, it means they have not read it
+  This mean that they should get a notification
+  ---Steps and logic---
+  1. Determine what tab they are on
+    When user log's onto the tab they
+
+
 */
-
-/* ---Chat Notifications--- */
-/* ---Private messages--- */
-
-// ---Main program--- // (Note, is in setTimeout to make sure uid loads properly)
 
 /* ---Opening and closing of notification panel--- */
 let hid = true
@@ -44,7 +37,6 @@ setTimeout(async () => {
   rootMessages.limitToLast(1).on("child_added", async (snapshot) => {
 
     if (ignoreNew) {
-      if (sessionStorage.getItem('cTab') == 'meet') {
         if (sessionStorage.getItem('chat') != 'general') {
           if (snapshot.val().readby.split(" ").indexOf(active_user) == -1) {
             let message = `${snapshot.val().messageToDisp.split(`<h2 class="message">`)[1].split('</h2>')[0]}`
@@ -53,7 +45,6 @@ setTimeout(async () => {
             addNotification(message, senderName,`${sessionStorage.getItem('chat')}/${snapshot.key}/readby`,false,'gr_chat')
           }
         }
-      }
       getOld = false
     }
 
@@ -61,7 +52,7 @@ setTimeout(async () => {
 
   await rootMessages.on('child_added', async snapshot => {
     if (getOld) {
-      if (sessionStorage.getItem('chat') != 'general') {
+      if (sessionStorage.getItem('chat') != 'general'){
         if (snapshot.val().readby.split(" ").indexOf(active_user) == -1){
           let message = `${snapshot.val().messageToDisp.split(`<h2 class="message">`)[1].split('</h2>')[0]}`
           message = message.replace(/\s+/g,' ').split(" ").join(" ")
