@@ -19,30 +19,40 @@ dateObj = new Date();
 let currentDate = [months[dateObj.getMonth()], dateObj.getFullYear(), dateObj.getDate()]
 let allEvents = []
 let updatednew = false
+/*
+
+  ---Order---
+  Date
+  place holder
+  input-color
+  add note
+  delete note
+  note color
+ */
 var images = [
   "december january february",
   ["../images/winterPics/w1.jpg", "../images/winterPics/w2.jpg", "../images/winterPics/w3.jpg", [
-    ["white"],
-    ["white"],
-    ["white"]
+    [],
+    [],
+    []
   ]],
   "march april may",
   ["../images/springPics/s1.jpg", "../images/springPics/s2.jpeg", "../images/springPics/s3.png", [
-    [],
-    [],
-    []
+    ["white","white","white","black","black","white"],
+    ["black","black","black","black","black","black"],
+    ["white","white","white","black","black","white"]
   ]],
   "june july august",
   ["../images/summerPics/sm1.jpg", "../images/summerPics/sm2.jpg", "../images/summerPics/sm3.jpg", [
-    [],
-    [],
-    []
+    ["black","black","black","black","black","black"],
+    ["black","black","black","black","black","black"],
+    ["black","black","black","black","black","black"]
   ]],
   "september october november",
   ["../images/fallPics/f1.jpg", "../images/fallPics/f2.jpg", "../images/fallPics/f3.jpeg", [
-    [],
-    [],
-    []
+    ["white","white","white","black","black","white"],
+    ["black","black","black","black","black"],
+    ["white","white","white","white","white","white"]
   ]]
 ]
 var subject = ["physics", "math", "computer-science", "science", "earth", "biology", "chemistry", "earth and space science"]

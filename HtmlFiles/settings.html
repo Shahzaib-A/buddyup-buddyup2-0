@@ -38,20 +38,16 @@ Code: Settings.HTML was made by Harsh Trivedi;
           <input type="text" name="" id="name"><br>
         </div>
 
-        <div class = "lastname-input">
-          <label> What is your last name?</label>
-          <input type="text" name="" id="lastname"><br>
-        </div>
-
       <div class = "buttons">
-        <Button class="btn1">Sign Out</button>
+        <button class="btn1">Update username</button>
         <button class="btn2">Update</button>
-        <button class="btn3">Remove</button>
+        <button class="btn3">Remove name</button>
       </div>
       </form>
 
       <div id="nav-placeholder"></div>
-    </main>
+      </main>
+
         <div id = "title-for-darkmode">
           <h3>Click to activate darkmode</h3>
         </div>
@@ -62,6 +58,17 @@ Code: Settings.HTML was made by Harsh Trivedi;
             <div id = 'toggleBall'></div>
         </div>
 
+<script>
+  $("#name").submit(function(e){
+      e.preventDefault();
+  });
+
+  $(".signin").submit(function(e){
+      e.preventDefault();
+    });
+        </script>
       <script src="../JsFiles/initializeFireBase.js"></script>
+      <script src="../JsFiles/ModuleFunctions.js"></script>
+      <script src="../JsFiles/settings/settings.js"></script>
   </body>
 </html>

@@ -10,7 +10,6 @@ Code: This code was made/worked on by both Harsh and Rahul
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <link rel="stylesheet" type='text/css' href="../cssFiles/login.css">
-  </script>
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
@@ -27,7 +26,7 @@ Code: This code was made/worked on by both Harsh and Rahul
 <form class="signin">
 <input class="signinEmail" type="email" name="signinusername" placeholder="Email">
 <input class="signinPassword" type="password" name="signinpassword" placeholder="password">
-<input onclick="signIn()" type="submit" value="Login" align="center"></button><br>
+<input onclick="signIn()" type="submit" value="Login" align="center"><br>
 <p>Not registerd? <a class="create" href="#"><strong>Create an account</strong></a></p><br>
 <p>Forgot password? <a class="reset" onClick="sendResetPassword()"><strong>Send reset link</strong></a></p>
 </form>
@@ -37,7 +36,7 @@ Code: This code was made/worked on by both Harsh and Rahul
 <input class="email"  type="email" name="username" placeholder="example@pdsb.net" required/>
 <input class="password" type="password"  name="password" placeholder="password" required/>
 <input class="confirm" type="password" name="confirmpassword" placeholder="Confirm password" required/>
-<input class="profile-pic" type="file" onchange="chooseFile(event)" accept="image/x-png,image/jpeg" / required/>
+<input class="profile-pic" type="file" onchange="chooseFile(event)" accept="image/x-png,image/jpeg" required/>
 <input onclick="register()" type="submit" value="Register" align="center"><br>
 <p>Have an account? <a class="back" href=""><strong>Back</strong></a></p>
 </form>
@@ -45,6 +44,7 @@ Code: This code was made/worked on by both Harsh and Rahul
 </div>
 </div>
 <script>
+
 $(".signup").submit(function(e){
   e.preventDefault();
 });
@@ -53,6 +53,7 @@ $(".signin").submit(function(e){
   e.preventDefault();
 });
 </script>
+
 <script src="../JsFiles/LoginJs/register/signUp.js"></script>
 <script src="../JsFiles/LoginJs/resetpassword/resetPassword.js"></script>
 <script src="../JsFiles/LoginJs/miscellaneous/DSPLP.js"></script>

@@ -27,7 +27,7 @@
           if(notes.indexOf(evnt) == -1 && notes.indexOf(date_raw) == -1){
               addNotification(`Event: ${evnt} is on ${date_raw}`, 'Date Nearing!',evnt,false,'event')
               for(let i = 0; i<subject.length;i++){
-                if(evnt.toLowerCase().includes(subject[i])){
+                if(evnt.toLowerCase().includes(subject[i].toLowerCase())){
                   findPeople(subject[i])
                 }
               }
