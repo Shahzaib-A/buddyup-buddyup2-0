@@ -29,12 +29,14 @@ let updatednew = false
   delete note
   note color
  */
+
+//Planned on changing color for each month, but it did not work )=
 var images = [
   "december january february",
   ["../images/winterPics/w1.jpg", "../images/winterPics/w2.jpg", "../images/winterPics/w3.jpg", [
-    [],
-    [],
-    []
+    ["black","black","black","black","black","black"],
+    ["white","white","white","black","black","black"],
+    ["white","white","white","white","white","white"]
   ]],
   "march april may",
   ["../images/springPics/s1.jpg", "../images/springPics/s2.jpeg", "../images/springPics/s3.png", [
@@ -51,9 +53,10 @@ var images = [
   "september october november",
   ["../images/fallPics/f1.jpg", "../images/fallPics/f2.jpg", "../images/fallPics/f3.jpeg", [
     ["white","white","white","black","black","white"],
-    ["black","black","black","black","black"],
+    ["black","black","black","black","black","black"],
     ["white","white","white","white","white","white"]
   ]]
 ]
+
 var subject = ["physics", "math", "computer-science", "science", "earth", "biology", "chemistry", "earth and space science"]
 var active_user = sessionStorage.getItem('username')

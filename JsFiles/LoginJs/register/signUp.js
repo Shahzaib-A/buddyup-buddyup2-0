@@ -7,6 +7,7 @@ function chooseFile(e){
 function signUp(email,password){
 
   firebase.auth().fetchSignInMethodsForEmail(email).then((sim)=>{ //sim -> Sign In Method
+    //
     if(sim.indexOf(firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD) == -1){
       const root2 = firebase.database().ref('Users')
       root2.orderByChild("name").equalTo($('input[name=user]').val()).once("value", (snapshot) => {

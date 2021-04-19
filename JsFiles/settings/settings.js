@@ -53,7 +53,8 @@ setTimeout(()=>{
     document.querySelector('.calendar'),
     document.querySelector('.meet'),
     document.querySelector('.settngs'),
-    document.querySelector('.about')
+    document.querySelector('.about'),
+    document.querySelector('.logo')
   ]
 
   ball.addEventListener('click', changeMode)
@@ -64,7 +65,8 @@ setTimeout(()=>{
         for(let i = 0; i<elements.length;i++){
           elements[i].style.color = 'black'
         }
-        document.getElementById("nav-bar").style.background = '#fff'
+        document.querySelector("nav").style.background = '#fff'
+
     }
     else{
       ball.style.transform = 'translateX(0px)'
@@ -72,7 +74,7 @@ setTimeout(()=>{
           console.log('running')
           elements[i].style.color = 'white'
         }
-        document.getElementById("nav-bar").style.background = '#222227'
+        document.querySelector("nav").style.background = '#222227'
     }
   }
 },5000)

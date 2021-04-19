@@ -1,15 +1,12 @@
 /*
- ---Name: Rahul---
-
-  ---General Purpose---
-  Dynamicly change the calendar dates based on year, this works for years above 1752
-  ---Logic---
-  
+  Commented by Rahul
 */
+
 /* ---Sets current tab user is in--- */
 sessionStorage.setItem('cTab', "Calendar")
 /* ---calander--- */
 
+//Sets box around current date
 function setActive(){
   if ($('.current_month').text() == currentDate[0] && $('.year').text() == currentDate[1]) {
     let div = document.createElement('span')
@@ -20,17 +17,20 @@ function setActive(){
   }
 }
 
+//Generates random pictures based on month
 function randomPic(month){
   for (let i = 0; i < images.length; i += 2) {
     if (images[i].includes(month.toLowerCase())) {
-      document.querySelector('.calendar-cont .leftCol').style.backgroundImage = `url(${images[i + 1][Math.floor(Math.random()*3)]})`
+      randomIndex = Math.floor(Math.random()*3)
+      document.querySelector('.calendar-cont .leftCol').style.backgroundImage = `url(${images[i + 1][randomIndex]})`
       document.querySelector('.calendar-cont .leftCol').style.backgroundSize = "cover"
+      console.log(images[i + 1].slice(-1)[0][randomIndex])
       break
     }
   }
 }
 
-//This is to change the date
+//This is to change the date based on the month
 function changeDays(maxDays) {
   var counter = 1
   $('.days').find('li').text('')
@@ -49,6 +49,7 @@ function changeDays(maxDays) {
   setActive()
 }
 
+//Determines if the year is a leap year based on a series of tests
 function isLeapYear(year) {
   if ((year / 4) % 1 == 0 && (year / 100) % 1 != 0) {
     return true
@@ -59,6 +60,7 @@ function isLeapYear(year) {
   }
 }
 
+//Makes the day into a cardinal event -> 5 -> 5th
 function makeCardinal(dateNum) {
   let additions = {
     '1': 'st',
@@ -76,7 +78,7 @@ function makeCardinal(dateNum) {
 }
 
 
-//This is to auto month
+//This is to auto month, sets month text and year text to current date
 $(".current_month").text(currentDate[0])
 $(".year").text(currentDate[1])
 if (isLeapYear(currentDate[1]) && currentDate[0] == "February") {
@@ -88,6 +90,7 @@ if (isLeapYear(currentDate[1]) && currentDate[0] == "February") {
 //Sets a box around current day and set bg picture
 setActive()
 randomPic($('.current_month').text())
+
 // Onclick of any of the arrows change the month
 $(".arrow").click(function() {
   // Variables
@@ -96,7 +99,6 @@ $(".arrow").click(function() {
 
   // Check the id of the arrow clicked
   switch (this.id) {
-
     case "right":
       // Go to next month
       $(".current_month").text(months[(monthInArray + 1) % months.length])
@@ -105,6 +107,7 @@ $(".arrow").click(function() {
       } else {
         changeDays(daysOfMonth[months[(monthInArray + 1) % 12]][0])
       }
+
       // Go to next year
       if (monthInArray + 1 > 11) {
         if (isLeapYear(currentYear + 1)) {
@@ -116,7 +119,7 @@ $(".arrow").click(function() {
       break;
 
     case "left":
-      // Check if month is january
+      // Check if month is january, if so set to december
       if ((monthInArray - 1) % months.length < 0) {
         $(".current_month").text(months[11])
         if (isLeapYear(currentYear - 1)) {
@@ -124,6 +127,7 @@ $(".arrow").click(function() {
         } else {
           $(".year").text(currentYear - 1)
         }
+
       } else {
         $(".current_month").text(months[(monthInArray - 1) % months.length])
         if (isLeapYear(currentYear) && months[(monthInArray - 1) % 12] == "February") {

@@ -1,8 +1,3 @@
-function check(){
-  console.log('fuck')
-
-}
-
 window.onload = async function(){
   // alert('window loading')
   setTimeout(()=>{

@@ -1,17 +1,10 @@
-    /*
+/*
 ----Idea(start)----
 Update messages on the browser
 ----Idea(ends)-----
 
 ----Plan(start)----
 
-  // ---Loading of messages--- //
-    Firebase realtime triggers used to laod messages specificly the "once" trigger
-      child-last.limitto one for updating sent messages
-    // ---Styling of messages(html structure)--- //
-    pretty simple update and send to firebase in html format so that it is just grab and Update
-      this allows for faster load times and lower memory allocation
-    once grabbed will store in local storage for even faster load times
 ----Plan(ends)-----
 
 */
