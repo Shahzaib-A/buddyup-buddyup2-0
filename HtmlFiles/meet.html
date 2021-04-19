@@ -96,13 +96,26 @@
 
     <header class="tab-nav">
       <div class="message-bar">
+        <div class="help-button-wrapper">
+          <ul class="help-list">
+            <li><span id="start-tour">^Name^ to upvote</span></li>
+            <li><span id="start-tour">/Name/ to downvote</span></li>
+            <li><span id="start-tour">type ! for more options</span></li>
+            <li><span id="start-tour">@User for DM's</span></li>
+          </ul>
+          <button class="help-button">
+            <span>
+              <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
         <div class="auto-comp">
           <!-- Js adds auto complete -->
           <div class="item">
 
           </div>
         </div>
-          <input class="enter-message" type="text" placeholder="Enter your message... use !subject to get into a specific subject" />
+        <input class="enter-message" type="text" placeholder="Enter your message... use !subject to get into a specific subject" />
       </div>
       <section class="discussion">
         <!-- Js add's messages -->
@@ -120,4 +133,6 @@
 <script src="../JsFiles/meetJs/UpdateChat.js"></script>
 <script src="../JsFiles/meetJs/autocom.js"></script>
 <script src="../JsFiles/meetJs/grabGroups.js"></script>
+<script src="../JsFiles/meetJs/help.js"></script>
+
 </html>
