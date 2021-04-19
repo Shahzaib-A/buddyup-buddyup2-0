@@ -54,8 +54,12 @@ body {
   width:320px;
   height: 100%;
   border-color: black;
-  border-width: 5px;
+  border-width: 4px;
+  outline: none;
+  color: #fff;
   margin-bottom: 10px;
+  background: transparent;
+  font-size: 17px;
 }
 
 .user-input input {
@@ -67,8 +71,12 @@ body {
   width:320px;
   height: 100%;
   border-color: black;
-  border-width: 5px;
+  border-width: 4px;
+  outline: none;
+  color: #fff;
   margin-bottom: 10px;
+  background: transparent;
+  font-size: 17px;
 }
 
 .name-input input {
@@ -157,7 +165,7 @@ body {
   display: flex;
   align-items: center;
   border-radius: 20px;
-  margin-top:72vh;
+  margin-top:65vh;
   margin-left: 100vh;
 }
 
@@ -175,6 +183,26 @@ body {
 #title-for-darkmode {
   position: absolute;
   color: white;
-  margin-top: 66vh;
-  margin-left: 91.6787vh;
+  margin-top: 61vh;
+  margin-left: 91vh;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.buttons .btn1{
+  margin-right: 20px;
+}
+
+.buttons .btn2 {
+  margin-left: 20px;
+}
+
+.profile-pic img {
+  position: absolute;
+  height: 10%;
+  margin-left: 47vw;
+  margin-top: 200px;
+  border-radius: 60px;
 }
