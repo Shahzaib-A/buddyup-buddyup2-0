@@ -19,7 +19,7 @@ dateObj = new Date();
 let currentDate = [months[dateObj.getMonth()], dateObj.getFullYear(), dateObj.getDate()]
 let allEvents = []
 let updatednew = false
-/*
+
 
 //Planned on changing color for each month, but it did not work )=
 var images = [
